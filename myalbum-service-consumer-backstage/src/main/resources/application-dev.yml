@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: myalbum-service-consumer-backstage
+  jackson:
+   date-format: yyyy-MM-dd HH:mm:ss #日期格式化
+   time-zone: GMT+8 #时区加8
+   default-property-inclusion: non_null  #屏蔽掉为null的字段
+
+  zipkin:
+   base-url: http://localhost:9411
+server:
+  port: 10150
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: env #必须排除env文件
+#security:
+#  oauth2:
+#    resource:
+#      id: mydemo-service-provider-item
+#      user-info-uri: http://localhost:10000/auth/auth/user
+#      prefer-token-info: false
+feign:
+  hystrix:
+    enabled: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: 127.0.0.1
+    # 优先使用IP地址方式进行注册服务
+    prefer-ip-address: true
+    # 配置使用指定IP
+    ip-address: 127.0.0.1
+    instance-id: ${eureka.instance.hostname}:${server.port}
+
+logging-level: DEBUG

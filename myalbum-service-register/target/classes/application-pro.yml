@@ -1,0 +1,36 @@
+spring:
+  zipkin:
+    base-url: http://47.106.199.167:9411
+  application:
+    name: myalbum-service-register
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss #日期格式化
+    time-zone: GMT+8 #时区加8
+    default-property-inclusion: non_null  #屏蔽掉为null的字段
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 118.89.190.234:8848
+        ip: 39.105.137.236
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: 118.89.190.234:8080
+  rabbitmq:
+    username: email
+    password: email
+    host: 118.89.190.234
+
+server:
+  port: 10020
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+feign:
+  sentinel:
+    enabled: true
+  httpclient:
+    enabled: true

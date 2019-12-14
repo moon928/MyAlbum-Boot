@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/jquery.js"></script>
+    <script src="/sockjs.js"></script>
+    <script src="/stomp.js"></script>
+</head>
+<body>
+<h1>一对一聊天，当前用户是：${id}</h1>
+<textarea id="content"></textarea>
+
+<h3>接收人ID：</h3>
+<select id="userId">
+    <option value="">全部</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+</select>
+<input type="button" id="send" value="发送"/>
+<h3>一下是我接收到的消息：</h3><br/>
+<div id="getMessage"></div>
+
+<script>
+    var sock = new SockJS("http://localhost:8080/socket");
+    var stompClient = Stomp.over(sock);
+    var id = '${id}';
+    stompClient.connect({},function (frame) {
+        // console.log(frame)
+        stompClient.subscribe("/user/"+id+"/message/get",function (response) {
+            var message = JSON.parse(response.body);
+             console.log("接收到消息：");
+             console.log(message);
+            $("#getMessage").append('<div class="message"><span>发送人:'+message.fromUserId+'</span><span>消息：'+message.content+'</span>');
+
+            // console.log(response.body);
+        });
+    });
+
+    $("#send").click(function () {
+        var content = $("#content").val();
+        var userId = $("#userId").val();
+
+        console.log("发送了："+content,userId,id);
+        stompClient.send("/message",{},JSON.stringify({
+            content:content,
+            toUserId:userId,
+            fromUserId:id
+        }));
+    });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

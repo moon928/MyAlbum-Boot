@@ -1,0 +1,9 @@
+C:\Users\Yan\Desktop\MyAlbum\myalbum-service-consumer-test\src\main\java\cn\yan_wm\myalbum\service\consumer\test\config\handler\AjaxAuthenticationEntryPoint.java
+C:\Users\Yan\Desktop\MyAlbum\myalbum-service-consumer-test\src\main\java\cn\yan_wm\myalbum\service\consumer\test\config\handler\AuthExceptionEntryPoint.java
+C:\Users\Yan\Desktop\MyAlbum\myalbum-service-consumer-test\src\main\java\cn\yan_wm\myalbum\service\consumer\test\config\handler\CustomAccessDeniedHandler.java
+C:\Users\Yan\Desktop\MyAlbum\myalbum-service-consumer-test\src\main\java\cn\yan_wm\myalbum\service\consumer\test\MyAlbumServiceConsumerTestApplication.java
+C:\Users\Yan\Desktop\MyAlbum\myalbum-service-consumer-test\src\main\java\cn\yan_wm\myalbum\service\consumer\test\service\TestService.java
+C:\Users\Yan\Desktop\MyAlbum\myalbum-service-consumer-test\src\main\java\cn\yan_wm\myalbum\service\consumer\test\config\ResourceServerConfig.java
+C:\Users\Yan\Desktop\MyAlbum\myalbum-service-consumer-test\src\main\java\cn\yan_wm\myalbum\service\consumer\test\config\FeignOauth2RequestInterceptor.java
+C:\Users\Yan\Desktop\MyAlbum\myalbum-service-consumer-test\src\main\java\cn\yan_wm\myalbum\service\consumer\test\service\fallback\TestServiceFallBack.java
+C:\Users\Yan\Desktop\MyAlbum\myalbum-service-consumer-test\src\main\java\cn\yan_wm\myalbum\service\consumer\test\controller\TestController.java

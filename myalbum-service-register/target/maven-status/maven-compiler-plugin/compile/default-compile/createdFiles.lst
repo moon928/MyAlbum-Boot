@@ -1,0 +1,16 @@
+cn\yan_wm\myalbum\service\register\controller\EmailCodeController.class
+cn\yan_wm\myalbum\service\register\service\fallback\SysAdminServiceFallback.class
+cn\yan_wm\myalbum\service\register\controller\RegisterAdminController.class
+cn\yan_wm\myalbum\service\register\service\RedisService.class
+cn\yan_wm\myalbum\service\register\service\SysAdminService.class
+cn\yan_wm\myalbum\service\register\MyAlbumServiceRegisterApplication.class
+cn\yan_wm\myalbum\service\register\service\fallback\RegisterServiceFallback.class
+cn\yan_wm\myalbum\service\register\service\MyPasswordEncoder.class
+cn\yan_wm\myalbum\service\register\controller\RegisterController.class
+cn\yan_wm\myalbum\service\register\service\fallback\RedisServiceFallback.class
+cn\yan_wm\myalbum\service\register\service\SendVerificationCodeService.class
+cn\yan_wm\myalbum\service\register\service\RegisterService.class
+cn\yan_wm\myalbum\service\register\service\impl\PasswordEncoderImpl.class
+cn\yan_wm\myalbum\service\register\service\impl\SendVerificationCodeServiceImpl.class
+cn\yan_wm\myalbum\service\register\service\impl\SendEmailServiceImpl.class
+cn\yan_wm\myalbum\service\register\service\SendEmailService.class

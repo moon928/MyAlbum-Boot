@@ -1,0 +1,9 @@
+cn\yan_wm\myalbum\service\consumer\test\MyAlbumServiceConsumerTestApplication.class
+cn\yan_wm\myalbum\service\consumer\test\config\handler\CustomAccessDeniedHandler.class
+cn\yan_wm\myalbum\service\consumer\test\controller\TestController.class
+cn\yan_wm\myalbum\service\consumer\test\config\FeignOauth2RequestInterceptor.class
+cn\yan_wm\myalbum\service\consumer\test\service\TestService.class
+cn\yan_wm\myalbum\service\consumer\test\service\fallback\TestServiceFallBack.class
+cn\yan_wm\myalbum\service\consumer\test\config\handler\AuthExceptionEntryPoint.class
+cn\yan_wm\myalbum\service\consumer\test\config\handler\AjaxAuthenticationEntryPoint.class
+cn\yan_wm\myalbum\service\consumer\test\config\ResourceServerConfig.class

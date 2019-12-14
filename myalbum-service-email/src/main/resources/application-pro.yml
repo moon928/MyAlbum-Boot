@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: myalbum-service-email
+  mail:
+    host: smtp.qq.com
+    port: 456
+    # 你的邮箱授权码
+    password: vhnfvdgvomxjibce
+    properties:
+      mail:
+        smtp:
+          socketFactory:
+            port: 465
+            class: javax.net.ssl.SSLSocketFactory
+            fallback: false
+          auth: true
+          starttls:
+            enable: true
+            required: true
+    # 发送邮件的邮箱地址
+    username: 1243359973@qq.com
+    default-encoding: UTF-8
+
+
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 118.89.190.234:8848
+        ip: 47.106.199.167
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: 118.89.190.234:8080
+
+  thymeleaf:
+    cache: false
+    mode: HTML
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+
+  rabbitmq:
+    host: 118.89.190.234
+    username: email
+    password: email
+  zipkin:
+    base-url: http://47.106.199.167:9411
+server:
+  port: 10050
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

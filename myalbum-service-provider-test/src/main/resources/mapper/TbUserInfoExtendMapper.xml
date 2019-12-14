@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yan_wm.myalbum.service.provider.test.mapper.TbUserInfoExtendMapper">
+  <resultMap id="BaseResultMap" type="cn.yan_wm.myalbum.commons.domain.TbUserInfo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+    <result column="gender_id" jdbcType="INTEGER" property="genderId" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+</mapper>

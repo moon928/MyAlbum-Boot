@@ -1,0 +1,62 @@
+spring:
+  profiles:
+    active: dev
+---
+spring:
+  profiles: dev
+  application:
+    name: myalbum-config
+  cloud:
+    config:
+      label: master
+      server:
+        git:
+          uri: https://github.com/moon928/MyAlbumConfig.git
+          search-paths: config
+          username: moon928
+          password: moon168168
+
+server:
+  port: 8888 #默认8888 要改的话 得在bootstrab.propertieswen文件里面写server.port
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: 127.0.0.1
+    #    # 优先使用IP地址方式进行注册服务
+    #    prefer-ip-address: true
+    # 配置使用指定IP
+    ip-address: 127.0.0.1
+    instance-id:  ${eureka.instance.hostname}:${server.port}
+
+---
+spring:
+  profiles: prod
+  application:
+    name: myalbum-config
+  cloud:
+    config:
+      label: master
+      server:
+        git:
+          uri: https://github.com/moon928/MyAlbumConfig.git
+          search-paths: config
+          username: moon928
+          password: moon168168
+
+server:
+  port: 8888 #默认8888 要改的话 得在bootstrab.propertieswen文件里面写server.port
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://39.105.137.236:8761/eureka/
+  instance:
+    hostname: 47.106.199.167
+    #    # 优先使用IP地址方式进行注册服务
+    #    prefer-ip-address: true
+    # 配置使用指定IP
+    ip-address: 47.106.199.167
+    instance-id:  ${eureka.instance.hostname}:${server.port}

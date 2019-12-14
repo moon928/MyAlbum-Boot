@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yan_wm.myalbum.service.provider.backstage.mapper.SysPermissionExtendMapper">
+  <resultMap id="BaseResultMap" type="cn.yan_wm.myalbum.commons.domain.SysPermission">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="method" jdbcType="VARCHAR" property="method" />
+    <result column="zuul_prefix" jdbcType="VARCHAR" property="zuulPrefix" />
+    <result column="service_prefix" jdbcType="VARCHAR" property="servicePrefix" />
+    <result column="uri" jdbcType="VARCHAR" property="uri" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_by" jdbcType="TIMESTAMP" property="updateBy" />
+  </resultMap>
+
+  <select id="findByRoleId" resultMap="BaseResultMap">
+    SELECT sys_permission.id,sys_permission.parent_id, sys_permission.name,sys_permission.method,
+    sys_permission.zuul_prefix,sys_permission.service_prefix,sys_permission.uri,sys_permission.status
+    FROM sys_permission,sys_role_permission
+    WHERE
+        sys_permission.id = sys_role_permission.permission_id and
+        sys_role_permission.role_id = #{id}
+  </select>
+</mapper>

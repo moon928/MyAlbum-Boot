@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yan_wm.myalbum.service.provider.backstage.mapper.SysAdminExtendMapper">
+  <resultMap id="BaseResultMap" type="cn.yan_wm.myalbum.commons.domainExtend.backstage.SysAdminExtend">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+     <collection property="roleExtends" fetchType="eager" column="id" select="cn.yan_wm.myalbum.service.provider.backstage.mapper.SysRoleExtendMapper.findByAdminId"></collection>
+  </resultMap>
+
+    <select id="findByUsername" resultMap="BaseResultMap">
+        SELECT * FROM sys_admin
+        WHERE username = #{username}
+    </select>
+
+  <select id="findAll" resultMap="BaseResultMap">
+    SELECT * FROM sys_admin
+
+--     SELECT sys_admin.*,
+--         sys_role.id as role_id,
+--         sys_role.role_name,
+--         sys_role.name as role_name_CN
+--         FROM sys_admin,sys_role,sys_admin_role
+--     WHERE
+--         sys_admin.id = sys_admin_role.admin_id and
+--         sys_admin_role.role_id = sys_role.id
+  </select>
+</mapper>

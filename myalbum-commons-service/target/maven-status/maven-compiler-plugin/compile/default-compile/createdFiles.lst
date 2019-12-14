@@ -1,0 +1,3 @@
+cn\yan_wm\myalbum\commons\service\BaseCrudService.class
+cn\yan_wm\myalbum\commons\service\impl\BaseCrudServiceImpl.class
+cn\yan_wm\myalbum\commons\service\config\Swagger2Configuration.class

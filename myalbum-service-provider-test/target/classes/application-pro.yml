@@ -1,0 +1,52 @@
+server:
+  port: 10105
+spring:
+  zipkin:
+    base-url: http://47.106.199.167:9411
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss #日期格式化
+    time-zone: GMT+8 #时区加8
+    default-property-inclusion: non_null  #屏蔽掉为null的字段
+  application:
+    name: myalbum-service-provider-test
+  datasource:
+    druid:
+      url: jdbc:mysql://47.106.199.167:3306/myalbum_resource?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      username: root
+      password: Ab123$%^
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      test-on-borrow: true
+      driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 118.89.190.234:8848
+        ip: 39.105.137.236
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: 118.89.190.234:8080
+
+
+mybatis:
+  type-aliases-package: cn.yan_wm.myalbum.commons.domain
+  mapper-locations: classpath:mapper/*.xml
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+security:
+  oauth2:
+    resource:
+      id: mydemo-service-provider-test
+      user-info-uri: http://47.106.199.167:10000/auth/auth/user
+      prefer-token-info: false
+logging:
+  level:
+    cn:
+      yan_wm:
+        myalbum: INFO

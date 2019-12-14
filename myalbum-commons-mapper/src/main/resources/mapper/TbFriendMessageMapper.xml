@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yan_wm.myalbum.commons.mapper.TbFriendMessageMapper">
+  <resultMap id="BaseResultMap" type="cn.yan_wm.myalbum.commons.domain.TbFriendMessage">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sender_id" jdbcType="INTEGER" property="senderId" />
+    <result column="getter_id" jdbcType="INTEGER" property="getterId" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+</mapper>

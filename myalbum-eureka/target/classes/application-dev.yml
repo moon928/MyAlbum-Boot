@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: myalbum-eureka
+
+server:
+  port: 8761
+
+eureka:
+  instance:
+    hostname: 127.0.0.1
+    # 优先使用IP地址方式进行注册服务
+    prefer-ip-address: true
+    instance-id: ${eureka.instance.hostname}:${server.port}
+  server:
+    renewal-percent-threshold: 0.5 #留存的服务示例低于多少比例进入保护模式
+    enable-self-preservation: true #是否开启保护模式
+
+  client:
+#    是否将当前的Eureka Server服务当作客户端进行注册
+    registerWithEureka: false
+#    是否获取其他的Eureka Server服务的数据
+    fetchRegistry: false
+    serviceUrl:
+#      注册中心的访问地址
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
