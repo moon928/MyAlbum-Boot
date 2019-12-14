@@ -1,7 +1,6 @@
 spring:
   application:
-    name: myalbum-zipkin
-
+    name: MYALBUM-ZIPKIN
 
 server:
   port: 9411
@@ -11,7 +10,7 @@ eureka:
     healthcheck:
       enable: true
     serviceUrl:
-      defaultZone: http://39.105.137.236:8761/eureka/
+      defaultZone: http://47.106.199.167:8761/eureka/
 
   instance:
     hostname: 47.106.199.167

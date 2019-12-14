@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: dev
+    active: prod
 ---
 spring:
   profiles: dev
@@ -35,7 +35,7 @@ eureka:
 spring:
   profiles: prod
   application:
-    name: myalbum-config
+    name: MYALBUM-CONFIG
   cloud:
     config:
       label: master
@@ -45,6 +45,10 @@ spring:
           search-paths: config
           username: moon928
           password: moon168168
+  boot:
+    admin:
+      client:
+        url: http://47.106.199.167:8084
 
 server:
   port: 8888 #默认8888 要改的话 得在bootstrab.propertieswen文件里面写server.port
@@ -52,7 +56,7 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://39.105.137.236:8761/eureka/
+      defaultZone: http://47.106.199.167:8761/eureka/
   instance:
     hostname: 47.106.199.167
     #    # 优先使用IP地址方式进行注册服务
