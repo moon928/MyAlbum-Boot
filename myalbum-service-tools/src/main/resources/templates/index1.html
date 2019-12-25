@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <script src="/jquery.js"></script>
+    <script src="/sockjs.js"></script>
+    <script src="/stomp.js"></script>
+</head>
+<body>
+<h1>1</h1>
+<div id="msg"></div>
+
+<script>
+    var sock = new SockJS("http://localhost:10030/socket");
+    console.log(sock);
+    var stompClient = Stomp.over(sock);
+    // console.log(stompClient);
+    stompClient.connect({},function (data) {
+        // console.log(data);
+        stompClient.subscribe("/user/1/sendCpuInfoByServer",function (response) {
+            console.log(response.body);
+            $("#msg").append(response.body+"<br/>");
+        })
+
+    })
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

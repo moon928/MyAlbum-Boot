@@ -25,9 +25,10 @@
 
         <!-- Spring Cloud Settings -->
 <!--        <spring-cloud.version>Finchley.SR2</spring-cloud.version>-->
-        <spring-cloud-alibaba.version>0.2.1.RELEASE</spring-cloud-alibaba.version>
+<!--        <spring-cloud-alibaba.version>0.2.1.RELEASE</spring-cloud-alibaba.version>-->
         <!-- Spring Settings -->
-        <spring-cloud.version>Finchley.RC1</spring-cloud.version>
+            <!--        Finchley.RC1-->
+        <spring-cloud.version>Finchley.SR4</spring-cloud.version>
 
         <!-- Spring Boot Settings -->
         <spring-boot-alibaba-druid.version>1.1.10</spring-boot-alibaba-druid.version>
