@@ -9,10 +9,19 @@ import cn.yan_wm.myalbum.service.provider.backstage.service.UserRoleService;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * @program: MyAlbum-Boot
+ * @description: 用户信息管理
+ * @author: yan_zt
+ * @create: 2020-01-07 19:54
+ */
+
 @RestController
-@RequestMapping("sysUser")
+@RequestMapping("/sysUser")
+@Api(tags = "用户信息管理")
 public class SysUserController {
     @Autowired
     private SysUserService sysUserService;
@@ -27,7 +36,7 @@ public class SysUserController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "username", value = "username(Email)", required = true, paramType = "path", dataType = "String")
     })
-    @GetMapping("unique/{username}")
+    @GetMapping(value = "/unique/{username}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Boolean uniqueUsername(@PathVariable("username") String username){
         return sysUserService.unique("username",username);
     }
@@ -36,7 +45,7 @@ public class SysUserController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "password", value = "新的密码", required = true, paramType = "query", dataType = "String")
     })
-    @PostMapping("add")
+    @PostMapping(value = "/add",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public SysUser add(@ApiParam(name = "sysUser",value = "Sys用户Model") @RequestBody SysUser sysUser,@RequestParam("passwprd") String password){
         sysUser.setPassword(password);
         SysUser user = (SysUser) sysUserService.save(sysUser);
@@ -67,7 +76,7 @@ public class SysUserController {
             @ApiImplicitParam(name = "id", value = "用户id", required = true, paramType = "query", dataType = "Long"),
             @ApiImplicitParam(name = "password", value = "新的密码", required = true, paramType = "query", dataType = "String")
     })
-    @PutMapping("updatePwd")
+    @PutMapping(value = "/updatePwd",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public int updatePwd(
             @RequestParam Long id,
             @RequestParam String password
@@ -79,8 +88,8 @@ public class SysUserController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "用户id", required = true, paramType = "query", dataType = "Long"),
             @ApiImplicitParam(name = "status", value = "状态（0：正常 1：锁定 -1：逻辑删除）", required = true, paramType = "query", dataType = "int")
-    }) //
-    @PutMapping("updateStatus")
+    })
+    @PutMapping(value = "/updateStatus",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public int updateStatus(
             @RequestParam Long id,
             @RequestParam int status
@@ -92,8 +101,8 @@ public class SysUserController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "用户id", required = true, paramType = "query", dataType = "Long"),
             @ApiImplicitParam(name = "username", value = "新的用户名（邮箱）", required = true, paramType = "query", dataType = "String")
-    }) //
-    @PutMapping("updateUsername")
+    })
+    @PutMapping(value = "/updateUsername",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public int updateUsername(
             @RequestParam Long id,
             @RequestParam String username
@@ -105,7 +114,7 @@ public class SysUserController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "用户id", required = true, paramType = "path", dataType = "Long")
     })
-    @GetMapping("findById/{id}")
+    @GetMapping(value = "/findById/{id}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public SysUserExtend findById(@PathVariable("id") Long id) {
         SysUserExtend sysUserExtend = userExtendService.getById(id);
         return sysUserExtend;
@@ -115,8 +124,8 @@ public class SysUserController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "username", value = "用户账号", required = true, paramType = "path", dataType = "String")
     })
-    @GetMapping("findByUsername/{username}")
-    public SysUserExtend FindByUsername(@PathVariable("username") String username) {
+    @GetMapping(value = "/findByUsername/{username}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public SysUserExtend findByUsername(@PathVariable("username") String username) {
         SysUserExtend userExtend = userExtendService.getByUsername(username);
         if(userExtend == null){
             return null;
@@ -129,8 +138,8 @@ public class SysUserController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "num", value = "页码", required = true, paramType = "path", dataType = "int"),
             @ApiImplicitParam(name = "size", value = "条数", required = true, paramType = "path", dataType = "int")
-    }) //多个请求参数
-    @GetMapping(value = "page/{num}/{size}")
+    })
+    @GetMapping(value = "/page/{num}/{size}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public PageInfo<SysUser> page(
             @PathVariable int num,
             @PathVariable int size
@@ -142,8 +151,8 @@ public class SysUserController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "userId", value = "用户id", required = true, paramType = "query", dataType = "Long"),
             @ApiImplicitParam(name = "roleId", value = "角色id", required = true, paramType = "query", dataType = "Long")
-    }) //多个请求参数
-    @PostMapping("authorization")
+    })
+    @PostMapping(value = "/authorization",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public int authorization(
             @RequestParam("userId") Long userId,
             @RequestParam("roleId") Long roleId
@@ -158,8 +167,8 @@ public class SysUserController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "userId", value = "用户id", required = true, paramType = "query", dataType = "Long"),
             @ApiImplicitParam(name = "roleId", value = "角色id", required = true, paramType = "query", dataType = "Long")
-    }) //多个请求参数
-    @DeleteMapping("deleteAuthorization")
+    })
+    @DeleteMapping(value = "deleteAuthorization",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public int deleteAuthorization(
             @RequestParam("userId") Long userId,
             @RequestParam("roleId") Long roleId
@@ -174,8 +183,8 @@ public class SysUserController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "userId", value = "用户id", required = true, paramType = "query", dataType = "Long"),
             @ApiImplicitParam(name = "roleId", value = "角色id", required = true, paramType = "query", dataType = "Long")
-    }) //多个请求参数
-    @PutMapping("updateAuthorization")
+    })
+    @PutMapping(value = "/updateAuthorization",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public int updateAuthorization(
             @RequestParam("userId") Long userId,
             @RequestParam("roleId") Long roleId

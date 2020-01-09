@@ -1,6 +1,6 @@
 spring:
   application:
-    name: myalbum-service-provider-backstage
+    name: MYALBUM-SERVICE-PROVIDER-BACKSTAGE
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss #日期格式化
     time-zone: GMT+8 #时区加8
@@ -16,7 +16,14 @@ spring:
       test-on-borrow: true
       driver-class-name: com.mysql.cj.jdbc.Driver
   zipkin:
-    base-url: http://47.106.199.167:9411
+    base-url: http://39.105.137.236:9411
+  boot:
+    admin:
+      client:
+        url: http://47.106.199.167:8084
+        instance:
+          health-url: http://101.132.139.17:10100/actuator/info
+          service-url: http://101.132.139.17:10100
 
 server:
   port: 10100
@@ -37,9 +44,9 @@ eureka:
     healthcheck:
       enable: true
     serviceUrl:
-      defaultZone: http://39.105.137.236:8761/eureka/
+      defaultZone: http://47.106.199.167:8761/eureka/
   instance:
-    hostname: 39.105.137.236
+    hostname: 101.132.139.17
     # 配置使用指定IP
-    ip-address: 39.105.137.236
+    ip-address: 101.132.139.17
     instance-id: ${eureka.instance.hostname}:${server.port}

@@ -36,8 +36,6 @@ public class SysUserExtendServiceImpl extends BaseCrudServiceImpl<SysUserExtend,
     @Override
     public PageInfo<SysUserExtend> sysUserExtendPage(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum,pageSize);
-        //  ASC是根据id 正向排序，DESC是反向排序
-//        PageHelper.orderBy("id DESC");
         PageInfo<SysUserExtend> pageInfo = new PageInfo<>(getAll());
         return pageInfo;
     }

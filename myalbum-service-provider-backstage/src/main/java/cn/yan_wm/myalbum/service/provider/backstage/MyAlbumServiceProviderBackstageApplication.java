@@ -9,7 +9,8 @@ import tk.mybatis.spring.annotation.MapperScan;
 @SpringBootApplication(scanBasePackages = "cn.yan_wm.myalbum")
 @EnableEurekaClient
 @MapperScan(basePackages = {"cn.yan_wm.myalbum.commons.mapper","cn.yan_wm.myalbum.service.provider.backstage.mapper"})
-@EnableSwagger2 //开启swagger2
+/** 开启swagger2 */
+@EnableSwagger2
 public class MyAlbumServiceProviderBackstageApplication {
     public static void main(String[] args) {
         SpringApplication.run(MyAlbumServiceProviderBackstageApplication.class,args);

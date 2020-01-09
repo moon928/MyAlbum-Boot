@@ -6,6 +6,7 @@ import cn.yan_wm.myalbum.commons.domainExtend.backstage.SysUserExtend;
 import cn.yan_wm.myalbum.commons.dto.AbstractBaseDomain;
 import cn.yan_wm.myalbum.service.provider.backstage.service.SysAdminExtendService;
 import cn.yan_wm.myalbum.service.provider.backstage.service.SysUserExtendService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -16,8 +17,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * @program: MyAlbum-Boot
+ * @description: 用户账号信息
+ * @author: yan_zt
+ * @create: 2020-01-07 19:54
+ */
+
 @RestController
-@RequestMapping("account")
+@RequestMapping("/account")
+@Api(tags = "用户账号信息")
 public class AccountController {
 
     @Autowired
@@ -26,12 +35,13 @@ public class AccountController {
     @Autowired
     private SysAdminExtendService adminExtendService;
 
+
     @ApiOperation(value = "根据用户名查用户账号信息")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "username", value = "用户账号", required = true, paramType = "path", dataType = "String")
     })
     @GetMapping(value = "findUserByUsername/{username}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public Account FindUserByUsername(@PathVariable("username") String username){
+    public Account findUserByUsername(@PathVariable("username") String username){
         SysUserExtend userExtend = userExtendService.getByUsername(username);
         if(userExtend == null){
             return null;
@@ -39,12 +49,12 @@ public class AccountController {
         return userAccount(userExtend);
     }
 
-    @ApiOperation(value = "根据用户名查管理员账号信息",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ApiOperation(value = "根据用户名查管理员账号信息")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "username", value = "用户账号", required = true, paramType = "path", dataType = "String")
     })
-    @GetMapping("findAdminByUsername/{username}")
-    public Account FindAdminByUsername(@PathVariable("username") String username) {
+    @GetMapping(value = "findAdminByUsername/{username}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Account findAdminByUsername(@PathVariable("username") String username) {
         SysAdminExtend adminExtend = adminExtendService.getByUsername(username);
         if(adminExtend == null){
             return null;

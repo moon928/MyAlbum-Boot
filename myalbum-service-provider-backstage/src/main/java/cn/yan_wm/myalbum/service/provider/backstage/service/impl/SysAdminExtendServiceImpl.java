@@ -31,8 +31,8 @@ public class SysAdminExtendServiceImpl extends BaseCrudServiceImpl<SysAdminExten
     @Override
     public PageInfo<SysAdminExtend> adminExtendPage(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum,pageSize);
-        //  ASC是根据id 正向排序，DESC是反向排序
-//        PageHelper.orderBy("id DESC");
+        /**  ASC是根据id 正向排序，DESC是反向排序 */
+        /** PageHelper.orderBy("id DESC"); */
         PageInfo<SysAdminExtend> pageInfo = new PageInfo<>(getAll());
         return pageInfo;
     }
