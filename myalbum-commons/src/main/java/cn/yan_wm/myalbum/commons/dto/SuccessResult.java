@@ -13,15 +13,26 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper=false)
 public class SuccessResult<T extends AbstractBaseDomain> extends AbstractBaseResult{
+
+    private int code;
+    private String message;
+
     private Links links;
     private List<DataBean> data;
+
+
+    public void statusCode_success(){
+        this.code = 200;
+        this.message = "success";
+    }
 
     /**
      * 返回String消息
      * @param self
      * @param msg
      */
-    public SuccessResult(String self, String msg){
+    public SuccessResult(String self,String msg){
+        statusCode_success();
         links = new Links();
         links.setSelf(self);
         DataBean dataBean = new DataBean();
@@ -38,6 +49,7 @@ public class SuccessResult<T extends AbstractBaseDomain> extends AbstractBaseRes
      * @param attributes
      */
     public SuccessResult(String self, List<T> attributes){
+        statusCode_success();
         links = new Links();
         links.setSelf(self);
         attributes.forEach(attribute -> createDataBean(null,attribute));
@@ -49,6 +61,7 @@ public class SuccessResult<T extends AbstractBaseDomain> extends AbstractBaseRes
      * @param attribute
      */
     public SuccessResult(String self, T attribute){
+        statusCode_success();
         links = new Links();
         links.setSelf(self);
 
@@ -65,7 +78,8 @@ public class SuccessResult<T extends AbstractBaseDomain> extends AbstractBaseRes
      * @param pageSize
      * @param attributes
      */
-    public SuccessResult(String self, Long total, int pages,int pageNum,int pageSize, List<T> attributes){
+    public SuccessResult(String self, Long total, Integer pages,Integer pageNum,Integer pageSize, List<T> attributes){
+        statusCode_success();
         links = new Links();
         links.setSelf(self);
         links.setTotal(total);
@@ -84,6 +98,7 @@ public class SuccessResult<T extends AbstractBaseDomain> extends AbstractBaseRes
      * @param attributes
      */
     public SuccessResult(String self, int next, int last,List<T> attributes){
+        statusCode_success();
         links = new Links();
         links.setSelf(self);
         links.setNext(self+"?page=" + next);
@@ -98,14 +113,8 @@ public class SuccessResult<T extends AbstractBaseDomain> extends AbstractBaseRes
         }
         DataBean dataBean = new DataBean();
         if (attributes != null){
-            dataBean.setId(attributes.getId());
             dataBean.setType(attributes.getClass().getSimpleName());
             dataBean.setAttributes(attributes);
-        }
-        if (StringUtils.isNotBlank(self)){
-            Links links = new Links();
-            links.setSelf(self+"/"+attributes.getId());
-            dataBean.setLinks(links);
         }
         data.add(dataBean);
     }

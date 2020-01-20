@@ -10,15 +10,19 @@ import java.io.Serializable;
  * 通用的响应结果
  */
 @Data
+@EqualsAndHashCode(callSuper=false)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public abstract class AbstractBaseResult implements Serializable {
+
     @Data
+    @EqualsAndHashCode(callSuper=false)
     @JsonInclude(JsonInclude.Include.NON_NULL)
     protected static class Links {
         private String self;
         private Long total;//总条数
-        private int pages;//总页数
-        private int pageNum;//当前页
-        private int pageSize;//每页条数
+        private Integer pages;//总页数
+        private Integer pageNum;//当前页
+        private Integer pageSize;//每页条数
 
         private String next;
         private String last;
@@ -29,7 +33,6 @@ public abstract class AbstractBaseResult implements Serializable {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     protected static class DataBean<T> extends AbstractBaseDomain{
         private String type;
-        private Long id;
         private T attributes;
         private String msg;
         private T relationships;

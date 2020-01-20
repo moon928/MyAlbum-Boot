@@ -37,8 +37,13 @@ public class BaseResultFactory<T> {
      * @param msg
      * @return
      */
-    public AbstractBaseResult build(String self,String msg){
+    public AbstractBaseResult build(String self, String msg){
         return new SuccessResult(self, msg);
+    }
+
+
+    public AbstractBaseResult build(String self, List<String> stringList,boolean b){
+        return new OkResult(self, stringList);
     }
 
 
@@ -61,7 +66,7 @@ public class BaseResultFactory<T> {
         return new SuccessResult(self,attributes);
     }
 
-    public AbstractBaseResult build(String self, Long total, int pages,int pageNum,int pageSize, List<T> attributes){
+    public AbstractBaseResult build(String self, Long total, Integer pages,Integer pageNum,Integer pageSize, List<T> attributes){
         return new SuccessResult(self,total,pages,pageNum,pageSize, attributes);
     }
     /**

@@ -22,13 +22,14 @@ public abstract class AbstractBaseController<T extends AbstractBaseDomain> {
     @Resource
     protected  HttpServletResponse response;
 
+
     @Autowired
     private ConfigurableApplicationContext configurableApplicationContext;
 
     //在每个@RequstMapping 之前执行
     @ModelAttribute
     public void initReqAndRes(HttpServletRequest request,HttpServletResponse response){
-        response.setContentType("application/json;charset=UTF-8");
+//        response.setContentType("application/json;charset=UTF-8");
         this.request = request;
         this.response = response;
 
@@ -36,6 +37,12 @@ public abstract class AbstractBaseController<T extends AbstractBaseDomain> {
 
     protected AbstractBaseResult success(String self, String msg){
         return BaseResultFactory.getInstance(response).build(self,msg);
+    }
+
+    protected AbstractBaseResult ok(String self, List<String> stringList){
+        //无实际意义
+        boolean b = true;
+        return BaseResultFactory.getInstance(response).build(self,stringList,b);
     }
 
     protected AbstractBaseResult success(String self, T attribute){
@@ -46,7 +53,7 @@ public abstract class AbstractBaseController<T extends AbstractBaseDomain> {
         return BaseResultFactory.getInstance(response).build(self,attributes);
     }
 
-    protected AbstractBaseResult success(String self, Long total, int pages,int pageNum,int pageSize, List<T> attributes){
+    protected AbstractBaseResult success(String self, Long total, Integer pages,Integer pageNum,Integer pageSize, List<T> attributes){
         return BaseResultFactory.getInstance(response).build(self,total,pages,pageNum,pageSize,attributes);
     }
 
