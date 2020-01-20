@@ -13,12 +13,7 @@ import java.util.Date;
 @Table(name = "tb_user_info")
 //@JsonInclude(JsonInclude.Include.NON_NULL)
 public class TbUserInfo extends AbstractBaseDomain{
-//    /**
-//     * 用户信息表
-//     */
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Integer id;
+
 
     /**
      * 邮箱

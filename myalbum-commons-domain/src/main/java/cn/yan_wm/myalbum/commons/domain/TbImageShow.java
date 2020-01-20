@@ -13,12 +13,6 @@ import java.util.Date;
 @Table(name = "tb_image_show")
 public class TbImageShow extends AbstractBaseDomain {
     private static final long serialVersionUID = -4295724402595650891L;
-//    /**
-//     * 稿件
-//     */
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Integer id;
 
     /**
      * 发表人id

@@ -13,12 +13,6 @@ import java.util.Date;
 @Table(name = "tb_like_record")
 public class TbLikeRecord extends AbstractBaseDomain {
     private static final long serialVersionUID = 2050982693971467082L;
-//    /**
-//     * 点赞记录表 自增id
-//     */
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Integer id;
 
     /**
      * 点赞人id

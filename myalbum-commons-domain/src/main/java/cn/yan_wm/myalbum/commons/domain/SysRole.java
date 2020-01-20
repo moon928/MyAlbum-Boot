@@ -42,6 +42,11 @@ public class SysRole extends AbstractBaseDomain {
     private Integer status;
 
     /**
+     * 层级 普通 0； 管理员 1
+     */
+    private Integer level;
+
+    /**
      * 创建时间
      */
     @Column(name = "create_time")

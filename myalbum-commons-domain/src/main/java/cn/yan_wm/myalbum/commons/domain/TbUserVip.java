@@ -12,12 +12,7 @@ import javax.persistence.*;
 @Table(name = "tb_user_vip")
 public class TbUserVip extends AbstractBaseDomain {
     private static final long serialVersionUID = 5530502398821163308L;
-//    /**
-//     * 用户与VIP等级关联表，自增id
-//     */
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Integer id;
+
 
     /**
      * 用户id

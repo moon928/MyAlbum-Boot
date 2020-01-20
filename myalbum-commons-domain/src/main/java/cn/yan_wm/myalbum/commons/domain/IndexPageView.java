@@ -8,21 +8,26 @@ import lombok.EqualsAndHashCode;
 import javax.persistence.Table;
 import java.util.Date;
 
+/**
+ * @program: MyAlbum-Boot
+ * @description: 首页访问记录表
+ * @author: yan_zt
+ * @create: 2020-01-10 15:19
+ */
 @Data
 @EqualsAndHashCode(callSuper=false)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-//@Table(name = "linux_disk")
-public class Disk extends AbstractBaseDomain {
-    /** 服务器id */
-    private String serverId;
-    private String filesystem;
-    /** 总大小 */
-    private Double size;
-    /** 已使用大小 */
-    private Double used;
-    /** 可用空间 */
-    private Double avail;
-    /** 所占百分比 */
-    private Double use;
+@Table(name = "index_page_view")
+public class IndexPageView extends AbstractBaseDomain {
+
+    /**
+     * 访问次数
+     */
+    private int frequency;
+
+
+    /**
+     * 访问时间
+     */
     private Date time;
 }

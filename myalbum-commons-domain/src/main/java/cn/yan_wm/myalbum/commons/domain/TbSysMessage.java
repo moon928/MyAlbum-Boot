@@ -13,12 +13,6 @@ import java.util.Date;
 @Table(name = "tb_sys_message")
 public class TbSysMessage extends AbstractBaseDomain {
     private static final long serialVersionUID = -8274929423210415005L;
-//    /**
-//     * 系统消息 自增id
-//     */
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Integer id;
 
     /**
      * 发送人员id

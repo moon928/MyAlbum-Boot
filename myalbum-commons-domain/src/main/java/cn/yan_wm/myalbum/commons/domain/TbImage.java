@@ -12,14 +12,15 @@ import java.util.Date;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Table(name = "tb_image")
 public class TbImage extends AbstractBaseDomain {
-//    /**
-//     * 图片表 自增id
-//     */
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Integer id;
 
     private String name;
+
+    /** imgUrl 修改为这三个 服务器地址 */
+    private String uri;
+    /** 图片存放的组名 */
+    private String groupName;
+    /** 文件名 */
+    private String fileName;
 
     @Column(name = "user_id")
     private Integer userId;

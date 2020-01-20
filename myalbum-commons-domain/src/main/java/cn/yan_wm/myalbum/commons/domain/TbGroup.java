@@ -13,12 +13,6 @@ import java.util.Date;
 @Table(name = "tb_group")
 public class TbGroup extends AbstractBaseDomain {
     private static final long serialVersionUID = 116196585676681626L;
-//    /**
-//     * 相册组 自增id
-//     */
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Integer id;
 
     /**
      * 组名
