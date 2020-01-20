@@ -1,5 +1,6 @@
 package cn.yan_wm.myalbum.service.register.service.fallback;
 
+import cn.yan_wm.myalbum.commons.dto.ReturnResult;
 import cn.yan_wm.myalbum.service.register.service.RedisService;
 import org.springframework.stereotype.Component;
 
@@ -7,12 +8,12 @@ import org.springframework.stereotype.Component;
 public class RedisServiceFallback implements RedisService {
 
     @Override
-    public String put(String key, String value, Long seconds) {
-        return "RedisService Blow!";
+    public ReturnResult<String> put(String key, String value, Long seconds) {
+        return null;
     }
 
     @Override
-    public String get(String key) {
-        return "RedisService Blow!";
+    public ReturnResult<String> get(String key) {
+        return null;
     }
 }
