@@ -2,6 +2,7 @@ package cn.yan_wm.myalbum.service.tools.controller;
 
 import cn.yan_wm.myalbum.commons.module.FastDFSFile;
 import cn.yan_wm.myalbum.service.tools.utils.FastDFSUtils;
+import io.swagger.annotations.Api;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/fastDFS")
+@Api(tags = "文件上传服务")
 public class FastDFSController {
 
     @PostMapping(value = "/upload")

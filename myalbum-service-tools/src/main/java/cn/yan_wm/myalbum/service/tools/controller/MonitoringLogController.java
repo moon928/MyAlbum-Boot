@@ -1,9 +1,11 @@
 package cn.yan_wm.myalbum.service.tools.controller;
 
 import cn.yan_wm.myalbum.commons.dto.AbstractBaseResult;
+import cn.yan_wm.myalbum.commons.dto.ReturnResult;
 import cn.yan_wm.myalbum.commons.web.AbstractBaseController;
 import cn.yan_wm.myalbum.service.tools.server.Server;
 import cn.yan_wm.myalbum.service.tools.service.logService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -22,7 +24,8 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping(value = "/log",produces = MediaType.APPLICATION_PROBLEM_JSON_UTF8_VALUE)
-public class MonitoringLogController extends AbstractBaseController {
+@Api(tags = "日志查看")
+public class MonitoringLogController {
     @Autowired
     private logService logService;
 
@@ -39,12 +42,12 @@ public class MonitoringLogController extends AbstractBaseController {
             @ApiImplicitParam(name = "address", value = "部署的地址", required = true, paramType = "query", dataType = "String")
     })
     @GetMapping("/")
-    public AbstractBaseResult getLogs(@RequestParam("serverId") int serverId, @RequestParam("address") String address){
+    public ReturnResult<List<String>> getLogs(@RequestParam("serverId") int serverId, @RequestParam("address") String address){
         List<String> logList = new ArrayList<String>();
         String path = address;
         if (StringUtils.isEmpty(path)){
             log.error("MonitoringLogController --- getLogs ----address不能为空");
-            return error("address不能为空","MonitoringLogController --- getLogs() ----address不能为空");
+            return ReturnResult.failure("address不能为空");
         }
         if (serverId == 1){
             logList = logService.monitoringLog(Server.SERVER01,path);
@@ -54,9 +57,9 @@ public class MonitoringLogController extends AbstractBaseController {
             logList = logService.monitoringLog(Server.SERVER03,path);
         }else {
             log.error("MonitoringLogController --- getLogs ----无效的 serverId ");
-            return error("无效的 serverId ","MonitoringLogController --- getLogs() ----无效的 serverId ");
+            return ReturnResult.failure("无效的 serverId ");
         }
-        return ok(request.getRequestURI(),logList);
+        return ReturnResult.success(logList);
     }
 
 //    @ApiOperation(value = "查看consumer-test服务的日志信息")
@@ -73,12 +76,12 @@ public class MonitoringLogController extends AbstractBaseController {
 //        return logService.monitoringLog(Server.SERVER02,path);
 //    }
 
-    @ApiOperation(value = "查看tools服务的日志信息")
-    @GetMapping("/tools")
-    public List<String> getRedis(){
-        String path = "/home/myalbum/myalbum-tools";
-        return logService.monitoringLog(Server.SERVER02,path);
-    }
+//    @ApiOperation(value = "查看tools服务的日志信息")
+//    @GetMapping("/tools")
+//    public List<String> getRedis(){
+//        String path = "/home/myalbum/myalbum-tools";
+//        return logService.monitoringLog(Server.SERVER02,path);
+//    }
 
 
 //    @ApiOperation(value = "查看register服务的日志信息")
