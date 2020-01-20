@@ -32,11 +32,9 @@ public class SysAdminServiceImpl extends BaseServiceImpl<SysAdminExtend> impleme
 
     @Override
     public boolean unique(String property, String value) {
-        Example example = new Example(SysAdmin.class);
-//        example.createCriteria().andEqualTo(property, value);
-        example.createCriteria().andCondition("BINARY "+property+"=",value);
-        int result = adminMapper.selectCountByExample(example);
-        if (result > 0) {
+//       int result = adminMapper.unique(property, value);
+        SysAdminExtend adminExtend = adminMapper.findByUsername(value);
+        if (adminExtend != null) {
             return false;
         }
         return true;

@@ -31,11 +31,8 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUserExtend> implement
 
     @Override
     public boolean unique(String property, String value) {
-        Example example = new Example(SysUser.class);
-//        example.createCriteria().andEqualTo(property, value);
-        example.createCriteria().andCondition("BINARY "+property+"=",value);
-        int result = userMapper.selectCountByExample(example);
-        if (result > 0) {
+        SysUserExtend userExtend = userMapper.findbyUsername(value);
+        if (userExtend != null) {
             return false;
         }
         return true;

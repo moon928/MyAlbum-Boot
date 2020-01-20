@@ -86,7 +86,7 @@ ribbon:
   MaxAutoRetriesNextServer: 2 #要重试的下一个服务器的最大数量
 
 feign:
-  sentinel:
+  hystrix:
     enabled: true
 
 hystrix:

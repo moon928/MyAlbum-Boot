@@ -41,12 +41,15 @@ public class SysAdminController {
             @ApiImplicitParam(name = "username", value = "用户名", required = true, paramType = "path", dataType = "String")
     })
     @GetMapping(value = "unique/{username}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ReturnResult<String> uniqueUsername(@PathVariable("username") String username){
-        boolean b = adminService.unique("username", username);
-        if (b){
-            return ReturnResult.success();
+    public ReturnResult<Boolean> uniqueUsername(@PathVariable("username") String username){
+        boolean b = false;
+        try{
+            b = adminService.unique("username", username);
+        }catch (Exception e){
+            log.error(e.getMessage(),e);
+            return ReturnResult.failure("/admin/unique/{username} ===== 异常");
         }
-        return ReturnResult.failure();
+        return ReturnResult.success(b);
     }
 
     @ApiOperation(value = "添加管理员账号")

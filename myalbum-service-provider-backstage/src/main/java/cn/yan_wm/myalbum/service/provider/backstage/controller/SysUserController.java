@@ -8,6 +8,7 @@ import cn.yan_wm.myalbum.commons.model.DataSet;
 import cn.yan_wm.myalbum.service.provider.backstage.service.SysUserService;
 import cn.yan_wm.myalbum.service.provider.backstage.service.UserRoleService;
 import io.swagger.annotations.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ import tk.mybatis.page.Page;
  * @author: yan_zt
  * @create: 2020-01-07 19:54
  */
-
+@Slf4j
 @RestController
 @RequestMapping("/sysUser")
 @Api(tags = "用户信息管理")
@@ -36,12 +37,15 @@ public class SysUserController {
             @ApiImplicitParam(name = "username", value = "username(Email)", required = true, paramType = "path", dataType = "String")
     })
     @GetMapping(value = "/unique/{username}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ReturnResult<String> uniqueUsername(@PathVariable("username") String username){
-        boolean b = sysUserService.unique("username", username);
-        if (b){
-            return ReturnResult.success();
+    public ReturnResult<Boolean> uniqueUsername(@PathVariable("username") String username){
+        boolean b = false;
+        try{
+            b = sysUserService.unique("username", username);
+        }catch (Exception e){
+            log.error(e.getMessage(),e);
+            return ReturnResult.failure("/sysUser/unique/{username} 异常");
         }
-        return ReturnResult.failure();
+        return ReturnResult.success(b);
     }
 
     @ApiOperation(value = "添加用户账号信息")

@@ -1,25 +1,33 @@
 spring:
   application:
-    name: myalbum-service-gateway
+    name: MYALBUM-SERVICE-GATEWAY
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss #日期格式化
     time-zone: GMT+8 #时区加8
     default-property-inclusion: non_null  #屏蔽掉为null的字段
-  cloud:
-    nacos:
-      discovery:
-        server-addr: 118.89.190.234:8848
-        ip: 47.106.199.167
-    sentinel:
-      transport:
-        port: 8721
-        dashboard: 118.89.190.234:8080
-    gateway:
-      discovery:
-        locator:
-          enabled: true
+#    gateway:
+#      discovery:
+#        locator:
+#          enabled: true
   zipkin:
-    base-url: http://47.106.199.167:9411
+    base-url: http://39.105.137.236:9411
+  boot:
+    admin:
+      client:
+        url: 47.106.199.167
+
+#------------------------eureka-------------
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://47.106.199.167:8761/eureka/
+  instance:
+    hostname: 39.105.137.236
+    # 优先使用IP地址方式进行注册服务
+    #    prefer-ip-address: true
+    # 配置使用指定IP
+    ip-address: 39.105.137.236
+    instance-id: ${eureka.instance.hostname}:${server.port}
 #------------------------Zuul-------------
 zuul:
   routes:
@@ -53,6 +61,7 @@ management:
     web:
       exposure:
         include: "*"
+        exclude: env #必须排除env文件
 
 logging:
   level:
@@ -61,12 +70,12 @@ logging:
 security:
   oauth2:
     client:
-      access-token-uri: http://47.106.199.167:${server.port}/auth/oauth/token
-      user-authorization-uri: http://47.106.199.167:${server.port}/auth/oauth/authorize
+      access-token-uri: http://39.105.137.236:${server.port}/auth/oauth/token
+      user-authorization-uri: http://39.105.137.236:${server.port}/auth/oauth/authorize
       client-id: client
       client-secret: secret
     resource:
-      user-info-uri:  http://47.106.199.167:${server.port}/auth/auth/user
+      user-info-uri:  http://39.105.137.236:${server.port}/auth/auth/user
       prefer-token-info: false
 #----------------------超时配置-------------------
 ribbon:
