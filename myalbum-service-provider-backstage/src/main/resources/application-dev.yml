@@ -15,6 +15,20 @@ spring:
       max-active: 20
       test-on-borrow: true
       driver-class-name: com.mysql.cj.jdbc.Driver
+#      driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+  jpa:
+    database: MYSQL
+    show-sql: true #打印执行的sql语句
+    hibernate:
+      ddl-auto: none # 第一次建表create  后面用update,要不然每次重启都会新建表
+    properties:
+      hibernate:
+        format_sql: false
+#    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect #设置数据库方言  记住必须要使用 MySQL5InnoDBDialect 指定数据库类型对应InnoDB  ;如果使用MySQLDialect 则对应的是MyISAM
+  rabbitmq:
+    host: 39.105.137.236
+    username: admin
+    password: admin
 #  zipkin:
 #    base-url: http://localhost:9411
 #  boot:
@@ -47,3 +61,6 @@ eureka:
     # 配置使用指定IP
     ip-address: 127.0.0.1
     instance-id: ${eureka.instance.hostname}:${server.port}
+logging:
+  level:
+    cn.yan_wm.myalbum.service.provider.backstage.mapper: debug

@@ -96,7 +96,8 @@ public class BaseCrudServiceImpl<T extends AbstractBaseDomain, M extends MyMappe
     @Override
     public boolean unique(String property, String value) {
         Example example = new Example(entityClass);
-        example.createCriteria().andEqualTo(property, value);
+//        example.createCriteria().andEqualTo(property, value);
+        example.createCriteria().andCondition("BINARY "+property+"=",value);
         int result = mapper.selectCountByExample(example);
         if (result > 0) {
             return false;

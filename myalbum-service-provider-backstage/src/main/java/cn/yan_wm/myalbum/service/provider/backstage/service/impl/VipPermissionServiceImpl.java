@@ -1,19 +1,27 @@
 package cn.yan_wm.myalbum.service.provider.backstage.service.impl;
 
 import cn.yan_wm.myalbum.commons.domain.TbVipPermission;
+import cn.yan_wm.myalbum.commons.service.framework.base.BaseServiceImpl;
 import cn.yan_wm.myalbum.commons.service.impl.BaseCrudServiceImpl;
-import cn.yan_wm.myalbum.service.provider.backstage.mapper.TbVipPermissionExtendMapper;
+import cn.yan_wm.myalbum.service.provider.backstage.mapper.TbVipPermissionMapper;
 import cn.yan_wm.myalbum.service.provider.backstage.service.VipPermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import tk.mybatis.mapper.common.Mapper;
 
 @Service
-@Transactional(readOnly = true)
-public class VipPermissionServiceImpl extends BaseCrudServiceImpl<TbVipPermission, TbVipPermissionExtendMapper> implements VipPermissionService<TbVipPermission> {
+@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class, readOnly = false)
+public class VipPermissionServiceImpl extends BaseServiceImpl<TbVipPermission> implements VipPermissionService {
 
     @Autowired
-    private TbVipPermissionExtendMapper vipPermissionExtendMapper;
+    private TbVipPermissionMapper vipPermissionExtendMapper;
+
+    @Override
+    public Mapper<TbVipPermission> getMapper() {
+        return vipPermissionExtendMapper;
+    }
 
     @Transactional(readOnly = false)
     @Override
@@ -32,6 +40,7 @@ public class VipPermissionServiceImpl extends BaseCrudServiceImpl<TbVipPermissio
     public int update(TbVipPermission vipPermission) {
         return vipPermissionExtendMapper.update(vipPermission);
     }
+
 
 
 }

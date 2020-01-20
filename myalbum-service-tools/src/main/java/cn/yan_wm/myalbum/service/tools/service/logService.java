@@ -3,8 +3,10 @@ package cn.yan_wm.myalbum.service.tools.service;
 
 import cn.yan_wm.myalbum.service.tools.server.Server;
 
+import java.util.List;
+
 public interface logService {
-    //监控日志文件
-    String monitoringLog(Server server, String servicePath);
+
+    List<String> monitoringLog(Server server, String servicePath);
 
 }

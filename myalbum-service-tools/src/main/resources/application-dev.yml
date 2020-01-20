@@ -45,12 +45,12 @@ spring:
     username: admin
     password: admin
 
-  zipkin:
-    base-url: http://39.105.137.236:9411
-  boot:
-    admin:
-      client:
-        url: http://47.106.199.167:8084
+#  zipkin:
+#    base-url: http://39.105.137.236:9411
+#  boot:
+#    admin:
+#      client:
+#        url: http://47.106.199.167:8084
 
 server:
   port: 10030
@@ -68,7 +68,7 @@ eureka:
     #    prefer-ip-address: true
     # 配置使用指定IP
     ip-address: 127.0.0.1
-    instance-id: ${spring.application.name}:${eureka.instance.hostname}:${server.port}
+    instance-id: ${eureka.instance.hostname}:${server.port}
 
 management:
   endpoints:

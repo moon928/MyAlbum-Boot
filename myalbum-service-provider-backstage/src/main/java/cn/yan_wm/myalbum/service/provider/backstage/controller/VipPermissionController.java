@@ -1,11 +1,14 @@
 package cn.yan_wm.myalbum.service.provider.backstage.controller;
 
 import cn.yan_wm.myalbum.commons.domain.TbVipPermission;
+import cn.yan_wm.myalbum.commons.dto.ReturnResult;
 import cn.yan_wm.myalbum.service.provider.backstage.service.VipPermissionService;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.concurrent.RecursiveTask;
 
 /**
  * @program: MyAlbum-Boot
@@ -15,33 +18,38 @@ import org.springframework.web.bind.annotation.*;
  */
 
 @RestController
-@RequestMapping("/sysRole/permission")
+@RequestMapping("/vipPermission")
 @Api(tags = "权限信息管理")
 public class VipPermissionController {
     @Autowired
     private VipPermissionService vipPermissionService;
 
 
-    @ApiOperation(value = "添加vip限制调条件")
-    @PostMapping(value = "/add",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public int add(@ApiParam(name = "tbVipPermission",value = "tbVipPermission Model") TbVipPermission tbVipPermission){
-        return vipPermissionService.add(tbVipPermission);
-    }
-
-    @ApiOperation(value = "删除vip限制条件")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "vipPermission id", required = true, paramType = "path", dataType = "Long")
-    })
-    @DeleteMapping(value = "/delete/{id}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public int delete(@PathVariable("id") Long id){
-       return vipPermissionService.deleteById(id);
-    }
+//    @ApiOperation(value = "添加vip限制调条件")
+//    @PostMapping(value = "/add",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+//    public int add(@ApiParam(name = "tbVipPermission",value = "tbVipPermission Model") TbVipPermission tbVipPermission){
+//        return vipPermissionService.add(tbVipPermission);
+//    }
+//
+//    @ApiOperation(value = "删除vip限制条件")
+//    @ApiImplicitParams({
+//            @ApiImplicitParam(name = "id", value = "vipPermission id", required = true, paramType = "path", dataType = "Long")
+//    })
+//    @DeleteMapping(value = "/delete/{id}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+//    public int delete(@PathVariable("id") Long id){
+//       return vipPermissionService.deleteById(id);
+//    }
 
     @ApiOperation(value = "更新VIP限制条件")
     @PutMapping(value = "/update",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public int updatePwd(
+    public ReturnResult<String> updatePwd(
             @ApiParam(name = "tbVipPermission",value = "tbVipPermission Model")TbVipPermission tbVipPermission
     ){
-        return vipPermissionService.update(tbVipPermission);
+        int i = vipPermissionService.update(tbVipPermission);
+        if (i>0){
+            return ReturnResult.success();
+        }else {
+            return ReturnResult.failure();
+        }
     }
 }

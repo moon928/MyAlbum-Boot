@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yan_wm.myalbum.service.provider.backstage.mapper.SysUserMapper">
+  <resultMap id="BaseResultMap" type="cn.yan_wm.myalbum.commons.domainExtend.backstage.SysUserExtend">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <collection property="roleExtends" fetchType="eager" column="id" select="cn.yan_wm.myalbum.service.provider.backstage.mapper.SysRoleMapper.findByUserId"></collection>
+  </resultMap>
+
+  <resultMap id="NewUsers" type="cn.yan_wm.myalbum.commons.domainExtend.backstage.BackstageIndexDto">
+    <result column="number" jdbcType="INTEGER" property="number"/>
+  </resultMap>
+
+  <select id="findbyUsername" resultMap="BaseResultMap">
+    SELECT * FROM sys_user
+    WHERE username = #{username}
+  </select>
+
+  <select id="findbyId" resultMap="BaseResultMap">
+    SELECT * FROM sys_user
+    WHERE id = #{id}
+  </select>
+
+  <select id="findAll" resultMap="BaseResultMap">
+    SELECT * FROM sys_user
+  </select>
+
+  <select id="getNewUsers" resultMap="NewUsers">
+        SELECT COUNT(*) as number FROM sys_user
+        WHERE PERIOD_DIFF( date_format( now( ) , '%Y%m%d' ) , date_format(create_time, '%Y%m%d') ) = #{day}
+  </select>
+
+  <select id="getNewUsersMonth" resultMap="NewUsers">
+    SELECT COUNT(*) as number FROM sys_user
+        WHERE PERIOD_DIFF( date_format( now() , '%Y%m' ) , date_format(create_time, '%Y%m') ) = #{n}
+  </select>
+
+  <insert id="add" useGeneratedKeys="true" keyProperty="id">
+    INSERT INTO sys_user(username,password)
+    VALUE (#{username},#{password})
+  </insert>
+
+  <update id="update">
+    UPDATE sys_user
+    <set>
+      <if test="username != null and username != '' ">
+        username = #{username},
+      </if>
+      <if test="status != null and status !='' ">
+        status = #{status},
+      </if>
+    </set>
+    WHERE id = #{id}
+  </update>
+
+  <update id="updatePassword">
+    UPDATE sys_user
+        set password = #{password}
+    WHERE id = #{id}
+  </update>
+
+  <update id="updateStatus">
+    UPDATE sys_user
+        set status = #{status}
+    WHERE id = #{id}
+  </update>
+
+  <update id="updateUsername">
+    UPDATE sys_user
+        set username = #{username}
+    WHERE id = #{id}
+  </update>
+</mapper>

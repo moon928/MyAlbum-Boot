@@ -3,11 +3,13 @@ package cn.yan_wm.myalbum.service.provider.backstage.service;
 import cn.yan_wm.myalbum.commons.domain.SysRole;
 import cn.yan_wm.myalbum.commons.domainExtend.backstage.SysRoleExtend;
 import cn.yan_wm.myalbum.commons.dto.AbstractBaseDomain;
+import cn.yan_wm.myalbum.commons.model.DataSet;
 import cn.yan_wm.myalbum.commons.service.BaseCrudService;
+import tk.mybatis.page.Page;
 
 import java.util.List;
 
-public interface SysRoleService<T extends AbstractBaseDomain> extends BaseCrudService<T> {
+public interface SysRoleService {
     /**
      * Describe this class
      *
@@ -62,4 +64,11 @@ public interface SysRoleService<T extends AbstractBaseDomain> extends BaseCrudSe
      * @date 2020/1/9 14:13
      */
     List<SysRoleExtend> getAll();
+
+    /**
+     * 分页查角色
+     * @param page
+     * @return
+     */
+    DataSet<SysRoleExtend> page(Page page);
 }

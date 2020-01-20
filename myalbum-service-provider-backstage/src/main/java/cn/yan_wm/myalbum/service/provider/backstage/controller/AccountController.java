@@ -3,9 +3,9 @@ package cn.yan_wm.myalbum.service.provider.backstage.controller;
 import cn.yan_wm.myalbum.commons.domainExtend.backstage.Account;
 import cn.yan_wm.myalbum.commons.domainExtend.backstage.SysAdminExtend;
 import cn.yan_wm.myalbum.commons.domainExtend.backstage.SysUserExtend;
-import cn.yan_wm.myalbum.commons.dto.AbstractBaseDomain;
-import cn.yan_wm.myalbum.service.provider.backstage.service.SysAdminExtendService;
-import cn.yan_wm.myalbum.service.provider.backstage.service.SysUserExtendService;
+import cn.yan_wm.myalbum.commons.dto.ReturnResult;
+import cn.yan_wm.myalbum.service.provider.backstage.service.SysAdminService;
+import cn.yan_wm.myalbum.service.provider.backstage.service.SysUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -30,10 +30,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class AccountController {
 
     @Autowired
-    private SysUserExtendService userExtendService;
+    private SysUserService userService;
 
     @Autowired
-    private SysAdminExtendService adminExtendService;
+    private SysAdminService adminService;
 
 
     @ApiOperation(value = "根据用户名查用户账号信息")
@@ -41,12 +41,13 @@ public class AccountController {
             @ApiImplicitParam(name = "username", value = "用户账号", required = true, paramType = "path", dataType = "String")
     })
     @GetMapping(value = "findUserByUsername/{username}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public Account findUserByUsername(@PathVariable("username") String username){
-        SysUserExtend userExtend = userExtendService.getByUsername(username);
+    public ReturnResult<Account> findUserByUsername(@PathVariable("username") String username){
+        SysUserExtend userExtend = userService.getByUsername(username);
         if(userExtend == null){
-            return null;
+            return ReturnResult.failure("未找到该用户信息");
         }
-        return userAccount(userExtend);
+        Account account = userAccount(userExtend);
+        return ReturnResult.success(account);
     }
 
     @ApiOperation(value = "根据用户名查管理员账号信息")
@@ -54,12 +55,13 @@ public class AccountController {
             @ApiImplicitParam(name = "username", value = "用户账号", required = true, paramType = "path", dataType = "String")
     })
     @GetMapping(value = "findAdminByUsername/{username}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public Account findAdminByUsername(@PathVariable("username") String username) {
-        SysAdminExtend adminExtend = adminExtendService.getByUsername(username);
+    public ReturnResult<Account> findAdminByUsername(@PathVariable("username") String username) {
+        SysAdminExtend adminExtend = adminService.getByUsername(username);
         if(adminExtend == null){
-            return null;
+            return ReturnResult.failure("未找到该管理员信息");
         }
-        return adminAccount(adminExtend);
+        Account account = adminAccount(adminExtend);
+        return ReturnResult.success(account);
     }
 
     public Account userAccount(SysUserExtend userExtend){

@@ -6,7 +6,7 @@ import cn.yan_wm.myalbum.commons.service.BaseCrudService;
 
 import java.util.List;
 
-public interface VipPermissionService<T extends AbstractBaseDomain> extends BaseCrudService<T> {
+public interface VipPermissionService{
     /**
      * Describe this class
      *

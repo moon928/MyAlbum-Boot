@@ -27,7 +27,7 @@ public class EmailJob {
     @Autowired
     private JavaMailSender javaMailSender;
 
-    @RabbitListener(queues = "email-code")
+    @RabbitListener(queues = "registration-code")
     public void receive(String  json){
         Map<String,String> map;
         try {

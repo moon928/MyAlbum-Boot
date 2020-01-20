@@ -1,12 +1,14 @@
 package cn.yan_wm.myalbum.service.provider.backstage.controller;
 
-import cn.yan_wm.myalbum.commons.domain.SysUser;
 import cn.yan_wm.myalbum.commons.domain.TbService;
-import cn.yan_wm.myalbum.service.provider.backstage.service.ServiceListService;
+import cn.yan_wm.myalbum.commons.dto.ReturnResult;
+import cn.yan_wm.myalbum.commons.model.DataSet;
+import cn.yan_wm.myalbum.service.provider.backstage.service.TbServiceService;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import tk.mybatis.page.Page;
 
 import java.util.List;
 
@@ -22,23 +24,23 @@ import java.util.List;
 @Api(tags = "获取服务器列表")
 public class TbServiceComtroller {
     @Autowired
-    private ServiceListService serviceListService;
+    private TbServiceService serviceListService;
 
     @ApiOperation(value = "获取服务列表")
-    @GetMapping(value = "/list",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public List<TbService> getService(){
-        List<TbService> serviceLists = serviceListService.selectAll();
-        return serviceLists;
+    @GetMapping(value = "/page",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ReturnResult<DataSet<TbService>> getService(@ApiParam(name = "分页模型") @ModelAttribute Page page){
+        DataSet<TbService> data = serviceListService.page(page);
+        return ReturnResult.success(data);
     }
 
     @ApiOperation(value = "添加服务")
     @PostMapping(value = "/add",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public TbService add(@ApiParam(name = "tbService",value = "TbService Model") @RequestBody TbService tbService){
-        TbService service = (TbService) serviceListService.save(tbService);
-        if (service != null){
-            return service;
+    public ReturnResult<TbService> add(@ApiParam(name = "tbService",value = "TbService Model") @RequestBody TbService tbService){
+        int i = serviceListService.save(tbService);
+        if (i > 0){
+            return ReturnResult.success();
         }else {
-            return null;
+            return ReturnResult.failure();
         }
     }
 
@@ -47,14 +49,12 @@ public class TbServiceComtroller {
             @ApiImplicitParam(name = "id", value = "服务的id", required = true, paramType = "query", dataType = "Long")
     })
     @PostMapping(value = "/deleteById",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public Boolean del(@RequestParam("id") Long id){
-        TbService tbService = new TbService();
-        tbService.setId(id);
-        int i = serviceListService.delete(tbService);
-        if (i == 0 ){
-            return false;
+    public ReturnResult<String> del(@RequestParam("id") Long id){
+        int i = serviceListService.deleteById(id);
+        if (i > 0 ){
+            return ReturnResult.success();
         }else{
-            return true;
+            return ReturnResult.failure();
         }
     }
 }

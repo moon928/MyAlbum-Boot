@@ -236,7 +236,6 @@ public class MonitorServiceImpl implements MonitorService {
         int i=0;
         Cpu cpu = new Cpu();
         for(String ss : arr){
-//            System.out.println(ss+"--"+i);
             if(i==1){
                 cpu.setUser(Float.parseFloat(ss));
             }else if(i==2){
@@ -260,7 +259,6 @@ public class MonitorServiceImpl implements MonitorService {
         int i=0;
         Ram ram = new Ram();
         for(String ss : arr){
-//            System.out.println(ss+"--"+i);
             if(i==7){
                 ram.setTotal(Double.parseDouble(ss));
             }else if(i==8){

@@ -25,7 +25,6 @@ public class WebSocketJob {
     //定时任务
 //    @Scheduled(fixedRate = 1000)
     public void sendMessageByServer(Cpu cpu){
-//        System.out.println("===来自服务端发来的消息");
         simpMessagingTemplate.convertAndSend("/server/sendMessageByServer",cpu);
     }
 

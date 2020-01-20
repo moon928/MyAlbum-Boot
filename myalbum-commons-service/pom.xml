@@ -31,10 +31,40 @@
             <artifactId>springfox-bean-validators</artifactId>
         </dependency>
         <!-- Swagger2 End -->
+        <!--tk,mybatis Begin-->
 
         <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-spring-boot-starter</artifactId>
+        </dependency>
+        <!-- 分页 -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+        </dependency>
+        <!-- tk,mybatis End -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- Commons Begin -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <!--tk,mybatis End-->
+        <dependency>
             <groupId>cn.yan_wm</groupId>
-            <artifactId>myalbum-commons-mapper</artifactId>
+            <artifactId>myalbum-commons-domain</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
     </dependencies>

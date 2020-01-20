@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yan_wm.myalbum.service.provider.backstage.mapper.TbServiceMapper">
+  <resultMap id="BaseResultMap" type="cn.yan_wm.myalbum.commons.domain.TbService">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="service_name" jdbcType="VARCHAR" property="serviceName" />
+    <result column="server_id" jdbcType="VARCHAR" property="serverId" />
+    <result column="port" jdbcType="INTEGER" property="port" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+  </resultMap>
+
+  <select id="findAll" resultMap="BaseResultMap">
+    select * from tb_service
+  </select>
+
+  <insert id="add">
+    INSERT INTO tb_service(service_name,server_id,port,address)
+    VALUE (#{serviceName},#{serverId},#{port},#{address})
+  </insert>
+
+  <update id="update">
+    UPDATE tb_service
+    <set>
+      <if test="serviceName != null and serviceName != '' ">
+        service_name = #{serviceName},
+      </if>
+      <if test="serverId != null and serverId != '' ">
+        server_id = #{serverId},
+      </if>
+      <if test="port != null and port != '' ">
+        port = #{port},
+      </if>
+      <if test="address != null and address != '' ">
+        address = #{address},
+      </if>
+    </set>
+    WHERE id = #{id}
+  </update>
+
+  <delete id="deleteById">
+    DELETE FROM tb_service
+    WHERE id = #{id}
+  </delete>
+</mapper>

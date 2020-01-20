@@ -13,6 +13,37 @@ spring:
         min-idle: 0 # 连接池中的最小空闲连接
         max-wait: -1 #连接池最大阻塞等待时间（使用负值表示没有限制
     timeout: 5000 # 连接超时时间（毫秒）
+  mail:
+    host: smtp.qq.com
+    password: vhnfvdgvomxjibce      #你的邮箱授权码
+    username: 1243359973@qq.com  # 发送邮件的邮箱地址
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+  thymeleaf:
+    mode: HTML5
+    encoding: UTF-8
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+    check-template-location: true  #check-tempate-location: 检查模板路径是否存在
+    servlet:
+      content-type: text/html
+
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss #日期格式化
+    time-zone: GMT+8 #时区加8
+    default-property-inclusion: non_null  #屏蔽掉为null的字段
+
+  rabbitmq:
+    host: 39.105.137.236
+    username: admin
+    password: admin
 
   zipkin:
     base-url: http://39.105.137.236:9411
@@ -20,6 +51,9 @@ spring:
     admin:
       client:
         url: http://47.106.199.167:8084
+        instance:
+          health-url: http://119.29.101.166:10030/actuator/info
+          service-url: http://119.29.101.166:10030
 
 server:
   port: 10030
@@ -32,12 +66,12 @@ eureka:
       defaultZone: http://47.106.199.167:8761/eureka/
 
   instance:
-    hostname: 39.105.137.236
+    hostname: 119.29.101.166
     # 优先使用IP地址方式进行注册服务
     #    prefer-ip-address: true
     # 配置使用指定IP
-    ip-address: 39.105.137.236
-    instance-id: ${spring.application.name}:${eureka.instance.hostname}:${server.port}
+    ip-address: 119.29.101.166
+    instance-id: ${eureka.instance.hostname}:${server.port}
 
 management:
   endpoints:

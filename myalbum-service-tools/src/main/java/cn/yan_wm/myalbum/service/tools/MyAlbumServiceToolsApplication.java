@@ -11,7 +11,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * @program: MyAlbum-Boot
- * @description: 整合了redis、email、linux模块
+ * @description: 整合了redis、email、linux、fastdfs模块
  * @author: yan_zt
  * @create: 2019-12-20 10:52
  */

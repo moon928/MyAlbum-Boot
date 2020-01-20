@@ -18,10 +18,7 @@
 
     <dependencies>
         <!-- Spring Boot Begin -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -36,6 +33,17 @@
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
         </dependency>
+        <!--JPA-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <!--监控sql日志-->
+<!--        <dependency>-->
+<!--            <groupId>org.bgee.log4jdbc-log4j2</groupId>-->
+<!--            <artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>-->
+<!--        </dependency>-->
+
         <!-- Spring Boot End -->
 
         <!-- Spring Cloud Begin -->
@@ -58,6 +66,10 @@
             <artifactId>spring-boot-admin-starter-client</artifactId>
         </dependency>
         <!-- Spring Boot Admin End -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
         <!-- Zipkin Begin -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -77,6 +89,12 @@
             <version>${project.parent.version}</version>
         </dependency>
         <!-- Projects End -->
+        <!--RabbitMq Begin-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+        <!--RabbitMq Begin-->
     </dependencies>
 
     <build>
