@@ -42,6 +42,7 @@
         <zipkin.version>2.10.1</zipkin.version>
         <fastjson.version>1.2.56</fastjson.version>
         <spring-boot-admin>2.0.0</spring-boot-admin>
+        <log4jdbc-log4j2>1.16</log4jdbc-log4j2>
 
     </properties>
 
@@ -96,6 +97,12 @@
                 <groupId>com.github.pagehelper</groupId>
                 <artifactId>pagehelper-spring-boot-starter</artifactId>
                 <version>${spring-boot-pagehelper.version}</version>
+            </dependency>
+            <!--监控sql日志-->
+            <dependency>
+                <groupId>org.bgee.log4jdbc-log4j2</groupId>
+                <artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
+                <version>${log4jdbc-log4j2}</version>
             </dependency>
             <!-- Spring Boot End -->
 
