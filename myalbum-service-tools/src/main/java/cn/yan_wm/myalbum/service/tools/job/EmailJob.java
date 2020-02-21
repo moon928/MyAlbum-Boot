@@ -29,6 +29,9 @@ public class EmailJob {
 
     @RabbitListener(queues = "registration-code")
     public void receive(String  json){
+        System.out.println("---------------");
+        System.out.println(json);
+        System.out.println("------------------");
         Map<String,String> map;
         try {
             map = MapperUtils.json2pojo(json, Map.class);

@@ -1,5 +1,8 @@
-spring:
-  profiles:
-    active: dev
+#spring:
+#  profiles:
+#    active: dev
 
 logging-level: DEBUG
+
+#白名单设置
+security_whitelist: /a
