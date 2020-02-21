@@ -3,6 +3,7 @@ package cn.yan_wm.myalbum.service.security.oauth2.service;
 import cn.yan_wm.myalbum.commons.domain.SysPermission;
 import cn.yan_wm.myalbum.commons.domainExtend.backstage.Account;
 import cn.yan_wm.myalbum.commons.domainExtend.backstage.SysRoleExtend;
+import cn.yan_wm.myalbum.commons.dto.ReturnResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -24,14 +25,21 @@ public class MyUserDetailService implements UserDetailsService {
     private AdminService adminService;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Account account;
-        boolean b = username.startsWith("admin");//true
+        ReturnResult<Account> result; //account
+        Account account = null;
+        //true
+        boolean b = username.startsWith("Admin");
         if(b){
-            account = adminService.FindAdminByUsername(username);
+            result = adminService.findAdminByUsername(username);
         }else{
-            account = userService.FindUserByUsername(username);
+            result = userService.findUserByUsername(username);
         }
-        if (account == null) {
+        if (result == null || !result.isSuccess()) {
+            throw new UsernameNotFoundException(username);
+        }
+        if (result != null && result.isSuccess() && result.getObject() != null){
+            account = result.getObject();
+        }else{
             throw new UsernameNotFoundException(username);
         }
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();

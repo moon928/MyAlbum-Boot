@@ -49,9 +49,12 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         security
-                .allowFormAuthenticationForClients() //允许用户端的表单登陆
-                .tokenKeyAccess("permitAll()")//url:/oauth/token_key,exposes public key for token verification if using JWT tokens
-                .checkTokenAccess("isAuthenticated()");//url:/oauth/check_token allow check token
+                //允许用户端的表单登陆
+                .allowFormAuthenticationForClients()
+                //url:/oauth/token_key,exposes public key for token verification if using JWT tokens
+                .tokenKeyAccess("permitAll()")
+                //url:/oauth/check_token allow check token
+                .checkTokenAccess("isAuthenticated()");
     }
 
     @Override
