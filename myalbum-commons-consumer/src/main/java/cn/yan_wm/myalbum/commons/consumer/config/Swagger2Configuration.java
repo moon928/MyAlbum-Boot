@@ -21,7 +21,7 @@ import static org.hibernate.validator.internal.util.CollectionHelper.newArrayLis
 @Configuration
 public class Swagger2Configuration {
     // @Value("${config.oauth2.accessTokenUri}")
-    private String accessTokenUri ="http://47.106.199.167:10000/auth/oauth/token";
+    private String accessTokenUri ="http://39.105.137.236:10000/auth/oauth/token";
 //    private String accessTokenUri ="http://localhost:10000/auth/oauth/token";
 //    private String accessTokenUri ="http://192.168.50.2:10000/auth/oauth/token";
 //    @Bean
