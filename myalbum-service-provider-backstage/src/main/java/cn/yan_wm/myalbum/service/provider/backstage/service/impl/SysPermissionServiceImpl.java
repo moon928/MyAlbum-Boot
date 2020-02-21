@@ -7,6 +7,7 @@ import cn.yan_wm.myalbum.service.provider.backstage.mapper.SysPermissionMapper;
 import cn.yan_wm.myalbum.service.provider.backstage.service.SysPermissionService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -67,7 +68,12 @@ public class SysPermissionServiceImpl extends BaseServiceImpl<SysPermission> imp
         int i = permissionMapper.delete(sysPermission);
         return i;
     }
-
+    @Cacheable(cacheNames = {"permission"})
+    @Override
+    public List<SysPermission> getSysPermissionByZuulPrefix(String zuulPrefix) {
+        List<SysPermission> permissionList = permissionMapper.getSysPermissionByZuulPrefix(zuulPrefix);
+        return permissionList;
+    }
 
     public static List<SysPermissionExtend> listToTree(List<SysPermissionExtend> list) {
         //用递归找子。

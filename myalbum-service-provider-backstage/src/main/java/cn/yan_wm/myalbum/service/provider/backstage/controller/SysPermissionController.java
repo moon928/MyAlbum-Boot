@@ -89,4 +89,13 @@ public class SysPermissionController {
         }
         return ReturnResult.failure();
     }
+
+    @GetMapping("/getPermissionByZuulPrefix")
+    @ApiOperation(value = "通过网关名获取权限列表")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "zuulPrefix", value = "网关前缀名",required = true,paramType = "query", dataType = "String")
+    })
+    public ReturnResult<List<SysPermission>> getSysPermissionByZuulPrefix(@RequestParam("zuulPrefix") String zuulPrefix){
+        return null;
+    }
 }

@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @author: yan_zt
  * @create: 2020-01-10 09:13
  */
+
 @Slf4j
 @SpringBootTest
 @RunWith(SpringRunner.class)

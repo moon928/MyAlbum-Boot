@@ -31,4 +31,9 @@
   <select id="findAll" resultMap="BaseResultMap">
     select * from sys_permission
   </select>
+
+  <select id="getSysPermissionByZuulPrefix" resultMap="BaseResultMap">
+    select * from sys_permission
+    where zuul_prefix = #{zuulPrefix}
+  </select>
 </mapper>

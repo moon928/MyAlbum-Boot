@@ -60,13 +60,24 @@ public class SysRoleController {
     }
 
     @ApiOperation(value = "修改角色信息")
-    @PutMapping(value = "/update" ,produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ReturnResult update(@ApiParam(name = "sysRole",value = "Sys角色Model") SysRole role){
-        int i = roleService.update(role);
-        if (i>0){
-            return ReturnResult.success();
-        }else{
-            return ReturnResult.failure();
+    @PostMapping(value = "/update" ,produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ApiImplicitParam(name="sysRoles",value = "json数组传输",dataType = "SysRole")
+    public ReturnResult update(@ApiParam(name = "sysRole",value = "Sys角色Model") @RequestBody List<SysRole> roles){
+        int i = 0;
+        try{
+            for (SysRole role: roles){
+                i  += roleService.update(role);
+            }
+            if (i>0 && i < roles.size()){
+                return ReturnResult.success("部分修改成功");
+            }else if(i>=roles.size()){
+                return ReturnResult.success("修改成功");
+            }else{
+                return ReturnResult.failure("修改失败");
+            }
+        }catch (Exception e){
+            log.error(e.getMessage(),e);
+            return ReturnResult.failure("修改失败");
         }
     }
 

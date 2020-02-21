@@ -25,4 +25,11 @@ public interface SysPermissionMapper extends MyMapper<SysPermission> {
      * @return
      */
     List<SysPermissionExtend> findAll();
+
+    /**
+     * 通过网关前缀查询权限列表
+     * @param zuulPrefix
+     * @return
+     */
+    List<SysPermission> getSysPermissionByZuulPrefix(@Param("zuulPrefix") String zuulPrefix);
 }

@@ -31,4 +31,11 @@ public interface SysPermissionService {
      * @return
      */
     int deleteById(Long id);
+
+    /**
+     * 通过网关前缀名查询权限列表
+     * @param zuulPrefix
+     * @return
+     */
+    List<SysPermission> getSysPermissionByZuulPrefix(String zuulPrefix);
 }
