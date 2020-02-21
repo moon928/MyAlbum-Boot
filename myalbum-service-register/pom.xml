@@ -38,24 +38,24 @@
         <!-- Spring Boot End -->
         <!-- Spring Cloud Begin -->
         <!-- Spring Cloud Begin -->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-config</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
         <!-- Spring Cloud End -->
         <!-- Spring Boot Admin Begin -->
-<!--        <dependency>-->
-<!--            <groupId>org.jolokia</groupId>-->
-<!--            <artifactId>jolokia-core</artifactId>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>de.codecentric</groupId>-->
-<!--            <artifactId>spring-boot-admin-starter-client</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.jolokia</groupId>
+            <artifactId>jolokia-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+        </dependency>
         <!-- Spring Boot Admin End -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -77,7 +77,16 @@
         </dependency>
         <!-- 热部署End-->
         <!-- Spring Cloud End -->
-
+        <!--oauth2 Begin-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-oauth2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-security</artifactId>
+        </dependency>
+        <!--oauth2 End-->
         <!-- Projects Begin -->
         <dependency>
             <groupId>cn.yan_wm</groupId>

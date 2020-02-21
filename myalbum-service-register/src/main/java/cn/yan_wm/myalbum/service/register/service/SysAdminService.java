@@ -6,7 +6,7 @@ import cn.yan_wm.myalbum.service.register.service.fallback.SysAdminServiceFallba
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
-@FeignClient(value = "MYALBUM-SERVICE-PROVIDER-BACKSTAGE",fallback = SysAdminServiceFallback.class)
+@FeignClient(value = "MYALBUM-BACKSTAGE",fallback = SysAdminServiceFallback.class)
 public interface SysAdminService {
     @PostMapping("admin/add")
     public ReturnResult<SysAdmin> add(@RequestBody SysAdmin sysAdmin, @RequestParam("passwprd") String password);

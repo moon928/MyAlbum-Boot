@@ -17,7 +17,7 @@ public class SendEmailServiceImpl implements SendEmailService {
     public void sendEmail(SysUser sysUser) {
         try {
             String userJson = MapperUtils.obj2json(sysUser);
-            rabbitTemplate.convertAndSend("exchange.direct","email",userJson);
+            rabbitTemplate.convertAndSend("exchange.direct","registration-code",userJson);
         } catch (Exception e) {
             e.printStackTrace();
         }

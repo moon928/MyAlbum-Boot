@@ -54,7 +54,7 @@ public class RegisterController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "code", value = "code", required = true, paramType = "query", dataType = "String")
     })
-    @PostMapping(value = "user",produces = MediaType.APPLICATION_PROBLEM_JSON_UTF8_VALUE)
+    @PostMapping(value = "/user",produces = MediaType.APPLICATION_PROBLEM_JSON_UTF8_VALUE)
     public ReturnResult<SysUser> register(@ApiParam(name = "User",value = "用户莫模型") SysUser sysUser, @RequestParam("code") String code) throws Exception {
         ReturnResult<String> returnResult = redisService.get(sysUser.getUsername());
         try{

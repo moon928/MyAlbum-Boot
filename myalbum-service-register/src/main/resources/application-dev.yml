@@ -1,8 +1,6 @@
 spring:
-#  zipkin:
-#    base-url: http://39.105.137.236:9411
   application:
-    name: myalbum-service-register
+    name: MYALBUM-REGISTER  #myalbum-service-register
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss #日期格式化
     time-zone: GMT+8 #时区加8
@@ -12,7 +10,12 @@ spring:
     username: email
     password: email
     host: 39.105.137.236
-
+#  zipkin:
+#    base-url: http://localhost:9411
+#  boot:
+#    admin:
+#      client:
+#        url: http://localhost:8084
 server:
   port: 10020
 
@@ -22,11 +25,11 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
   instance:
     hostname: 127.0.0.1
-    #    # 优先使用IP地址方式进行注册服务
-    #    prefer-ip-address: true
+    # 优先使用IP地址方式进行注册服务
+    prefer-ip-address: true
     # 配置使用指定IP
     ip-address: 127.0.0.1
-    instance-id:  ${eureka.instance.hostname}:${server.port}
+    instance-id: ${eureka.instance.hostname}:${server.port}
 
 management:
   endpoints:
