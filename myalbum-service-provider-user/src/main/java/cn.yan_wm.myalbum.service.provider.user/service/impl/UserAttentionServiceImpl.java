@@ -1,22 +1,36 @@
 package cn.yan_wm.myalbum.service.provider.user.service.impl;
 
 import cn.yan_wm.myalbum.commons.domainExtend.user.UserAttentionExtend;
-import cn.yan_wm.myalbum.commons.service.impl.BaseCrudServiceImpl;
+import cn.yan_wm.myalbum.commons.model.DataSet;
+import cn.yan_wm.myalbum.commons.service.framework.base.BaseServiceImpl;
 import cn.yan_wm.myalbum.service.provider.user.mapper.TbUserAttentionExtendMapper;
 import cn.yan_wm.myalbum.service.provider.user.service.UserAttentionService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import tk.mybatis.mapper.common.Mapper;
+import tk.mybatis.page.Page;
 
 import java.util.List;
-
+/**
+ * @program: MyAlbum-Boot
+ * @description: 用户关注管理ServiceImpl
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 @Service
-@Transactional(readOnly = true)
-public class UserAttentionServiceImpl extends BaseCrudServiceImpl<UserAttentionExtend, TbUserAttentionExtendMapper> implements UserAttentionService<UserAttentionExtend> {
+@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class, readOnly = true)
+public class UserAttentionServiceImpl extends BaseServiceImpl<UserAttentionExtend> implements UserAttentionService {
     @Autowired
     private TbUserAttentionExtendMapper tbUserAttentionExtendMapper;
+
+    @Override
+    public Mapper<UserAttentionExtend> getMapper() {
+        return tbUserAttentionExtendMapper;
+    }
 
     @Transactional(readOnly = false)
     @Override
@@ -47,11 +61,12 @@ public class UserAttentionServiceImpl extends BaseCrudServiceImpl<UserAttentionE
     }
 
     @Override
-    public PageInfo<UserAttentionExtend> UserAttentionExtendPage(Long userId ,int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum,pageSize);
-        //  ASC是根据id 正向排序，DESC是反向排序
+    public DataSet<UserAttentionExtend> page(Long userId, Page page) {
+        PageHelper.startPage(page.getPageNo(),page.getPageSize());
         PageHelper.orderBy("id DESC");
-        PageInfo<UserAttentionExtend> pageInfo = new PageInfo<>(tbUserAttentionExtendMapper.findAll(userId));
-        return pageInfo;
+        PageInfo<UserAttentionExtend> pageInfo = new PageInfo<UserAttentionExtend>(tbUserAttentionExtendMapper.findAll(userId));
+        DataSet<UserAttentionExtend> data = super.dataSet(pageInfo);
+        return data;
     }
+
 }

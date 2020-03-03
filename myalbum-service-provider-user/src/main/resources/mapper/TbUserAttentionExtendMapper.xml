@@ -41,7 +41,7 @@
   </select>
 
   <select id="findAll" resultMap="BaseResultMap">
-    SELECT * FROM tb_user_attention
+    SELECT distinct * FROM tb_user_attention
     WHERE
     user_id = #{userId}
   </select>

@@ -2,16 +2,28 @@ package cn.yan_wm.myalbum.service.provider.user.controller;
 
 import cn.yan_wm.myalbum.commons.domainExtend.user.UserAttentionExtend;
 import cn.yan_wm.myalbum.commons.domainExtend.user.UserFriendExtend;
+import cn.yan_wm.myalbum.commons.dto.ReturnResult;
+import cn.yan_wm.myalbum.commons.model.DataSet;
 import cn.yan_wm.myalbum.service.provider.user.service.UserAttentionService;
 import com.github.pagehelper.PageInfo;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import tk.mybatis.page.Page;
 
+
+/**
+ * @program: MyAlbum-Boot
+ * @description: 关注
+ * @author: yan_zt
+ * @create: 2020-03-02 14:40
+ */
 @RestController
-@RequestMapping("attention")
+@RequestMapping(value = "attention",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+@Slf4j
+@Api(tags = "关注管理")
 public class UserAttentionController {
     @Autowired
     private UserAttentionService userAttentionService;
@@ -20,26 +32,42 @@ public class UserAttentionController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "userId", value = "用户id", required = true, paramType = "query", dataType = "Long"),
             @ApiImplicitParam(name = "attentionId", value = "关注id", required = true, paramType = "query", dataType = "Long")
-    }) //多个请求参数
+    })
     @PostMapping("add")
-    public int addAttention(
+    public ReturnResult addAttention(
             @RequestParam Long userId,
             @RequestParam Long attentionId
     ){
-        return userAttentionService.addAttention(userId,attentionId);
+        try{
+            int i = userAttentionService.addAttention(userId, attentionId);
+            if(i>0){
+                return ReturnResult.success("添加成功");
+            }
+        }catch (Exception e){
+            log.error(e.getMessage(),e);
+        }
+        return ReturnResult.failure("添加失败");
     }
 
     @ApiOperation(value = "取消关注")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "userId", value = "用户id", required = true, paramType = "query", dataType = "Long"),
             @ApiImplicitParam(name = "attentionId", value = "关注id", required = true, paramType = "query", dataType = "Long")
-    }) //多个请求参数
+    })
     @DeleteMapping("delete")
-    public int deleteFan(
+    public ReturnResult deleteFan(
             @RequestParam Long userId,
             @RequestParam Long attentionId
     ){
-        return  userAttentionService.deleteAttention(userId,attentionId);
+        try{
+            int i = userAttentionService.deleteAttention(userId, attentionId);
+            if(i>0){
+                return ReturnResult.success("取消成功");
+            }
+        }catch (Exception e){
+            log.error(e.getMessage(),e);
+        }
+        return ReturnResult.failure("取消失败");
     }
 
     @ApiOperation(value = "更新关注备注")
@@ -47,42 +75,58 @@ public class UserAttentionController {
             @ApiImplicitParam(name = "userId", value = "用户id", required = true, paramType = "query", dataType = "Long"),
             @ApiImplicitParam(name = "attentionId", value = "关注id", required = true, paramType = "query", dataType = "Long"),
             @ApiImplicitParam(name = "note", value = "关注备注", required = true, paramType = "query", dataType = "String")
-    }) //多个请求参数
+    })
     @PutMapping("update")
-    public int updateFanNote(
+    public ReturnResult updateFanNote(
             @RequestParam Long userId,
             @RequestParam Long attentionId,
             @RequestParam String note
     ){
-        return userAttentionService.updateAttentionNote(userId,attentionId,note);
+        try{
+            int i = userAttentionService.updateAttentionNote(userId, attentionId, note);
+            if(i>0){
+                return ReturnResult.success("修改成功");
+            }
+        }catch (Exception e){
+            log.error(e.getMessage(),e);
+        }
+        return ReturnResult.failure("修改失败");
     }
 
     @ApiOperation(value = "通过用户id和关注id查单个关注信息")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "userId", value = "用户id", required = true, paramType = "path", dataType = "Long"),
-            @ApiImplicitParam(name = "attentionId", value = "关注id", required = true, paramType = "path", dataType = "Long")
-    }) //多个请求参数
-    @GetMapping("{userId}/{attentionId}")
-    public UserAttentionExtend getFanByFanId(
-            @PathVariable Long userId,
-            @PathVariable Long attentionId
+            @ApiImplicitParam(name = "userId", value = "用户id", required = true, paramType = "query", dataType = "Long"),
+            @ApiImplicitParam(name = "attentionId", value = "关注id", required = true, paramType = "query", dataType = "Long")
+    })
+    @GetMapping("/getAttensionByAttensionId")
+    public ReturnResult<UserAttentionExtend> getFanByFanId(
+            @RequestParam Long userId,
+            @RequestParam Long attentionId
     ){
-        UserAttentionExtend attentionExtend = userAttentionService.getByAttentionId(userId, attentionId);
-        return attentionExtend;
+        try{
+            UserAttentionExtend attentionExtend = userAttentionService.getByAttentionId(userId, attentionId);
+            return ReturnResult.success(attentionExtend);
+        }catch (Exception e){
+            log.error(e.getMessage(),e);
+        }
+        return ReturnResult.failure("未找到相应数据");
     }
 
     @ApiOperation(value = "分页查找关注")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "userId", value = "用户id", required = true, paramType = "query", dataType = "Long"),
-            @ApiImplicitParam(name = "num", value = "页码", required = true, paramType = "path", dataType = "int"),
-            @ApiImplicitParam(name = "size", value = "条数", required = true, paramType = "path", dataType = "int")
-    }) //多个请求参数
-    @GetMapping("page/{num}/{size}")
-    public PageInfo<UserFriendExtend> getFanPage(
+            @ApiImplicitParam(name = "userId", value = "用户id", required = true, paramType = "query", dataType = "Long")
+    })
+    @GetMapping("/page")
+    public ReturnResult<DataSet<UserAttentionExtend>> getFanPage(
             @RequestParam Long userId,
-            @PathVariable int num,
-            @PathVariable int size
+            @ApiParam(name = "分页模型") @ModelAttribute Page page
     ){
-        return userAttentionService.UserAttentionExtendPage(userId,num,size);
+        try{
+            DataSet data = userAttentionService.page(userId, page);
+            return ReturnResult.success(data);
+        }catch (Exception e){
+            log.error(e.getMessage(),e);
+        }
+        return ReturnResult.failure("未找到相应数据");
     }
 }

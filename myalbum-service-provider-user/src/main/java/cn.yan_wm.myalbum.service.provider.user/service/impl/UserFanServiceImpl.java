@@ -1,22 +1,36 @@
 package cn.yan_wm.myalbum.service.provider.user.service.impl;
 
 import cn.yan_wm.myalbum.commons.domainExtend.user.UserFanExtend;
-import cn.yan_wm.myalbum.commons.service.impl.BaseCrudServiceImpl;
+import cn.yan_wm.myalbum.commons.model.DataSet;
+import cn.yan_wm.myalbum.commons.service.framework.base.BaseServiceImpl;
 import cn.yan_wm.myalbum.service.provider.user.mapper.TbUserFanExtendMapper;
 import cn.yan_wm.myalbum.service.provider.user.service.UserFanService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import tk.mybatis.mapper.common.Mapper;
+import tk.mybatis.page.Page;
 
 import java.util.List;
-
+/**
+ * @program: MyAlbum-Boot
+ * @description: 用户粉丝管理ServiceImpl
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 @Service
-@Transactional(readOnly = true)
-public class UserFanServiceImpl extends BaseCrudServiceImpl<UserFanExtend, TbUserFanExtendMapper> implements UserFanService<UserFanExtend> {
+@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class, readOnly = true)
+public class UserFanServiceImpl extends BaseServiceImpl<UserFanExtend> implements UserFanService {
     @Autowired
     private TbUserFanExtendMapper tbUserFanExtendMapper;
+
+    @Override
+    public Mapper<UserFanExtend> getMapper() {
+        return tbUserFanExtendMapper;
+    }
 
     @Transactional(readOnly = false)
     @Override
@@ -47,11 +61,12 @@ public class UserFanServiceImpl extends BaseCrudServiceImpl<UserFanExtend, TbUse
     }
 
     @Override
-    public PageInfo<UserFanExtend> UserFanExtendPage(Long userId ,int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum,pageSize);
-        //  ASC是根据id 正向排序，DESC是反向排序
-        PageHelper.orderBy("id DESC");
-        PageInfo<UserFanExtend> pageInfo = new PageInfo<>(tbUserFanExtendMapper.findAll(userId));
-        return pageInfo;
+    public DataSet<UserFanExtend> page(Long userId, Page page) {
+        PageHelper.startPage(page.getPageNo(),page.getPageSize());
+        PageInfo<UserFanExtend> pageInfo = new PageInfo<UserFanExtend>(tbUserFanExtendMapper.findAll(userId));
+        DataSet<UserFanExtend> data = super.dataSet(pageInfo);
+        return data;
     }
+
+
 }

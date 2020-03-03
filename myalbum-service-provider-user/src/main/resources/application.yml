@@ -1,40 +1,13 @@
 spring:
-  application:
-    name: myalbum-service-provider-user
-  jackson:
-    date-format: yyyy-MM-dd HH:mm:ss #日期格式化
-    time-zone: GMT+8 #时区加8
-    default-property-inclusion: non_null  #屏蔽掉为null的字段
-  datasource:
-    druid:
-      url: jdbc:mysql://127.0.0.1:3306/myalbum_resource?useUnicode=true&characterEncoding=utf-8&useSSL=false&&useSSL=false&serverTimezone=GMT%2B8
-      username: root
-      password: 123456
-      initial-size: 1
-      min-idle: 1
-      max-active: 20
-      test-on-borrow: true
-      driver-class-name: com.mysql.cj.jdbc.Driver
-  cloud:
-    nacos:
-      discovery:
-        server-addr: 118.89.190.234:8848
-    sentinel:
-      transport:
-        port: 8719
-        dashboard: 118.89.190.234:8080
-  zipkin:
-    base-url: http://loaclhost:9411
+  profiles:
+    active: dev
+#server:
+#  tomcat:
+#    min-spare-threads: 20
+#    max-threads: 100
+#  connection-timeout: 5000
 
-server:
-  port: 10200
+#logging-level: DEBUG
 
-mybatis:
-  type-aliases-package: cn.yan_wm.myalbum.commons.domain
-  mapper-locations: classpath:mapper/*.xml
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
+#白名单设置
+security_whitelist: /abc
