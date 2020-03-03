@@ -5,7 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
+/**
+ * @program: MyAlbum-Boot
+ * @description: test
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 @Controller
 public class IndexController {
     @RequestMapping(value = "/cpu")

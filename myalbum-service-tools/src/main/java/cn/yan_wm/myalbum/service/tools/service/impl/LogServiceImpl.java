@@ -5,17 +5,22 @@ import ch.ethz.ssh2.SCPClient;
 import ch.ethz.ssh2.Session;
 import ch.ethz.ssh2.StreamGobbler;
 import cn.yan_wm.myalbum.service.tools.server.Server;
-import cn.yan_wm.myalbum.service.tools.service.logService;
+import cn.yan_wm.myalbum.service.tools.service.LogService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * @program: MyAlbum-Boot
+ * @description: 日志ServciceImpl
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 @Service
 @Slf4j
-public class LogServiceImpl implements logService {
+public class LogServiceImpl implements LogService {
 
     Session ssh = null;
     String hostname;

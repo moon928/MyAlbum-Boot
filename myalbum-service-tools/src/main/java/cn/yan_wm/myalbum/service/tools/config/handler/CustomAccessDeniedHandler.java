@@ -1,4 +1,4 @@
-package cn.yan_wm.myalbum.service.consumer.test.config.handler;
+package cn.yan_wm.myalbum.service.tools.config.handler;
 
 import com.alibaba.fastjson.JSON;
 import org.springframework.http.HttpStatus;
@@ -15,7 +15,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 权限不足异常类重写
+ * @program: MyAlbum-Boot
+ * @description: 权限不足异常类重写
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
  */
 @Component("customAccessDeniedHandler")
 public class CustomAccessDeniedHandler implements AccessDeniedHandler {
@@ -25,13 +28,14 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
                        AccessDeniedException accessDeniedException)
             throws IOException, ServletException {
         response.setContentType("application/json;charset=UTF-8");
-        Map<String,Object> map = new HashMap<String,Object>();
-        map.put("code", HttpStatus.UNAUTHORIZED.value());//401
+        Map<String,Object> map = new HashMap<String,Object>(8);
+        //401
+        map.put("code", HttpStatus.UNAUTHORIZED.value());
         map.put("msg", "权限不足");
         map.put("data", accessDeniedException.getMessage());
         map.put("success", false);
         map.put("path", request.getServletPath());
-        map.put("timestamp", String.valueOf(new Date().getTime()));
+        map.put("timestamp", String.valueOf(System.currentTimeMillis()));
 
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         response.getWriter().write(JSON.toJSONString(map));

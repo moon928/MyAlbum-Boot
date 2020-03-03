@@ -29,7 +29,8 @@ public class FastDFSUtils {
             System.out.println("load config file fail");
         }
     }
-    /*
+
+    /**
      * 初始化连接数据
      */
     private static void init() {
@@ -82,7 +83,7 @@ public class FastDFSUtils {
             if (storageClient == null) {
                 init();
             }
-            /** 获取文件扩展名称
+            /* 获取文件扩展名称
              String fileExtName = "";
              if (fileName != null && !"".equals(fileName) && fileName.contains(".")) {
              fileExtName = fileName.substring(fileName.lastIndexOf(".") + 1);

@@ -17,9 +17,11 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @SpringBootApplication(scanBasePackages = "cn.yan_wm.myalbum",exclude = DataSourceAutoConfiguration.class)
 @EnableEurekaClient
-@EnableSwagger2 //开启swagger2
-@EnableScheduling //任务
-@EnableRabbit //开启基于rabbitMQ的注解
+@EnableSwagger2
+/*任务*/
+@EnableScheduling
+/* 开启rabbitMQ */
+@EnableRabbit
 @EnableAsync
 public class MyAlbumServiceToolsApplication {
     public static void main(String[] args) {

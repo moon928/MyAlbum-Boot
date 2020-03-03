@@ -6,7 +6,12 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.TimeUnit;
-
+/**
+ * @program: MyAlbum-Boot
+ * @description: redis 监控ServiceImpl
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 @Service
 public class RedisServiceImpl implements RedisService {
     @Autowired

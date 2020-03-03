@@ -4,7 +4,12 @@ import cn.yan_wm.myalbum.commons.domain.Disk;
 import cn.yan_wm.myalbum.commons.domain.Ram;
 import cn.yan_wm.myalbum.service.tools.server.Server;
 import org.springframework.scheduling.annotation.Async;
-
+/**
+ * @program: MyAlbum-Boot
+ * @description: linux 监控Service
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 public interface MonitorService {
 
     /**

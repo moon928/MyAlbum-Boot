@@ -1,4 +1,4 @@
-package cn.yan_wm.myalbum.service.consumer.test.config.handler;
+package cn.yan_wm.myalbum.service.tools.config.handler;
 
 import com.alibaba.fastjson.JSON;
 import org.springframework.http.HttpStatus;
@@ -16,7 +16,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 无效token 异常重写
+ * @program: MyAlbum-Boot
+ * @description: 无效token 异常重写
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
  */
 @Component
 public class AuthExceptionEntryPoint implements AuthenticationEntryPoint
@@ -25,22 +28,24 @@ public class AuthExceptionEntryPoint implements AuthenticationEntryPoint
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response,
                          AuthenticationException authException) throws ServletException {
-        Map<String, Object> map = new HashMap<String, Object>();
+        Map<String, Object> map = new HashMap<String, Object>(8);
         Throwable cause = authException.getCause();
         response.setContentType("application/json;charset=UTF-8");
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 
         if(cause instanceof InvalidTokenException) {
-            map.put("code", HttpStatus.UNAUTHORIZED.value());//401
+            //401
+            map.put("code", HttpStatus.UNAUTHORIZED.value());
             map.put("msg", "无效的token");
         }else{
-            map.put("code", HttpStatus.UNAUTHORIZED.value());//401
+            //401
+            map.put("code", HttpStatus.UNAUTHORIZED.value());
             map.put("msg", "访问此资源需要完全的身份验证");
         }
         map.put("data", authException.getMessage());
         map.put("success", false);
         map.put("path", request.getServletPath());
-        map.put("timestamp", String.valueOf(new Date().getTime()));
+        map.put("timestamp", String.valueOf(System.currentTimeMillis()));
         try {
             response.getWriter().write(JSON.toJSONString(map));
         } catch (IOException e) {

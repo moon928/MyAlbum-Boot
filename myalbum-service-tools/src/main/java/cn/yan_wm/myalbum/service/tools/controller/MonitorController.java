@@ -16,7 +16,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+/**
+ * @program: MyAlbum-Boot
+ * @description: linux 服务
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 @RestController
 @RequestMapping("/linux")
 @Api(tags = "linux 服务")

@@ -1,4 +1,4 @@
-package cn.yan_wm.myalbum.service.consumer.test.config.handler;
+package cn.yan_wm.myalbum.service.tools.config.handler;
 
 import cn.yan_wm.myalbum.commons.dto.BaseResult;
 import cn.yan_wm.myalbum.commons.web.AbstractBaseController;
@@ -11,7 +11,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+/**
+ * @program: MyAlbum-Boot
+ * @description: 未登录处理
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 @Component
 public class AjaxAuthenticationEntryPoint extends AbstractBaseController<BaseResult> implements AuthenticationEntryPoint {
     @Override

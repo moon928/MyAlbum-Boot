@@ -1,10 +1,8 @@
 package cn.yan_wm.myalbum.service.tools.controller;
 
-import cn.yan_wm.myalbum.commons.dto.AbstractBaseResult;
 import cn.yan_wm.myalbum.commons.dto.ReturnResult;
-import cn.yan_wm.myalbum.commons.web.AbstractBaseController;
 import cn.yan_wm.myalbum.service.tools.server.Server;
-import cn.yan_wm.myalbum.service.tools.service.logService;
+import cn.yan_wm.myalbum.service.tools.service.LogService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -20,14 +18,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * @program: MyAlbum-Boot
+ * @description: 日志查看 服务
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 @Slf4j
 @RestController
 @RequestMapping(value = "/log",produces = MediaType.APPLICATION_PROBLEM_JSON_UTF8_VALUE)
 @Api(tags = "日志查看")
 public class MonitoringLogController {
     @Autowired
-    private logService logService;
+    private LogService logService;
 
     @ApiOperation(value = "查看gateway服务的日志信息")
     @GetMapping("/gateway")
