@@ -2,7 +2,12 @@ package cn.yan_wm.myalbum.service.provider.backstage.service;
 
 import cn.yan_wm.myalbum.commons.dto.AbstractBaseDomain;
 import cn.yan_wm.myalbum.commons.service.BaseCrudService;
-
+/**
+ * @program: MyAlbum-Boot
+ * @description: 用户角色Service
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 public interface UserRoleService {
 
     /**

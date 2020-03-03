@@ -16,6 +16,12 @@ import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.page.Page;
 
 import java.util.List;
+/**
+ * @program: MyAlbum-Boot
+ * @description: 系统角色ServiceImpl
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 @Service
 @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class, readOnly = false)
 public class SysRoleServiceImpl extends BaseServiceImpl<SysRoleExtend> implements SysRoleService {
@@ -60,7 +66,6 @@ public class SysRoleServiceImpl extends BaseServiceImpl<SysRoleExtend> implement
     public DataSet<SysRoleExtend> page(Page page) {
         PageHelper.startPage(page.getPageNo(),page.getPageSize());
         PageInfo<SysRoleExtend> pageInfo = new PageInfo<SysRoleExtend>(getAll());
-//        List<SysRoleExtend> list = pageInfo.getList();
         DataSet<SysRoleExtend> data = super.dataSet(pageInfo);
         return data;
     }

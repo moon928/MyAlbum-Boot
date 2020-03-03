@@ -12,7 +12,7 @@ import java.util.List;
  * @author: yan_zt
  * @create: 2020-01-10 11:23
  */
-public interface BackstageService<list> {
+public interface BackstageService {
     /**
      * 查询过去近七天的新增用户量
      * @param
@@ -57,7 +57,7 @@ public interface BackstageService<list> {
     int updaFrequencyById(int id);
 
     /**
-     * 将滔添加访问量的那条记录发送到rabiitMq
+     * 将添加访问量的那条记录发送到rabiitMq
      * @param indexPageViewId
      */
     @Async

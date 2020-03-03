@@ -5,7 +5,12 @@ import cn.yan_wm.myalbum.commons.dto.AbstractBaseDomain;
 import cn.yan_wm.myalbum.commons.service.BaseCrudService;
 
 import java.util.List;
-
+/**
+ * @program: MyAlbum-Boot
+ * @description: vip权限Service
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 public interface VipPermissionService{
     /**
      * Describe this class

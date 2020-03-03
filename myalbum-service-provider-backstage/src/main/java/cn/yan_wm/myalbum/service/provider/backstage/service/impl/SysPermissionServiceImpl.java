@@ -88,7 +88,7 @@ public class SysPermissionServiceImpl extends BaseServiceImpl<SysPermission> imp
 
     private static SysPermissionExtend findChildren(SysPermissionExtend tree, List<SysPermissionExtend> list) {
         for (SysPermissionExtend node : list) {
-            if (node.getParentId() == tree.getId()) {
+            if (node.getParentId().equals(tree.getId())) {
                 if (tree.getChildren() == null) {
                     tree.setChildren(new ArrayList<SysPermissionExtend>());
                 }

@@ -18,7 +18,12 @@ import tk.mybatis.mapper.entity.Example;
 import tk.mybatis.page.Page;
 
 import java.util.List;
-
+/**
+ * @program: MyAlbum-Boot
+ * @description: 系统管理员Serviceimpl
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 @Service
 @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class, readOnly = false)
 public class SysAdminServiceImpl extends BaseServiceImpl<SysAdminExtend> implements SysAdminService {
@@ -32,7 +37,6 @@ public class SysAdminServiceImpl extends BaseServiceImpl<SysAdminExtend> impleme
 
     @Override
     public boolean unique(String property, String value) {
-//       int result = adminMapper.unique(property, value);
         SysAdminExtend adminExtend = adminMapper.findByUsername(value);
         if (adminExtend != null) {
             return false;

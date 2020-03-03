@@ -49,7 +49,9 @@ public class BackstageServiceImpl extends BaseServiceImpl<IndexPageView> impleme
     public List<BackstageIndexDto> getNewUsersAWeek() {
         DateUtils dateUtils = new DateUtils();
         List<BackstageIndexDto> list = new ArrayList<BackstageIndexDto>(8);
-        for (int i=7;i>=0; i--){
+        // 一周
+        int day = 7;
+        for (int i=day;i>=0; i--){
             BackstageIndexDto backstageIndexDto = sysUserExtendMapper.getNewUsers(i);
             backstageIndexDto.setTitle("新增用户量");
             backstageIndexDto.setTime(dateUtils.getday("yyyy-MM-dd",i));
@@ -121,7 +123,9 @@ public class BackstageServiceImpl extends BaseServiceImpl<IndexPageView> impleme
     public List<BackstageIndexDto> getIndexPageViewsAWeek() {
         DateUtils dateUtils = new DateUtils();
         List<BackstageIndexDto> list = new ArrayList<BackstageIndexDto>(8);
-        for (int i=7;i>=0; i--){
+        //一周
+        int day = 7;
+        for (int i=day;i>=0; i--){
             BackstageIndexDto backstageIndexDto = indexPageViewExtendMapper.getIndexPageViews(i);
             if (backstageIndexDto == null ){
                 backstageIndexDto = new BackstageIndexDto();

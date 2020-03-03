@@ -6,7 +6,12 @@ import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.MyMapper;
 
 import java.util.List;
-
+/**
+ * @program: MyAlbum-Boot
+ * @description: 系统角色数据库操作mapper
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 public interface SysRoleMapper extends MyMapper<SysRoleExtend> {
     /**
      * Describe this class
@@ -103,5 +108,10 @@ public interface SysRoleMapper extends MyMapper<SysRoleExtend> {
      */
     int getTotal();
 
+    /**
+     * 通过角色id查询vip的数量
+     * @param roleId
+     * @return
+     */
     int getVipNumByRoleId(@Param("roleId") Long roleId);
 }

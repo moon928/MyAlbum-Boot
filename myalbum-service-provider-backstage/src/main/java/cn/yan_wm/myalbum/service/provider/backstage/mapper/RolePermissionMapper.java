@@ -5,7 +5,12 @@ import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.MyMapper;
 
 import java.util.List;
-
+/**
+ * @program: MyAlbum-Boot
+ * @description: 角色权限数据库操作
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 public interface RolePermissionMapper extends MyMapper<SysRolePermission> {
     /**
      * 通过角色id查权限id

@@ -8,7 +8,12 @@ import cn.yan_wm.myalbum.commons.service.BaseCrudService;
 import tk.mybatis.page.Page;
 
 import java.util.List;
-
+/**
+ * @program: MyAlbum-Boot
+ * @description: 系统角色Service
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 public interface SysRoleService {
     /**
      * Describe this class

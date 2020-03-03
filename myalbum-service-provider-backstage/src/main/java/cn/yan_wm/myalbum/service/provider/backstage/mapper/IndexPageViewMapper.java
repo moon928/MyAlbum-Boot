@@ -6,7 +6,12 @@ import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.MyMapper;
 
 import java.util.List;
-
+/**
+ * @program: MyAlbum-Boot
+ * @description: 后台首页Mapper
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 public interface IndexPageViewMapper extends MyMapper<IndexPageView> {
     /**
      * 添加

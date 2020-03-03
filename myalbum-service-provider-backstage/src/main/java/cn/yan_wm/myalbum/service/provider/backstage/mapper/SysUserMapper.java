@@ -8,7 +8,12 @@ import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.MyMapper;
 
 import java.util.List;
-
+/**
+ * @program: MyAlbum-Boot
+ * @description: 用户数据库操作mapper
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 public interface SysUserMapper extends MyMapper<SysUserExtend> {
 
     /**

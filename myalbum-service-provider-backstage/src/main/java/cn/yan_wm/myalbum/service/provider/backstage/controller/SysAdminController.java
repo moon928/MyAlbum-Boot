@@ -30,9 +30,6 @@ public class SysAdminController {
     @Autowired
     private SysAdminService adminService;
 
-    /*@Autowired
-    private SysAdminService adminService;*/
-
     @Autowired
     private SysAdminRoleService adminRoleService;
 

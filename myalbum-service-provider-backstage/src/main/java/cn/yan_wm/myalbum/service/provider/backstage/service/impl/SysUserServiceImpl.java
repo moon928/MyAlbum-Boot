@@ -17,7 +17,12 @@ import tk.mybatis.mapper.entity.Example;
 import tk.mybatis.page.Page;
 
 import java.util.List;
-
+/**
+ * @program: MyAlbum-Boot
+ * @description: 用户ServiceImpl
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 @Service
 @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class, readOnly = false)
 public class SysUserServiceImpl extends BaseServiceImpl<SysUserExtend> implements SysUserService {
@@ -92,7 +97,6 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUserExtend> implement
     public DataSet<SysUserExtend> page(Page page) {
         PageHelper.startPage(page.getPageNo(),page.getPageSize());
         PageInfo<SysUserExtend> pageInfo = new PageInfo<>(getAll());
-//        List<SysUserExtend> list = pageInfo.getList();
         DataSet<SysUserExtend> data = super.dataSet(pageInfo);
         return data;
     }

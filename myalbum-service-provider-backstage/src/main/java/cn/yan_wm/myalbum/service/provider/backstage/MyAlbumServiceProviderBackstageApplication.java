@@ -10,15 +10,19 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import tk.mybatis.spring.annotation.MapperScan;
+/**
+ * @program: MyAlbum-Boot
+ * @description: 后台服务
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 @EnableTransactionManagement
 //@SpringBootApplication(scanBasePackages = "cn.yan_wm.myalbum")
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan(basePackages = {"cn.yan_wm.myalbum"})
 @EnableEurekaClient
-/** "cn.yan_wm.myalbum.commons.mapper" */
 @MapperScan(basePackages = {"cn.yan_wm.myalbum.service.provider.backstage.mapper"})
-/** 开启swagger2 */
 @EnableSwagger2
 public class MyAlbumServiceProviderBackstageApplication {
     public static void main(String[] args) {

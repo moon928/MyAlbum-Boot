@@ -3,7 +3,12 @@ package cn.yan_wm.myalbum.service.provider.backstage.mapper;
 import cn.yan_wm.myalbum.commons.domain.SysUserRole;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.MyMapper;
-
+/**
+ * @program: MyAlbum-Boot
+ * @description: 用户角色数据库操作mapper
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 public interface SysUserRoleMapper extends MyMapper<SysUserRole> {
 
     /**

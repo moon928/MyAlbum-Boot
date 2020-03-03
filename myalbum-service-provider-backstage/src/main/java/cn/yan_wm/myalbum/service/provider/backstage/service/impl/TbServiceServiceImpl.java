@@ -16,7 +16,12 @@ import tk.mybatis.page.Page;
 
 
 import java.util.List;
-
+/**
+ * @program: MyAlbum-Boot
+ * @description: 系统角色ServiceImpl
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 @Service
 @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class, readOnly = false)
 public class TbServiceServiceImpl extends BaseServiceImpl<TbService> implements TbServiceService {

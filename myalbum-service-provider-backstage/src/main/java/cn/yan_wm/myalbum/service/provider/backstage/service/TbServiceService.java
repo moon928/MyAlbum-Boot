@@ -5,10 +5,16 @@ import cn.yan_wm.myalbum.commons.model.DataSet;
 import tk.mybatis.page.Page;
 
 import java.util.List;
-
+/**
+ * @program: MyAlbum-Boot
+ * @description: 系统服务色Service
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 public interface TbServiceService {
     /**
      * 获取服务列表
+     * @param page
      * @return
      */
     DataSet<TbService> page(Page page);

@@ -1,13 +1,13 @@
-#spring:
-#  profiles:
-#    active: dev
+spring:
+  profiles:
+    active: dev
 #server:
 #  tomcat:
 #    min-spare-threads: 20
 #    max-threads: 100
 #  connection-timeout: 5000
 
-logging-level: DEBUG
+#logging-level: DEBUG
 
 #白名单设置
 security_whitelist: /abc,/a**,/sysRole/all

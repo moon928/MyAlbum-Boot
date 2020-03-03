@@ -94,8 +94,13 @@ public class SysRoleController {
     @ApiOperation(value = "查所有角色信息")
     @GetMapping(value = "/all",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ReturnResult<DataSet<SysRoleExtend>> getAll( @ApiParam(name = "分页模型") @ModelAttribute Page page){
-        DataSet<SysRoleExtend> data = roleService.page(page);
-        return ReturnResult.success(data);
+        try{
+            DataSet<SysRoleExtend> data = roleService.page(page);
+            return ReturnResult.success(data);
+        }catch (Exception e){
+            log.error(e.getMessage(),e);
+        }
+        return ReturnResult.failure("未找到相应数据");
     }
 
     /**

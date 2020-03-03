@@ -5,7 +5,12 @@ import cn.yan_wm.myalbum.commons.domainExtend.backstage.SysPermissionExtend;
 import cn.yan_wm.myalbum.commons.service.BaseCrudService;
 
 import java.util.List;
-
+/**
+ * @program: MyAlbum-Boot
+ * @description: 系统权限ServiceImpl
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 public interface SysPermissionService {
     /**
      * Describe this class

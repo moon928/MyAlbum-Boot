@@ -9,7 +9,12 @@ import com.github.pagehelper.PageInfo;
 import tk.mybatis.page.Page;
 
 import java.util.List;
-
+/**
+ * @program: MyAlbum-Boot
+ * @description: 系统管理员Service
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 public interface SysAdminService{
 
     /**
