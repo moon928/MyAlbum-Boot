@@ -21,6 +21,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
+/**
+ * @program: MyAlbum-Boot
+ * @description: 添加管理员
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 @Slf4j
 @RestController
 @RequestMapping("/regAdmin")
@@ -53,7 +59,6 @@ public class RegisterAdminController{
         //管理员账号前缀默认添加 Admin
         sysAdmin.setUsername(username);
         //注册用户
-//        String password = DigestUtils.md5DigestAsHex(sysAdmin.getPassword().getBytes());
         String password = myPasswordEncoder.encode(sysAdmin.getPassword());
         sysAdmin.setStatus(0);
         sysAdmin.setCreateTime(new Date());

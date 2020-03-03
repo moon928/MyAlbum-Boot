@@ -22,6 +22,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
+/**
+ * @program: MyAlbum-Boot
+ * @description:  注册用户
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 @Slf4j
 @RestController
 @RequestMapping("/reg")
@@ -80,10 +86,7 @@ public class RegisterController {
                     }
                 }
                 //注册用户
-//        String password = DigestUtils.md5DigestAsHex(user.getPassword().getBytes());
                 String password = myPasswordEncoder.encode(sysUser.getPassword());
-//        System.out.println(sysUser.getPassword());
-//        System.out.println(password);
                 sysUser.setStatus(0);
                 sysUser.setCreateTime(new Date());
                 ReturnResult<SysUser> add = registerService.add(sysUser, password);

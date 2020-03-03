@@ -17,7 +17,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
-
+/**
+ * @program: MyAlbum-Boot
+ * @description:  获取邮箱验证码
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 @RestController
 @Api(tags = "获取邮箱验证码")
 public class EmailCodeController{
@@ -34,11 +39,11 @@ public class EmailCodeController{
             @ApiImplicitParam(name = "email", value = "用户Email", required = true, paramType = "query", dataType = "String")
     })
     @GetMapping("/emailCode")
-    public ReturnResult<String> SendVerificationCode(@RequestParam("email") String email){
+    public ReturnResult<String> sendVerificationCode(@RequestParam("email") String email){
         String code = sendVerificationCodeService.getCode(5);
         ReturnResult<String> put;
         put = redisService.put(email, code, 100L);
-        if (put.isSuccess() && put.getObject().equals("ok")){
+        if (put.isSuccess() && "ok".equals(put.getObject())){
             sendVerificationCodeService.sendVerificationCode(email,code);
             return ReturnResult.success("ok");
         } else{

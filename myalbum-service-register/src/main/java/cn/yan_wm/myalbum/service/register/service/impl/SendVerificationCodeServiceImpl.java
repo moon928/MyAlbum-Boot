@@ -9,7 +9,12 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-
+/**
+ * @program: MyAlbum-Boot
+ * @description: 发送验证码
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 @Service
 public class SendVerificationCodeServiceImpl implements SendVerificationCodeService {
 

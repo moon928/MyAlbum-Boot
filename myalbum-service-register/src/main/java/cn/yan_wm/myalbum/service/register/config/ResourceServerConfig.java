@@ -11,7 +11,10 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 
 /**
- * 〈OAuth资源服务配置〉
+ * @program: MyAlbum-Boot
+ * @description: OAuth资源服务配置〉
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
  */
 @Configuration
 @EnableResourceServer
