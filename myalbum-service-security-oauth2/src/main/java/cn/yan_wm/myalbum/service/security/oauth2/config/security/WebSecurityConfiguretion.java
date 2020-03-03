@@ -13,13 +13,17 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
+/**
+ * @program: MyAlbum-Boot
+ * @description: 认证 Security 服务
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 @Configuration
-@EnableWebSecurity //开启 Security 服务
+//开启 Security 服务
+@EnableWebSecurity
 @Order(2)
 //开启全局 Securtiy 注解
-//全局方法拦截
-//@EnableGlobalMethodSecurity(prePostEnabled = true,securedEnabled = true,jsr250Enabled = true)
 public class WebSecurityConfiguretion extends WebSecurityConfigurerAdapter {
 
     @Autowired

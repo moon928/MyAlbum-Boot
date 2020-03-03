@@ -14,7 +14,12 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import java.util.HashSet;
 import java.util.Set;
-
+/**
+ * @program: MyAlbum-Boot
+ * @description: userDetailsService
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 @Service("userDetailsService")
 public class MyUserDetailService implements UserDetailsService {
 
@@ -51,7 +56,6 @@ public class MyUserDetailService implements UserDetailsService {
         boolean credentialsNonExpired = true;
         // 锁定性 :true:未锁定 false:已锁定
         boolean accountNonLocked = true;
-//        System.out.println(userExtend.getRoleExtends());
         for (SysRoleExtend role : account.getRoleExtends()) {
             //角色必须是ROLE_开头，可以在数据库中设置
             GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(role.getRoleName());

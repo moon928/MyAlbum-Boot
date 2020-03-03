@@ -23,7 +23,10 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import javax.sql.DataSource;
 
 /**
- * OAuth2认证服务器〉
+ * @program: MyAlbum-Boot
+ * @description: OAuth2认证服务器〉
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
  */
 @Configuration
 @EnableAuthorizationServer

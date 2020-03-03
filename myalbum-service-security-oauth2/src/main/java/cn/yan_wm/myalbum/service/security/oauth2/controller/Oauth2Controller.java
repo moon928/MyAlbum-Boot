@@ -14,7 +14,12 @@ import org.springframework.web.bind.annotation.*;
 import javax.print.attribute.standard.MediaSize;
 import java.security.Principal;
 import java.util.Map;
-
+/**
+ * @program: MyAlbum-Boot
+ * @description: Oauth2 controller
+ * @author: yan_zt
+ * @create: 2020-03-03 13:57
+ */
 @RestController
 @RequestMapping("auth")
 public class Oauth2Controller {
@@ -24,8 +29,6 @@ public class Oauth2Controller {
 
     @GetMapping(value = "user",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Principal user(Principal user) {
-//        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        System.out.println(user);
         return user;
     }
 
