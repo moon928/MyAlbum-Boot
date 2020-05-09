@@ -1,0 +1,12 @@
+#spring:
+#  profiles:
+#    active: dev
+#server:
+#  tomcat:
+#    min-spare-threads: 20
+#    max-threads: 100
+#  connection-timeout: 5000
+
+#logging-level: DEBUG
+
+

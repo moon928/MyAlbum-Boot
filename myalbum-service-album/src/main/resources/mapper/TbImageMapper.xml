@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yan_wm.myalbum.service.provider.album.mapper.TbImageMapper">
+  <resultMap id="BaseResultMap" type="cn.yan_wm.myalbum.commons.domainExtend.album.ImageDto">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="file_id" jdbcType="VARCHAR" property="fileId" />
+    <result column="group_name" jdbcType="VARCHAR" property="groupName" />
+    <result column="file_name" jdbcType="VARCHAR" property="fileName" />
+    <result column="img_size" jdbcType="DOUBLE" property="imgSize" />
+    <result column="visible_permission_id" jdbcType="INTEGER" property="visiblePermissionId" />
+    <result column="group_id" jdbcType="INTEGER" property="groupId" />
+    <result column="name" jdbcType="VARCHAR" property="albumName" />
+    <result column="gategory_id" jdbcType="INTEGER" property="gategoryId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+
+  <select id="all" resultMap="BaseResultMap">
+    select * from tb_image
+  </select>
+
+  <insert id="insertImages" useGeneratedKeys="true" keyProperty="id" parameterType="java.util.List">
+    insert into tb_image(user_id,url,file_id,group_name,file_name,visible_permission_id,group_id,create_time) values
+    <foreach collection="imageList" item="item" index="index" separator=",">
+      (#{item.userId},#{item.url},#{item.fileId},#{item.groupName},#{item.fileName},#{item.visiblePermissionId},#{item.groupId},#{item.createTime})
+    </foreach>
+  </insert>
+
+  <select id="listImageByIds" resultMap="BaseResultMap">
+    select * from tb_image
+    where id in
+    <foreach collection="imageIds" item="id" index="index" open="(" close=")" separator=",">
+      #{id}
+    </foreach>
+  </select>
+
+  <delete id="deleteImageByIds">
+    delete from tb_image where id in
+    <foreach collection="imageIds" item="id" index="index" open="(" close=")" separator=",">
+      #{id}
+    </foreach>
+  </delete>
+</mapper>
