@@ -42,7 +42,7 @@ public class EmailCodeController{
     public ReturnResult<String> sendVerificationCode(@RequestParam("email") String email){
         String code = sendVerificationCodeService.getCode(5);
         ReturnResult<String> put;
-        put = redisService.put(email, code, 100L);
+        put = redisService.put(email, code, 90L);
         if (put.isSuccess() && "ok".equals(put.getObject())){
             sendVerificationCodeService.sendVerificationCode(email,code);
             return ReturnResult.success("ok");

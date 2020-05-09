@@ -1,26 +1,17 @@
 package cn.yan_wm.myalbum.service.register.controller;
 
-import cn.yan_wm.myalbum.commons.domain.SysAdmin;
 import cn.yan_wm.myalbum.commons.domain.SysUser;
-import cn.yan_wm.myalbum.commons.dto.AbstractBaseDomain;
-import cn.yan_wm.myalbum.commons.dto.AbstractBaseResult;
-import cn.yan_wm.myalbum.commons.dto.BaseResult;
 import cn.yan_wm.myalbum.commons.dto.ReturnResult;
 import cn.yan_wm.myalbum.commons.utils.MapperUtils;
 import cn.yan_wm.myalbum.commons.validator.BeanValidator;
-import cn.yan_wm.myalbum.commons.web.AbstractBaseController;
 import cn.yan_wm.myalbum.service.register.service.*;
 import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Date;
 /**
  * @program: MyAlbum-Boot
@@ -41,7 +32,7 @@ public class RegisterController {
     @Autowired
     private MyPasswordEncoder myPasswordEncoder;
 
-    @ApiOperation(value = "用户注册", notes = "以实体类为参数，注意用户名和邮箱不要重复")
+    @ApiOperation(value = "验证用户名是否存在", notes = "以实体类为参数，注意用户名和邮箱不要重复")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "username", value = "username", required = true, paramType = "path", dataType = "String")
     })

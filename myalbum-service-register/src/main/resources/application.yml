@@ -2,7 +2,5 @@
 #  profiles:
 #    active: dev
 
-logging-level: DEBUG
+#logging-level: DEBUG
 
-#白名单设置
-security_whitelist: /emailCode,/reg/user
