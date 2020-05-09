@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Slf4j
 @RestController
-@RequestMapping("/redis")
+@RequestMapping(value = "/redis",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 @Api(tags = "redis服务api")
 public class RedisController {
     @Autowired
