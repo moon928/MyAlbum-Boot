@@ -32,7 +32,7 @@ public interface VipPermissionService{
      * @author Yzn_zt
      * @date 2020/1/9 14:11
      */
-    int deleteById(Long id);
+    int deleteById(Integer id);
 
     /**
      * Describe this class
@@ -45,4 +45,10 @@ public interface VipPermissionService{
      */
     int update(TbVipPermission vipPermission);
 
+    /**
+     * 能否添加相册
+     * @param userId
+     * @return
+     */
+    Boolean canAddAlbum(Integer userId,int albumNum);
 }

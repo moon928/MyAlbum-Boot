@@ -18,5 +18,5 @@ public interface SysAdminRoleMapper extends MyMapper<SysAdminRole> {
      * @param roleId
      * @return
      */
-    int add(@Param("adminId") Long adminId, @Param("roleId") Long roleId);
+    int add(@Param("adminId") Integer adminId, @Param("roleId") Integer roleId);
 }

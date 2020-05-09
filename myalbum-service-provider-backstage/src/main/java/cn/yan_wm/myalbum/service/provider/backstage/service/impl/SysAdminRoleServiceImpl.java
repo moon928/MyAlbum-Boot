@@ -27,7 +27,7 @@ public class SysAdminRoleServiceImpl extends BaseServiceImpl<SysAdminRole> imple
     }
 
     @Override
-    public int insert(Long adminId,Long roleId) {
+    public int insert(Integer adminId,Integer roleId) {
         int i = sysAdminRoleMapper.add(adminId, roleId);
         return i;
     }

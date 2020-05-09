@@ -46,7 +46,7 @@ public class SysPermissionController {
     @ApiImplicitParams({
         @ApiImplicitParam(name = "id", value = "权限id",required = true,paramType = "path", dataType = "Long")
     })
-    public ReturnResult<String> deleteById(@PathVariable("id") Long id){
+    public ReturnResult<String> deleteById(@PathVariable("id") Integer id){
         int deleteNum = permissionService.deleteById(id);
         if (deleteNum>0){
             return ReturnResult.success();
@@ -91,11 +91,18 @@ public class SysPermissionController {
     }
 
     @GetMapping("/getPermissionByZuulPrefix")
-    @ApiOperation(value = "通过网关名获取权限列表")
+    @ApiOperation(value = "通过网关名获取权限列表--后台专用")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "zuulPrefix", value = "网关前缀名",required = true,paramType = "query", dataType = "String")
     })
-    public ReturnResult<List<SysPermission>> getSysPermissionByZuulPrefix(@RequestParam("zuulPrefix") String zuulPrefix){
-        return null;
+    public ReturnResult<List<SysPermission>> getSysPermissionByZuulPrefix(@RequestParam("zuulPrefix") String zuulPrefix,@RequestParam("principal") String principal){
+        try{
+            List<SysPermission> permissionList = permissionService.getSysPermissionByZuulPrefix(zuulPrefix,principal);
+            return ReturnResult.success(permissionList);
+        }catch (Exception e){
+            log.error(e.getMessage(),e);
+        }
+        return ReturnResult.failure();
     }
+
 }

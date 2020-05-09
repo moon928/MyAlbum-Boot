@@ -16,10 +16,7 @@ import tk.mybatis.spring.annotation.MapperScan;
  * @author: yan_zt
  * @create: 2020-03-03 13:57
  */
-@EnableTransactionManagement
-//@SpringBootApplication(scanBasePackages = "cn.yan_wm.myalbum")
-@Configuration
-@EnableAutoConfiguration
+@SpringBootApplication(scanBasePackages = "cn.yan_wm.myalbum")
 @ComponentScan(basePackages = {"cn.yan_wm.myalbum"})
 @EnableEurekaClient
 @MapperScan(basePackages = {"cn.yan_wm.myalbum.service.provider.backstage.mapper"})

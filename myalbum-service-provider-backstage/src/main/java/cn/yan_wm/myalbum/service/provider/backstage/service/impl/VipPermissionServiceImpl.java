@@ -36,7 +36,7 @@ public class VipPermissionServiceImpl extends BaseServiceImpl<TbVipPermission> i
 
     @Transactional(readOnly = false)
     @Override
-    public int deleteById(Long id) {
+    public int deleteById(Integer id) {
         return vipPermissionExtendMapper.deleteById(id);
     }
 
@@ -46,6 +46,15 @@ public class VipPermissionServiceImpl extends BaseServiceImpl<TbVipPermission> i
         return vipPermissionExtendMapper.update(vipPermission);
     }
 
+    @Override
+    public Boolean canAddAlbum(Integer userId,int albumNum) {
+        int num = vipPermissionExtendMapper.getAlbumNum(userId);
+        if (num>albumNum){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
 
 }

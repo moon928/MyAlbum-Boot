@@ -113,5 +113,5 @@ public interface SysRoleMapper extends MyMapper<SysRoleExtend> {
      * @param roleId
      * @return
      */
-    int getVipNumByRoleId(@Param("roleId") Long roleId);
+    int getVipNumByRoleId(@Param("roleId") Integer roleId);
 }

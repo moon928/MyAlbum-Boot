@@ -35,12 +35,14 @@ public interface SysPermissionService {
      * @param id
      * @return
      */
-    int deleteById(Long id);
+    int deleteById(Integer id);
 
     /**
      * 通过网关前缀名查询权限列表
      * @param zuulPrefix
      * @return
      */
-    List<SysPermission> getSysPermissionByZuulPrefix(String zuulPrefix);
+    List<SysPermission> getSysPermissionByZuulPrefix(String zuulPrefix,String principal);
+
+    String note(Integer root);
 }

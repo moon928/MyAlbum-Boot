@@ -30,7 +30,7 @@ public interface TbVipPermissionMapper extends MyMapper<TbVipPermission> {
      * @author Yzn_zt
      * @date 2020/1/9 14:11
      */
-    int deleteById(@Param("id") Long id);
+    int deleteById(@Param("id") Integer id);
 
     /**
      * Describe this class
@@ -52,5 +52,12 @@ public interface TbVipPermissionMapper extends MyMapper<TbVipPermission> {
      * @author Yzn_zt
      * @date 2020/1/9 14:11
      */
-    TbVipPermission findById(@Param("id") Long id);
+    TbVipPermission findById(@Param("id") Integer id);
+
+    /**
+     * 获取用户可拥有的最大相册数
+     * @param userId
+     * @return
+     */
+    int getAlbumNum(@Param("userId") Integer userId);
 }

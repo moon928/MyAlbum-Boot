@@ -33,7 +33,18 @@
   </select>
 
   <select id="getSysPermissionByZuulPrefix" resultMap="BaseResultMap">
+    select p.* from sys_permission p,sys_role_permission rp,sys_user_role ur,sys_user u
+    where p.zuul_prefix = #{zuulPrefix}
+    and p.service_prefix != ''
+    and p.uri != ''
+    and p.id = rp.permission_id
+    and rp.role_id = ur.role_id
+		and ur.user_id = u.id
+    and u.username = #{principal}
+  </select>
+
+  <select id="listPermissionByParentId" resultMap="BaseResultMap">
     select * from sys_permission
-    where zuul_prefix = #{zuulPrefix}
+    where parent_id = #{parentId}
   </select>
 </mapper>

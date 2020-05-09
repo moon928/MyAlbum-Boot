@@ -17,14 +17,14 @@ public interface SysUserRoleMapper extends MyMapper<SysUserRole> {
      * @param roleId
      * @return
      */
-    int add(@Param("userId") Long userId, @Param("roleId") Long roleId);
+    int add(@Param("userId") Integer userId, @Param("roleId") Integer roleId);
 
     /**
      * 通过用户id删除用户角色
      * @param userId
      * @return
      */
-    int deleteByUserId(@Param("userId") Long userId);
+    int deleteByUserId(@Param("userId") Integer userId);
 
     /**
      * 删除用户指定角色
@@ -32,5 +32,5 @@ public interface SysUserRoleMapper extends MyMapper<SysUserRole> {
      * @param roleId
      * @return
      */
-    int deleteByUserIdAndRoleId(@Param("userId") Long userId,@Param("roleId") Long roleId);
+    int deleteByUserIdAndRoleId(@Param("userId") Integer userId,@Param("roleId") Integer roleId);
 }

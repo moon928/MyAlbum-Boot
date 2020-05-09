@@ -59,8 +59,8 @@ public class SysUserController {
         if(user!=null){
             SysUserRole userRole = new SysUserRole();
             userRole.setUserId(user.getId());
-            userRole.setRoleId(1L);
-            userRoleService.insert(user.getId(),1L);
+            userRole.setRoleId(1);
+            userRoleService.insert(user.getId(),1);
             return ReturnResult.success(user);
         }else{
             return ReturnResult.failure();
@@ -163,8 +163,8 @@ public class SysUserController {
     })
     @PostMapping(value = "/authorization",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ReturnResult<String> authorization(
-            @RequestParam("userId") Long userId,
-            @RequestParam("roleId") Long roleId
+            @RequestParam("userId") Integer userId,
+            @RequestParam("roleId") Integer roleId
     ){
         int i = userRoleService.insert(userId,roleId);
         if (i>0){
@@ -180,8 +180,8 @@ public class SysUserController {
     })
     @DeleteMapping(value = "deleteAuthorization",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ReturnResult<String> deleteAuthorization(
-            @RequestParam("userId") Long userId,
-            @RequestParam("roleId") Long roleId
+            @RequestParam("userId") Integer userId,
+            @RequestParam("roleId") Integer roleId
     ){
         SysUserRole userRole = new SysUserRole();
         userRole.setUserId(userId);
@@ -200,8 +200,8 @@ public class SysUserController {
     })
     @PutMapping(value = "/updateAuthorization",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ReturnResult<String> updateAuthorization(
-            @RequestParam("userId") Long userId,
-            @RequestParam("roleId") Long roleId
+            @RequestParam("userId") Integer userId,
+            @RequestParam("roleId") Integer roleId
     ){
         //先删除之前的角色
         int resule = userRoleService.deleteByUserId(userId);

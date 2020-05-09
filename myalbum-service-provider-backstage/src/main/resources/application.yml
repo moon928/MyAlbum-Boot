@@ -1,6 +1,6 @@
-spring:
-  profiles:
-    active: dev
+#spring:
+#  profiles:
+#    active: dev
 #server:
 #  tomcat:
 #    min-spare-threads: 20
@@ -10,4 +10,4 @@ spring:
 #logging-level: DEBUG
 
 #白名单设置
-security_whitelist: /abc,/a**,/sysRole/all
+#security_whitelist: /abc,/a**,/sysRole/all

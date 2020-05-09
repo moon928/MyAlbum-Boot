@@ -17,9 +17,9 @@ public interface SysPermissionMapper extends MyMapper<SysPermission> {
     /**
      * Describe this class
      *
-     * @param id	
-     * @exception 
-     * @return 
+     * @param id
+     * @return
+     * @throws
      * @author Yzn_zt
      * @date 2020/1/9 14:25
      */
@@ -27,14 +27,19 @@ public interface SysPermissionMapper extends MyMapper<SysPermission> {
 
     /**
      * 获取全部的权限列表
+     *
      * @return
      */
     List<SysPermissionExtend> findAll();
 
     /**
      * 通过网关前缀查询权限列表
+     *
      * @param zuulPrefix
+     * @param principal 登陆人的用户名
      * @return
      */
-    List<SysPermission> getSysPermissionByZuulPrefix(@Param("zuulPrefix") String zuulPrefix);
+    List<SysPermission> getSysPermissionByZuulPrefix(@Param("zuulPrefix") String zuulPrefix,@Param("principal") String principal);
+
+    List<SysPermission> listPermissionByParentId(@Param("parentId") Integer parentId);
 }

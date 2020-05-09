@@ -16,14 +16,14 @@ public interface UserRoleService {
      * @param roleId
      * @return
      */
-    int insert(Long userId, Long roleId);
+    int insert(Integer userId, Integer roleId);
 
     /**
      * 通过用户id删除用户角色
      * @param userId
      * @return
      */
-    int deleteByUserId(Long userId);
+    int deleteByUserId(Integer userId);
 
     /**
      * 删除用户指定角色
@@ -31,5 +31,5 @@ public interface UserRoleService {
      * @param roleId
      * @return
      */
-    int deleteByUserIdAndRoleId(Long userId,Long roleId);
+    int deleteByUserIdAndRoleId(Integer userId,Integer roleId);
 }

@@ -66,16 +66,20 @@ public class AccountController {
 
     public Account userAccount(SysUserExtend userExtend){
         Account account = new Account();
+        account.setId(userExtend.getId());
         account.setUsername(userExtend.getUsername());
         account.setPassword(userExtend.getPassword());
+        account.setStatus(userExtend.getStatus());
         account.setRoleExtends(userExtend.getRoleExtends());
         return account;
     }
 
     public Account adminAccount(SysAdminExtend adminExtend){
         Account account = new Account();
+        account.setId(adminExtend.getId());
         account.setUsername(adminExtend.getUsername());
         account.setPassword(adminExtend.getPassword());
+        account.setStatus(adminExtend.getStatus());
         account.setRoleExtends(adminExtend.getRoleExtends());
         return account;
     }

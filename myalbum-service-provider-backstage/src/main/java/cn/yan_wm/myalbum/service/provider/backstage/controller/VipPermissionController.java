@@ -4,6 +4,7 @@ import cn.yan_wm.myalbum.commons.domain.TbVipPermission;
 import cn.yan_wm.myalbum.commons.dto.ReturnResult;
 import cn.yan_wm.myalbum.service.provider.backstage.service.VipPermissionService;
 import io.swagger.annotations.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -16,9 +17,9 @@ import java.util.concurrent.RecursiveTask;
  * @author: yan_zt
  * @create: 2020-01-07 19:54
  */
-
+@Slf4j
 @RestController
-@RequestMapping("/vipPermission")
+@RequestMapping(value = "/vipPermission",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 @Api(tags = "权限信息管理")
 public class VipPermissionController {
     @Autowired
@@ -39,9 +40,8 @@ public class VipPermissionController {
 //    public int delete(@PathVariable("id") Long id){
 //       return vipPermissionService.deleteById(id);
 //    }
-
     @ApiOperation(value = "更新VIP限制条件")
-    @PutMapping(value = "/update",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @PutMapping(value = "/update")
     public ReturnResult<String> updatePwd(
             @ApiParam(name = "tbVipPermission",value = "tbVipPermission Model")TbVipPermission tbVipPermission
     ){
@@ -51,5 +51,21 @@ public class VipPermissionController {
         }else {
             return ReturnResult.failure();
         }
+    }
+
+    @ApiOperation(value = "能否添加相册")
+    @GetMapping(value = "/canAddAlbum")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "userId", value = "用户账号", required = true, paramType = "query", dataType = "Integer"),
+            @ApiImplicitParam(name = "albumNum", value = "已有相册数", required = true, paramType = "query", dataType = "int")
+    })
+    public ReturnResult<Boolean> canAddAlbum(@RequestParam("userId") Integer userId,@RequestParam("albumNum") int albumNum){
+        try{
+            Boolean result = vipPermissionService.canAddAlbum(userId, albumNum);
+            return ReturnResult.success(result);
+        }catch (Exception e){
+            log.error(e.getMessage(),e);
+        }
+        return ReturnResult.failure();
     }
 }

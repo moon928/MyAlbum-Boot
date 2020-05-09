@@ -102,8 +102,8 @@ public class BackstageServiceImpl extends BaseServiceImpl<IndexPageView> impleme
 
 
     @Override
-    public void sendIndexPageViewIdToMPQ(Long indexPageViewId) {
-        Map<String,Long> map = new HashMap<>();
+    public void sendIndexPageViewIdToMPQ(Integer indexPageViewId) {
+        Map<String,Integer> map = new HashMap<>();
         map.put("indexPageViewId",indexPageViewId);
         try {
             String mapJson = MapperUtils.obj2json(map);

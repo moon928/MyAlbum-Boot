@@ -17,5 +17,5 @@ public interface SysAdminRoleService {
      * @param roleId
      * @return
      */
-    int insert(Long adminId, Long roleId);
+    int insert(Integer adminId, Integer roleId);
 }

@@ -60,8 +60,8 @@ public class SysAdminController {
         if (admin != null){
             SysAdminRole adminRole = new SysAdminRole();
             adminRole.setAdminId(admin.getId());
-            adminRole.setRoleId(10L);
-            int i = adminRoleService.insert(admin.getId(), 10L);
+            adminRole.setRoleId(10);
+            int i = adminRoleService.insert(admin.getId(), 10);
             return ReturnResult.success(admin);
         }else {
             return ReturnResult.failure();

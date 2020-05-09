@@ -34,9 +34,9 @@ public class SysRoleController {
     @Autowired
     private RolePermissionService rolePermissionService;
 
-    @ApiOperation(value = "添加角色信息")
+    @ApiOperation(value = "添加角色信息",notes = "json格式")
     @PostMapping(value = "/add",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ReturnResult<String> add(@ApiParam(name = "sysRole",value = "Sys角色Model") SysRole role){
+    public ReturnResult<String> add(@RequestBody SysRole role){
         int i = roleService.add(role);
         if (i>0){
             return ReturnResult.success();
@@ -93,7 +93,7 @@ public class SysRoleController {
 
     @ApiOperation(value = "查所有角色信息")
     @GetMapping(value = "/all",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ReturnResult<DataSet<SysRoleExtend>> getAll( @ApiParam(name = "分页模型") @ModelAttribute Page page){
+    public ReturnResult<DataSet<SysRoleExtend>> getAll(@ApiParam(name = "分页模型") @ModelAttribute Page page){
         try{
             DataSet<SysRoleExtend> data = roleService.page(page);
             return ReturnResult.success(data);
@@ -118,9 +118,8 @@ public class SysRoleController {
     @ApiOperation(value = "修改角色权限")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "roleId", value = "角色id", required = true, paramType = "query", dataType = "Long"),
-            @ApiImplicitParam(name = "permissionIds", value = "权限ids Long型数组",required = true, paramType = "query", allowMultiple=true,dataType = "Long")
     })
-    public ReturnResult updatePermissionForRole(Long roleId,Long[] permissionIds){
+    public ReturnResult updatePermissionForRole(Long roleId,@RequestParam(value = "permissionIds[]") Long[] permissionIds){
         try{
             int delete = rolePermissionService.deletePermissionByRoleId(roleId);
             int update = rolePermissionService.addpermissionForRole(roleId, permissionIds);

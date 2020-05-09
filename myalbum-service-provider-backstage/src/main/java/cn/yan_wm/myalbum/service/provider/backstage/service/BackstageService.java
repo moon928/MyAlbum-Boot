@@ -61,7 +61,7 @@ public interface BackstageService {
      * @param indexPageViewId
      */
     @Async
-    void sendIndexPageViewIdToMPQ(Long indexPageViewId);
+    void sendIndexPageViewIdToMPQ(Integer indexPageViewId);
     /**
      * 通过时间查询当前时间是否有记录
      * @param time

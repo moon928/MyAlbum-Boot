@@ -6,6 +6,7 @@ import cn.yan_wm.myalbum.commons.service.framework.base.BaseServiceImpl;
 import cn.yan_wm.myalbum.service.provider.backstage.mapper.SysPermissionMapper;
 import cn.yan_wm.myalbum.service.provider.backstage.service.SysPermissionService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -62,18 +63,47 @@ public class SysPermissionServiceImpl extends BaseServiceImpl<SysPermission> imp
     }
 
     @Override
-    public int deleteById(Long id) {
+    public int deleteById(Integer id) {
         SysPermission sysPermission = new SysPermission();
         sysPermission.setId(id);
         int i = permissionMapper.delete(sysPermission);
         return i;
     }
-    @Cacheable(cacheNames = {"permission"})
+
+//    @Cacheable(cacheNames = {"permission"})
     @Override
-    public List<SysPermission> getSysPermissionByZuulPrefix(String zuulPrefix) {
-        List<SysPermission> permissionList = permissionMapper.getSysPermissionByZuulPrefix(zuulPrefix);
+    public List<SysPermission> getSysPermissionByZuulPrefix(String zuulPrefix,String principal) {
+        List<SysPermission> permissionList = permissionMapper.getSysPermissionByZuulPrefix(zuulPrefix,principal);
         return permissionList;
     }
+
+    @Override
+    public String note(Integer root) {
+        List<SysPermissionExtend> permissionList = permissionMapper.findAll();
+        StringBuilder childIds = new StringBuilder();
+        childIds.append(root + ",");
+
+        this.getChildIds(root, childIds, permissionList);
+        return childIds.toString().substring(0, childIds.length()-1);
+    }
+
+    private void getChildIds(Integer id, StringBuilder childIds, List<SysPermissionExtend> TaxBureauList) {
+        for (SysPermissionExtend bureau : TaxBureauList) {
+            //过滤父节点为空的数据
+            if (bureau.getParentId()==null){
+                continue;
+            }
+            // 判断是否存在子节点
+            if (bureau.getParentId() == id) {
+                childIds.append(bureau.getId()+",");
+                // 递归遍历下一级
+                getChildIds(bureau.getId(), childIds, TaxBureauList);
+            }
+        }
+        return;
+    }
+
+
 
     public static List<SysPermissionExtend> listToTree(List<SysPermissionExtend> list) {
         //用递归找子。

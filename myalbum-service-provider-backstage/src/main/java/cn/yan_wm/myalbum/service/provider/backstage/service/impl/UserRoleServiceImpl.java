@@ -26,19 +26,19 @@ public class UserRoleServiceImpl extends BaseServiceImpl<SysUserRole> implements
     }
 
     @Override
-    public int insert(Long userId, Long roleId) {
+    public int insert(Integer userId, Integer roleId) {
         int i = sysUserRoleMapper.add(userId, roleId);
         return i;
     }
 
     @Override
-    public int deleteByUserId(Long userId) {
+    public int deleteByUserId(Integer userId) {
         int i = sysUserRoleMapper.deleteByUserId(userId);
         return i;
     }
 
     @Override
-    public int deleteByUserIdAndRoleId(Long userId, Long roleId) {
+    public int deleteByUserIdAndRoleId(Integer userId, Integer roleId) {
         int i = sysUserRoleMapper.deleteByUserIdAndRoleId(userId,roleId);
         return i;
     }

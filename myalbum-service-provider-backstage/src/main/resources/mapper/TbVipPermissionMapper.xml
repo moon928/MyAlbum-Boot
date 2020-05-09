@@ -11,6 +11,10 @@
     <result column="max_group_num" jdbcType="INTEGER" property="maxGroupNum" />
   </resultMap>
 
+  <resultMap id="MaxAlbumNum" type="java.lang.Integer">
+
+  </resultMap>
+
   <insert id="add">
     INSERT INTO tb_vip_permission(id,max_img_num,max_img_size,max_group_num)
     VALUE (#{id},#{maxImgNum},#{maxImgSize},#{maxGroupNum})
@@ -40,5 +44,13 @@
 
   <select id="findById" resultMap="BaseResultMap">
     SELECT * FROM tb_vip_permission WHERE id = #{id}
+  </select>
+
+  <select id="getAlbumNum" resultType="java.lang.Integer">
+    SELECT tb_vip_permission.max_group_num
+    FROM tb_vip_permission,sys_user_role
+    WHERE
+        sys_user_role.role_id = tb_vip_permission.id and
+        sys_user_role.user_id = #{userId}
   </select>
 </mapper>

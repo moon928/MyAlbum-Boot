@@ -12,10 +12,12 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.trace.http.HttpTrace;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Parameter;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -84,7 +86,7 @@ public class IndexController {
             String nyr = dateUtils.getday("yyyy-MM-dd",0);
             List<IndexPageView> list = backstageService.getFrequencyByTime(nyr);
             if (list != null && list.size()>0){
-                Long id = list.get(0).getId();
+                Integer id = list.get(0).getId();
                 backstageService.sendIndexPageViewIdToMPQ(id);
                 return ReturnResult.success();
             }else{
