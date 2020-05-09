@@ -4,10 +4,10 @@ import cn.yan_wm.myalbum.commons.domain.SysPermission;
 import cn.yan_wm.myalbum.commons.domainExtend.backstage.Account;
 import cn.yan_wm.myalbum.commons.domainExtend.backstage.SysRoleExtend;
 import cn.yan_wm.myalbum.commons.dto.ReturnResult;
+import cn.yan_wm.myalbum.service.security.oauth2.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -40,7 +40,7 @@ public class MyUserDetailService implements UserDetailsService {
             result = userService.findUserByUsername(username);
         }
         if (result == null || !result.isSuccess()) {
-            throw new UsernameNotFoundException(username);
+            throw new UsernameNotFoundException("用户不存在或密码错误");
         }
         if (result != null && result.isSuccess() && result.getObject() != null){
             account = result.getObject();
@@ -66,7 +66,7 @@ public class MyUserDetailService implements UserDetailsService {
                 grantedAuthorities.add(authority);
             }
         }
-        User user = new User(account.getUsername(), account.getPassword(),
+        User user = new User(account.getId(),account.getUsername(), account.getPassword(),account.getStatus(),
                 enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, grantedAuthorities);
         return user;
     }

@@ -65,10 +65,12 @@ public class RedisTokenStore implements TokenStore {
         return this.serialize(this.prefix + object);
     }
 
+    /*反序列换访问令牌*/
     private OAuth2AccessToken deserializeAccessToken(byte[] bytes) {
         return (OAuth2AccessToken)this.serializationStrategy.deserialize(bytes, OAuth2AccessToken.class);
     }
 
+    /*反序列化身份验证*/
     private OAuth2Authentication deserializeAuthentication(byte[] bytes) {
         return (OAuth2Authentication)this.serializationStrategy.deserialize(bytes, OAuth2Authentication.class);
     }
@@ -85,6 +87,7 @@ public class RedisTokenStore implements TokenStore {
         return this.serializationStrategy.deserializeString(bytes);
     }
 
+    /*获取通过token*/
     @Override
     public OAuth2AccessToken getAccessToken(OAuth2Authentication authentication) {
         String key = this.authenticationKeyGenerator.extractKey(authentication);
@@ -111,6 +114,7 @@ public class RedisTokenStore implements TokenStore {
         return this.readAuthentication(token.getValue());
     }
 
+    /*通过token获取用户信息*/
     @Override
     public OAuth2Authentication readAuthentication(String token) {
         byte[] bytes = null;
