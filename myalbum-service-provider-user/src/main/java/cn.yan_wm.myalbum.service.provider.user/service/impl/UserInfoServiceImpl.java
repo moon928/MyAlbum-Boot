@@ -1,5 +1,6 @@
 package cn.yan_wm.myalbum.service.provider.user.service.impl;
 
+import cn.yan_wm.myalbum.commons.domain.TbImage;
 import cn.yan_wm.myalbum.commons.domain.TbUserInfo;
 import cn.yan_wm.myalbum.commons.domainExtend.user.UserInfoExtend;
 import cn.yan_wm.myalbum.commons.model.DataSet;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.common.Mapper;
+import tk.mybatis.mapper.entity.Example;
 import tk.mybatis.page.Page;
 
 import java.util.List;
@@ -41,6 +43,11 @@ public class UserInfoServiceImpl extends BaseServiceImpl<UserInfoExtend> impleme
     @Override
     public UserInfoExtend getUserInfoById(Long id) {
         return tbUserInfoExtendMapper.findById(id);
+    }
+
+    @Override
+    public UserInfoExtend getUserInfoByUsername(String username) {
+        return tbUserInfoExtendMapper.getUserInfoByUsername(username);
     }
 
     @Override

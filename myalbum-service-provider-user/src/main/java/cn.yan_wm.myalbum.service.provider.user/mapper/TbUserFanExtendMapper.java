@@ -18,7 +18,7 @@ public interface TbUserFanExtendMapper extends MyMapper<UserFanExtend> {
      * @param fanId
      * @return
      */
-    int addFan(@Param("userId") Long userId,@Param("fanId") Long fanId);
+    int addFan(@Param("userId") Integer userId,@Param("fanId") Integer fanId);
 
     /**
      * 删除粉丝
@@ -26,7 +26,7 @@ public interface TbUserFanExtendMapper extends MyMapper<UserFanExtend> {
      * @param fanId
      * @return
      */
-    int deleteFan(@Param("userId") Long userId,@Param("fanId") Long fanId);
+    int deleteFan(@Param("userId") Integer userId,@Param("fanId") Integer fanId);
 
     /**
      * 修改粉丝备注
@@ -35,7 +35,7 @@ public interface TbUserFanExtendMapper extends MyMapper<UserFanExtend> {
      * @param note
      * @return
      */
-    int updateFanNote(@Param("userId") Long userId,@Param("fanId") Long fanId,@Param("note") String note);
+    int updateFanNote(@Param("userId") Integer userId,@Param("fanId") Integer fanId,@Param("note") String note);
 
     /**
      * 通过粉丝id查看粉丝信息
@@ -43,12 +43,12 @@ public interface TbUserFanExtendMapper extends MyMapper<UserFanExtend> {
      * @param fanId
      * @return
      */
-    UserFanExtend findFanByFanId(@Param("userId") Long userId,@Param("fanId") Long fanId);
+    UserFanExtend findFanByFanId(@Param("userId") Integer userId,@Param("fanId") Integer fanId);
 
     /**
      * 通过用户id查询所有的粉丝
      * @param userId
      * @return
      */
-    List<UserFanExtend> findAll(@Param("userId") Long userId);
+    List<UserFanExtend> findAll(@Param("userId") Integer userId);
 }

@@ -13,6 +13,17 @@
     <association property="attention" fetchType="eager" column="attention_id" select="cn.yan_wm.myalbum.service.provider.user.mapper.TbUserInfoExtendMapper.findById"/>
   </resultMap>
 
+  <resultMap id="UserAttentionMap" type="cn.yan_wm.myalbum.commons.domain.TbUserAttention">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="attention_id" jdbcType="INTEGER" property="attentionId" />
+    <result column="attention_note" jdbcType="VARCHAR" property="attentionNote" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+
   <insert id="addAttention">
     INSERT INTO tb_user_attention (user_id,attention_id)
     VALUE (#{userId},#{attentionId})
@@ -44,5 +55,11 @@
     SELECT distinct * FROM tb_user_attention
     WHERE
     user_id = #{userId}
+  </select>
+
+  <select id="getRelationshipWithOthers" resultMap="UserAttentionMap">
+    select * from tb_user_attention
+    where user_id = #{userId} and
+    attention_id = #{othersId}
   </select>
 </mapper>

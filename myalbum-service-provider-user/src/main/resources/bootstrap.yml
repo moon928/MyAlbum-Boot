@@ -1,0 +1,9 @@
+config-server-host: 47.106.199.167
+spring-protive-active: prod
+spring:
+  cloud:
+    config:
+      uri: http://${config-server-host}:8888
+      name: user
+      label: master
+      profile: ${spring-protive-active}

@@ -32,6 +32,13 @@ public interface UserInfoService{
     UserInfoExtend getUserInfoById(Long id);
 
     /**
+     * 通过用户名获取用户信息
+     * @param username
+     * @return
+     */
+    UserInfoExtend getUserInfoByUsername(String username);
+
+    /**
      * 查询所有用户信息
      * @return
      */

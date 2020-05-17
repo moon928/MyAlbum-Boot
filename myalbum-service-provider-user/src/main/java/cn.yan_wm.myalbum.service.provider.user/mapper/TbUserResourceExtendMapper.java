@@ -24,7 +24,7 @@ public interface TbUserResourceExtendMapper extends MyMapper<TbUserResource> {
      * @param score
      * @return
      */
-    int updateVipScoreByUserId(@Param("userId") Long userId,@Param("score") int score);
+    int updateVipScoreByUserId(@Param("userId") Integer userId,@Param("score") int score);
 
     /**
      * 修改总图片数量
@@ -40,7 +40,7 @@ public interface TbUserResourceExtendMapper extends MyMapper<TbUserResource> {
      * @param num
      * @return
      */
-    int updateFanNum(@Param("userId") Long userId,@Param("num") int num);
+    int updateFanNum(@Param("userId") Integer userId,@Param("num") int num);
 
     /**
      * 修改关注数量
@@ -48,5 +48,5 @@ public interface TbUserResourceExtendMapper extends MyMapper<TbUserResource> {
      * @param num
      * @return
      */
-    int updateAttentionNum(@Param("userId") Long userId,@Param("num") int num);
+    int updateAttentionNum(@Param("userId") Integer userId,@Param("num") int num);
 }

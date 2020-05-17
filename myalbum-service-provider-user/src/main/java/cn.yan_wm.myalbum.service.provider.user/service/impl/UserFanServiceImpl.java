@@ -1,5 +1,6 @@
 package cn.yan_wm.myalbum.service.provider.user.service.impl;
 
+import cn.yan_wm.myalbum.commons.domain.TbImage;
 import cn.yan_wm.myalbum.commons.domainExtend.user.UserFanExtend;
 import cn.yan_wm.myalbum.commons.model.DataSet;
 import cn.yan_wm.myalbum.commons.service.framework.base.BaseServiceImpl;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.common.Mapper;
+import tk.mybatis.mapper.entity.Example;
 import tk.mybatis.page.Page;
 
 import java.util.List;
@@ -34,34 +36,34 @@ public class UserFanServiceImpl extends BaseServiceImpl<UserFanExtend> implement
 
     @Transactional(readOnly = false)
     @Override
-    public int addFan(Long userId, Long fanId) {
+    public int addFan(Integer userId, Integer fanId) {
         return tbUserFanExtendMapper.addFan(userId,fanId);
     }
 
     @Transactional(readOnly = false)
     @Override
-    public int deleteFan(Long userId, Long fanId) {
+    public int deleteFan(Integer userId, Integer fanId) {
         return tbUserFanExtendMapper.deleteFan(userId,fanId);
     }
 
     @Transactional(readOnly = false)
     @Override
-    public int updateFanNote(Long userId, Long fanId, String note) {
+    public int updateFanNote(Integer userId, Integer fanId, String note) {
         return tbUserFanExtendMapper.updateFanNote(userId,fanId,note);
     }
 
     @Override
-    public UserFanExtend getByFanId(Long userId, Long fanId) {
+    public UserFanExtend getByFanId(Integer userId, Integer fanId) {
         return tbUserFanExtendMapper.findFanByFanId(userId,fanId);
     }
 
     @Override
-    public List<UserFanExtend> getByUserId(Long userId) {
+    public List<UserFanExtend> getByUserId(Integer userId) {
         return tbUserFanExtendMapper.findAll(userId);
     }
 
     @Override
-    public DataSet<UserFanExtend> page(Long userId, Page page) {
+    public DataSet<UserFanExtend> page(Integer userId, Page page) {
         PageHelper.startPage(page.getPageNo(),page.getPageSize());
         PageInfo<UserFanExtend> pageInfo = new PageInfo<UserFanExtend>(tbUserFanExtendMapper.findAll(userId));
         DataSet<UserFanExtend> data = super.dataSet(pageInfo);

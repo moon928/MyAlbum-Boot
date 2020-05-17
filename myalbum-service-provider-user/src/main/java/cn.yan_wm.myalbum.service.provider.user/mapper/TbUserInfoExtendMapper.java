@@ -28,6 +28,14 @@ public interface TbUserInfoExtendMapper extends MyMapper<UserInfoExtend> {
      */
     UserInfoExtend findById(@Param("id") Long id);
 
+
+    /**
+     * 通过用户名获取用户信息
+     * @param username
+     * @return
+     */
+    UserInfoExtend getUserInfoByUsername(String username);
+
     /**
      * 查找所有的用户
      * @return

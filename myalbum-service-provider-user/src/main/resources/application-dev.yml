@@ -1,0 +1,96 @@
+spring:
+  application:
+    name: MYALBUM-USER  #myalbum-service-provider-user
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss #日期格式化
+    time-zone: GMT+8 #时区加8
+    default-property-inclusion: non_null  #屏蔽掉为null的字段
+  datasource:
+    druid:
+      url: jdbc:mysql://127.0.0.1:3306/myalbum_resource?useUnicode=true&characterEncoding=utf-8&useSSL=false&&useSSL=false&serverTimezone=GMT%2B8
+      username: root
+      password: 123456
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      test-on-borrow: true
+      driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database: MYSQL
+    show-sql: true #打印执行的sql语句
+    hibernate:
+      ddl-auto: none # 第一次建表create  后面用update,要不然每次重启都会新建表
+    properties:
+      hibernate:
+        format_sql: false
+#    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect #设置数据库方言  记住必须要使用 MySQL5InnoDBDialect 指定数据库类型对应InnoDB  ;如果使用MySQLDialect 则对应的是MyISAM
+#  zipkin:
+#    base-url: http://localhost:9411
+#  boot:
+#    admin:
+#      client:
+#        url: http://localhost:8084
+
+server:
+  port: 10200
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: 127.0.0.1
+    # 优先使用IP地址方式进行注册服务
+    prefer-ip-address: true
+    # 配置使用指定IP
+    ip-address: 127.0.0.1
+    instance-id: ${eureka.instance.hostname}:${server.port}
+
+mybatis:
+  type-aliases-package: cn.yan_wm.myalbum.commons.domain
+  mapper-locations: classpath:mapper/*.xml
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: env #必须排除env文件
+
+logging:
+  level:
+    cn.yan_wm.myalbum.service.provider.user.mapper: debug
+
+myalbum:
+  zuulPerfix: USER
+
+feign:
+  hystrix:
+    enabled: true
+
+#全局配置
+# 请求连接的超时时间 默认的时间为 1 秒
+ribbon:
+  ReadTimeout: 15000 #获取或设置读取操作未完成时发生超时之前的毫秒数
+  ConnectTimeout: 15000 #客户端等待与服务器建立连接的时间（以毫秒计）
+#  MaxAutoRetries: 1  #在同一台服务器上重试的最大次数
+#  MaxAutoRetriesNextServer: 2 #要重试的下一个服务器的最大数量
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 7200000 #断路器的超时时间需要大于ribbon的超时时间，不然不会触发重试。
+
+security:
+  oauth2:
+    resource:
+      id: MYALBUM-USER
+      user-info-uri: http://localhost:10000/auth/auth/user
+      prefer-token-info: false
+
+#白名单设置
+security_whitelist: /user/relationshipWithOthers**

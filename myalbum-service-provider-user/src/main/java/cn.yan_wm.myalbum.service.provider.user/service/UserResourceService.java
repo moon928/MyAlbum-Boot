@@ -16,7 +16,7 @@ public interface UserResourceService{
      * @param score
      * @return
      */
-    int updateVipScoreByUserId(Long userId,int score);
+    int updateVipScoreByUserId(Integer userId,int score);
 
     /**
      * 修改图片数量
@@ -32,7 +32,7 @@ public interface UserResourceService{
      * @param num
      * @return
      */
-    int updateFanNum(Long userId,int num);
+    int updateFanNum(Integer userId,int num);
 
     /**
      * 修改关注数量
@@ -40,6 +40,6 @@ public interface UserResourceService{
      * @param num
      * @return
      */
-    int updateAttentionNum(Long userId,int num);
+    int updateAttentionNum(Integer userId,int num);
 
 }

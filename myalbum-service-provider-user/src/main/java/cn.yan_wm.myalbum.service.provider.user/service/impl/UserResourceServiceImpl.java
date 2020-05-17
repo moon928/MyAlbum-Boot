@@ -28,7 +28,7 @@ public class UserResourceServiceImpl extends BaseServiceImpl<TbUserResource> imp
 
     @Transactional(readOnly = false)
     @Override
-    public int updateVipScoreByUserId(Long userId, int score) {
+    public int updateVipScoreByUserId(Integer userId, int score) {
         return tbUserResourceExtendMapper.updateVipScoreByUserId(userId,score);
     }
 
@@ -40,13 +40,13 @@ public class UserResourceServiceImpl extends BaseServiceImpl<TbUserResource> imp
 
     @Transactional(readOnly = false)
     @Override
-    public int updateFanNum(Long userId, int num) {
+    public int updateFanNum(Integer userId, int num) {
         return tbUserResourceExtendMapper.updateFanNum(userId,num);
     }
 
     @Transactional(readOnly = false)
     @Override
-    public int updateAttentionNum(Long userId, int num) {
+    public int updateAttentionNum(Integer userId, int num) {
         return tbUserResourceExtendMapper.updateAttentionNum(userId,num);
     }
 }

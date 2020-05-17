@@ -22,7 +22,7 @@ import tk.mybatis.page.Page;
 @Slf4j
 @RestController
 @RequestMapping(value = "friend",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-@Api(tags = "好友管理")
+@Api(tags = "好友管理",hidden = true)
 public class UserFriendController {
     @Autowired
     private UserFriendService userFriendService;

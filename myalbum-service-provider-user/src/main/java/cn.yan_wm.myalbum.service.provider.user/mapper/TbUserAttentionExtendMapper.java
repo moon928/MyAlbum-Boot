@@ -1,5 +1,6 @@
 package cn.yan_wm.myalbum.service.provider.user.mapper;
 
+import cn.yan_wm.myalbum.commons.domain.TbUserAttention;
 import cn.yan_wm.myalbum.commons.domainExtend.user.UserAttentionExtend;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.MyMapper;
@@ -19,7 +20,7 @@ public interface TbUserAttentionExtendMapper extends MyMapper<UserAttentionExten
      * @param attentionId
      * @return
      */
-    int addAttention(@Param("userId") Long userId, @Param("attentionId") Long attentionId);
+    int addAttention(@Param("userId") Integer userId, @Param("attentionId") Integer attentionId);
 
     /**
      * 取消关注
@@ -27,7 +28,7 @@ public interface TbUserAttentionExtendMapper extends MyMapper<UserAttentionExten
      * @param attentionId
      * @return
      */
-    int deleteAttention(@Param("userId") Long userId, @Param("attentionId") Long attentionId);
+    int deleteAttention(@Param("userId") Integer userId, @Param("attentionId") Integer attentionId);
 
     /**
      * 修改关注人备注
@@ -36,7 +37,7 @@ public interface TbUserAttentionExtendMapper extends MyMapper<UserAttentionExten
      * @param note
      * @return
      */
-    int updateAttentionNote(@Param("userId") Long userId, @Param("attentionId") Long attentionId, @Param("note") String note);
+    int updateAttentionNote(@Param("userId") Integer userId, @Param("attentionId") Integer attentionId, @Param("note") String note);
 
     /**
      * 通过关注者id查询关注人信息
@@ -44,12 +45,20 @@ public interface TbUserAttentionExtendMapper extends MyMapper<UserAttentionExten
      * @param attentionId
      * @return
      */
-    UserAttentionExtend findAttentionByAttentionId(@Param("userId") Long userId, @Param("attentionId") Long attentionId);
+    UserAttentionExtend findAttentionByAttentionId(@Param("userId") Integer userId, @Param("attentionId") Integer attentionId);
 
     /**
      * 通过用户id查询所有的关注人
      * @param userId
      * @return
      */
-    List<UserAttentionExtend> findAll(@Param("userId") Long userId);
+    List<UserAttentionExtend> findAll(@Param("userId") Integer userId);
+
+    /**
+     * 判断是否是粉丝（是否是我关注的）
+     * @param userId
+     * @param othersId
+     * @return
+     */
+    List<TbUserAttention> getRelationshipWithOthers(@Param("userId") Integer userId, @Param("othersId") Integer othersId);
 }

@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequestMapping(value = "resource",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-@Api(tags = "用户资源信息管理")
+@Api(tags = "用户资源信息管理(管理员用)",hidden = true)
 public class UserResourceController {
     @Autowired
     private UserResourceService userResourceService;
@@ -33,18 +33,18 @@ public class UserResourceController {
     })
     @PutMapping("update/vipScore")
     public ReturnResult updateVipScore(
-            @RequestParam Long userId,
+            @RequestParam Integer userId,
             @RequestParam int score)
     {
         try{
             int i = userResourceService.updateVipScoreByUserId(userId, score);
             if (i>0){
-                return ReturnResult.success("添加成功");
+                return ReturnResult.success("修改成功");
             }
         }catch (Exception e){
             log.error(e.getMessage(),e);
         }
-        return ReturnResult.failure("添加失败");
+        return ReturnResult.failure("修改失败");
     }
 
     @ApiOperation(value = "修改用户所有图片数", notes = "userId，num为所加的图片数（可为负数）")
@@ -75,7 +75,7 @@ public class UserResourceController {
     })
     @PutMapping("update/fanNum")
     public ReturnResult updateFanNum(
-            @RequestParam Long userId,
+            @RequestParam Integer userId,
             @RequestParam int num)
     {
         try{
@@ -96,7 +96,7 @@ public class UserResourceController {
     })
     @PutMapping("update/attentionNum")
     public ReturnResult updateAttentionNum(
-            @RequestParam Long userId,
+            @RequestParam Integer userId,
             @RequestParam int num)
     {
         try{

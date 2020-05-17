@@ -1,5 +1,6 @@
 package cn.yan_wm.myalbum.service.provider.user.service;
 
+import cn.yan_wm.myalbum.commons.domain.TbUserAttention;
 import cn.yan_wm.myalbum.commons.domainExtend.backstage.SysRoleExtend;
 import cn.yan_wm.myalbum.commons.domainExtend.user.UserAttentionExtend;
 import cn.yan_wm.myalbum.commons.domainExtend.user.UserFriendExtend;
@@ -20,11 +21,10 @@ public interface UserAttentionService{
 
     /**
      * 添加关注
-     * @param userId
-     * @param attentionId
+     * @param userAttention
      * @return
      */
-    int addAttention(Long userId, Long attentionId);
+    int addAttention(TbUserAttention userAttention);
 
     /**
      * 删除关注
@@ -32,7 +32,7 @@ public interface UserAttentionService{
      * @param attentionId
      * @return
      */
-    int deleteAttention(Long userId, Long attentionId);
+    int deleteAttention(Integer userId, Integer attentionId);
 
     /**
      * 更新关注人备注
@@ -41,7 +41,7 @@ public interface UserAttentionService{
      * @param note
      * @return
      */
-    int updateAttentionNote(Long userId, Long attentionId, String note);
+    int updateAttentionNote(Integer userId, Integer attentionId, String note);
 
     /**
      * 获取关注人信息
@@ -49,14 +49,14 @@ public interface UserAttentionService{
      * @param attentionId
      * @return
      */
-    UserAttentionExtend getByAttentionId(Long userId, Long attentionId);
+    UserAttentionExtend getByAttentionId(Integer userId, Integer attentionId);
 
     /**
      * 获取用户关注人员列表
      * @param userId
      * @return
      */
-    List<UserAttentionExtend> getByUserId(Long userId);
+    List<UserAttentionExtend> getByUserId(Integer userId);
 
     /**
      * 分页获取用户关注人列表
@@ -64,5 +64,14 @@ public interface UserAttentionService{
      * @param page
      * @return
      */
-    DataSet<UserAttentionExtend> page(Long userId,Page page);
+    DataSet<UserAttentionExtend> page(Integer userId,Page page);
+
+
+    /**
+     * 判断是否是粉丝（是否是我关注的）
+     * @param userId
+     * @param othersId
+     * @return
+     */
+    int getRelationshipWithOthers(Integer userId, Integer othersId);
 }
