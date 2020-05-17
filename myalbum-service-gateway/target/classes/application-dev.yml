@@ -28,21 +28,29 @@ eureka:
 #------------------------Zuul-------------
 zuul:
   routes:
-    myalbum-service-consumer-test:
-      path: /test/**
-      serviceId: myalbum-service-consumer-test
+    myalbum-service-album:
+      path: /album/**
+      serviceId: MYALBM-ALBUM
       sensitiveHeaders: "*"
     myalbum-service-register:
       path: /reg/**
-      serviceId: myalbum-service-register
+      serviceId: MYALBUM-REGISTER #myalbum-register
       sensitiveHeaders: "*"
     myalbum-service-security-oauth2:
       path: /auth/**
-      serviceId: myalbum-service-security-oauth2
+      serviceId:  MYALBUM-SERVICE-SECURITY-OAUTH2 #myalbum-service-security-oauth2
       sensitiveHeaders: "*"
     myalbum-service-consumer-backstage:
       path: /backstage/**
-      serviceId: MYALBUM-SERVICE-CONSUMER-BACKSTAGE
+      serviceId: MYALBUM-BACKSTAGE
+      sensitiveHeaders: "*"
+    myalbum-service-tools:
+      path: /tools/**
+      serviceId: MYALBUM-SERVICE-TOOLS
+      sensitiveHeaders: "*"
+    myalbum-service-consumer-user:
+      path: /user/**
+      serviceId: MYALBUM-USER
       sensitiveHeaders: "*"
   retryable: false
   ignored-services: "*"
@@ -86,7 +94,7 @@ ribbon:
   MaxAutoRetriesNextServer: 2 #要重试的下一个服务器的最大数量
 
 feign:
-  sentinel:
+  hystrix:
     enabled: true
 
 hystrix:

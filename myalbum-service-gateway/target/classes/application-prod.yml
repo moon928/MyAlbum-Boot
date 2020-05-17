@@ -43,6 +43,10 @@ zuul:
       path: /auth/**
       serviceId: myalbum-service-security-oauth2
       sensitiveHeaders: "*"
+    myalbum-service-tools:
+      path: /tools/**
+      serviceId: MYALBUM-SERVICE-TOOLS
+      sensitiveHeaders: "*"
   retryable: false
   ignored-services: "*"
   ribbon:

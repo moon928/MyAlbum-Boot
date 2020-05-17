@@ -53,9 +53,9 @@ public class RegisterController {
     })
     @PostMapping(value = "/user",produces = MediaType.APPLICATION_PROBLEM_JSON_UTF8_VALUE)
     public ReturnResult<SysUser> register(@ApiParam(name = "User",value = "用户莫模型") SysUser sysUser, @RequestParam("code") String code) throws Exception {
-        ReturnResult<String> returnResult = redisService.get(sysUser.getUsername());
+        ReturnResult<String> returnResult = redisService.get(sysUser.getUsername());//通过邮箱名到redis获取验证码
         try{
-            if (returnResult != null){
+            if (returnResult != null){ //验证 前端传来的验证码与redis存储的是否一至
                 String json = returnResult.getObject();
                 if (StringUtils.isEmpty(json)){
                     return ReturnResult.failure("验证码不正确");
