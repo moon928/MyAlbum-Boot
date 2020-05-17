@@ -2,6 +2,7 @@ package cn.yan_wm.myalbum.service.security.oauth2.service;
 
 import cn.yan_wm.myalbum.commons.domain.SysPermission;
 import cn.yan_wm.myalbum.commons.domainExtend.backstage.Account;
+import cn.yan_wm.myalbum.commons.domainExtend.backstage.SysAdminExtend;
 import cn.yan_wm.myalbum.commons.domainExtend.backstage.SysRoleExtend;
 import cn.yan_wm.myalbum.commons.dto.ReturnResult;
 import cn.yan_wm.myalbum.service.security.oauth2.domain.User;
@@ -35,18 +36,18 @@ public class MyUserDetailService implements UserDetailsService {
         //true
         boolean b = username.startsWith("Admin");
         if(b){
-            result = adminService.findAdminByUsername(username);
+            account = adminService.getByUsername(username);
         }else{
-            result = userService.findUserByUsername(username);
+            account = userService.getByUsername(username);
         }
-        if (result == null || !result.isSuccess()) {
-            throw new UsernameNotFoundException("用户不存在或密码错误");
+        if (account == null) {
+            throw new UsernameNotFoundException("用户名或密码错误");
         }
-        if (result != null && result.isSuccess() && result.getObject() != null){
-            account = result.getObject();
-        }else{
-            throw new UsernameNotFoundException(username);
-        }
+//        if (result != null && result.isSuccess() && result.getObject() != null){
+//            account = result.getObject();
+//        }else{
+//            throw new UsernameNotFoundException(username);
+//        }
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
         // 可用性 :true:可用 false:不可用
         boolean enabled = true;
@@ -61,10 +62,10 @@ public class MyUserDetailService implements UserDetailsService {
             GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(role.getRoleName());
             grantedAuthorities.add(grantedAuthority);
             //获取权限
-            for (SysPermission permission : role.getPermissions()) {
-                GrantedAuthority authority = new SimpleGrantedAuthority(permission.getUri());
-                grantedAuthorities.add(authority);
-            }
+//            for (SysPermission permission : role.getPermissions()) {
+//                GrantedAuthority authority = new SimpleGrantedAuthority(permission.getUri());
+//                grantedAuthorities.add(authority);
+//            }
         }
         User user = new User(account.getId(),account.getUsername(), account.getPassword(),account.getStatus(),
                 enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, grantedAuthorities);

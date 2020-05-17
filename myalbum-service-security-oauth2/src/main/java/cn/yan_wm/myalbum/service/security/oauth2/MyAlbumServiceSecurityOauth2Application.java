@@ -16,6 +16,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 @EnableEurekaClient
 @EnableFeignClients
 @EnableSwagger2
+@MapperScan("cn.yan_wm.myalbum.service.security.oauth2.mapper")
 public class MyAlbumServiceSecurityOauth2Application {
     public static void main(String[] args) {
         SpringApplication.run(MyAlbumServiceSecurityOauth2Application.class,args);

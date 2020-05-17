@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yan_wm.myalbum.service.security.oauth2.mapper.SysAdminMapper">
+  <resultMap id="BaseResultMap" type="cn.yan_wm.myalbum.commons.domainExtend.backstage.SysAdminExtend">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+     <collection property="roleExtends" fetchType="eager" column="id" select="cn.yan_wm.myalbum.service.security.oauth2.mapper.SysRoleMapper.findByAdminId"></collection>
+  </resultMap>
+
+    <select id="findByUsername" resultMap="BaseResultMap">
+        SELECT * FROM sys_admin
+        WHERE username = #{username}
+    </select>
+</mapper>

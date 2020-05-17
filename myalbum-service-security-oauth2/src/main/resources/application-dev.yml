@@ -61,3 +61,19 @@ management:
 feign:
   hystrix:
     enabled: true
+#全局配置
+# 请求连接的超时时间 默认的时间为 1 秒
+ribbon:
+  ReadTimeout: 15000 #获取或设置读取操作未完成时发生超时之前的毫秒数
+  ConnectTimeout: 15000 #客户端等待与服务器建立连接的时间（以毫秒计）
+#  MaxAutoRetries: 1  #在同一台服务器上重试的最大次数
+#  MaxAutoRetriesNextServer: 2 #要重试的下一个服务器的最大数量
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 7200000 #断路器的超时时间需要大于ribbon的超时时间，不然不会触发重试。

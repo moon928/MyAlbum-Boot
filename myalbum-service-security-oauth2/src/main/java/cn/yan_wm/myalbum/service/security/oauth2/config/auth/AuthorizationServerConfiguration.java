@@ -92,9 +92,10 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        endpoints.tokenStore(tokenStore())
-                .userDetailsService(userDetailService)
+        endpoints.tokenStore(tokenStore()) // token redis存储类，将登陆的用户信息存储到redis缓存数据库
+                .userDetailsService(userDetailService) //登录用户信息处理类，用户信息封装成将UserDetails
                 .authenticationManager(authenticationManager);
+        //默认的配置token存储到redis的配置信息处理类，可在其中配置redis存储的时间以及属性
         endpoints.tokenServices(defaultTokenServices());
 
         // 处理 ExceptionTranslationFilter 抛出的异常
