@@ -30,7 +30,7 @@ public class FastDFSController {
             for (FastDFSFile item: fastDFSFileList){
                 String imgbase = item.getBase64();
                 imgbase=imgbase.substring(imgbase.indexOf(",")+1, imgbase.length());
-                //上传图片获取图片base64码,然后解码,然后转成字节数组,以流的形式输出到本地
+                //上传图片获取图片base64码,然后转成字节数组,以流的形式输出到本地
                 byte[] decodeBase64 = Base64.decodeBase64(imgbase);
                 String[] file = FastDFSUtils.uploadFile(decodeBase64, item.getFileName(), item.getExt());
 //                将图片的原base64编码设为空，减少传输

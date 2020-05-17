@@ -83,13 +83,6 @@ public class FastDFSUtils {
             if (storageClient == null) {
                 init();
             }
-            /* 获取文件扩展名称
-             String fileExtName = "";
-             if (fileName != null && !"".equals(fileName) && fileName.contains(".")) {
-             fileExtName = fileName.substring(fileName.lastIndexOf(".") + 1);
-             } else {
-             return new String[0];
-             }*/
             // 设置图片元数据
             NameValuePair[] metaList = new NameValuePair[3];
             metaList[0] = new NameValuePair("fileName", fileName+"."+fileExtName);
@@ -126,6 +119,13 @@ public class FastDFSUtils {
                 e.printStackTrace();
             }
         }
+                   /* 获取文件扩展名称
+             String fileExtName = "";
+             if (fileName != null && !"".equals(fileName) && fileName.contains(".")) {
+             fileExtName = fileName.substring(fileName.lastIndexOf(".") + 1);
+             } else {
+             return new String[0];
+             }*/
         return new String[0];
     }
     /**
