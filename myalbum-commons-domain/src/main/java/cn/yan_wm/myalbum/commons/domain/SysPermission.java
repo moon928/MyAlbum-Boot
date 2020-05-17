@@ -17,7 +17,7 @@ public class SysPermission extends AbstractBaseDomain {
      * 权限父节点id（最顶级父节点为-1）
      */
     @Column(name = "parent_id")
-    private Long parentId;
+    private Integer parentId;
 
     /**
      * 权限中文名称

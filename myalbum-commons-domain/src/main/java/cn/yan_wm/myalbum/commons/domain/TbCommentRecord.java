@@ -15,6 +15,13 @@ import java.util.Date;
 @Table(name = "tb_comment_record")
 public class TbCommentRecord extends AbstractBaseDomain {
     private static final long serialVersionUID = 1446890469870285961L;
+
+    /**
+     * 评论内容
+     */
+    @Column(name = "comment")
+    private String comment;
+
     /**
      * 评论者id
      */
@@ -39,6 +46,14 @@ public class TbCommentRecord extends AbstractBaseDomain {
     @Column(name = "create_time")
     private Date createTime;
 
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 
     /**
      * 获取评论者id

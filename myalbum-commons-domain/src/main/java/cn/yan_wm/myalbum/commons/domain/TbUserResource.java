@@ -38,7 +38,7 @@ public class TbUserResource extends AbstractBaseDomain {
     private Integer fanNum;
 
     /**
-     * 粉丝数量
+     * 关注数量
      */
     @Column(name = "attention_num")
     private Integer attentionNum;

@@ -4,6 +4,7 @@ import cn.yan_wm.myalbum.commons.dto.AbstractBaseDomain;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.omg.CORBA.INTERNAL;
 
 import javax.persistence.*;
 @Data
@@ -15,12 +16,12 @@ public class SysUserRole extends AbstractBaseDomain {
      * 用户id
      */
     @Column(name = "user_id")
-    private Long userId;
+    private Integer userId;
 
     /**
      * 角色id
      */
     @Column(name = "role_id")
-    private Long roleId;
+    private Integer roleId;
 
 }

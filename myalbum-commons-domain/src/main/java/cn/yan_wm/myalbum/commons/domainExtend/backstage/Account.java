@@ -10,7 +10,9 @@ import java.util.List;
 @EqualsAndHashCode(callSuper=false)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Account {
+    private Integer id;
     private String username;
     private String password;
+    private int status;
     private List<SysRoleExtend> roleExtends;
 }

@@ -17,12 +17,12 @@ public class SysAdminRole extends AbstractBaseDomain {
      * 用户id
      */
     @Column(name = "admin_id")
-    private Long adminId;
+    private Integer adminId;
 
     /**
      * 角色id
      */
     @Column(name = "role_id")
-    private Long roleId;
+    private Integer roleId;
 
 }

@@ -7,13 +7,41 @@ package cn.yan_wm.myalbum.commons.module;
  * @create: 2019-12-27 14:33
  */
 public class FastDFSFile {
-    private String fileName; //文件名
+    //文件名
+    private String fileName;
+    //图片base64编码
+    private String base64;
+    //扩展名
+    private String ext;
+    //作者
+    private String author;
 
-    private String base64; //图片base64编码
+    //文件所在服务器的组名
+    private String groupName;
+    //文件id
+    private String fileId;
 
-    private String ext; //扩展名
+    //上传到的相册id
+    private Integer albumId;
 
-    private String author; //作者
+    private Integer image_id;
+
+    public Integer getImage_id() {
+        return image_id;
+    }
+
+    public void setImage_id(Integer image_id) {
+        this.image_id = image_id;
+    }
+
+    public Integer getAlbumId() {
+        return albumId;
+    }
+
+    public void setAlbumId(Integer albumId) {
+        this.albumId = albumId;
+    }
+
 
     public String getFileName() {
         return fileName;
@@ -45,5 +73,21 @@ public class FastDFSFile {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public String getGroupName() {
+        return groupName;
+    }
+
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
+    }
+
+    public String getFileId() {
+        return fileId;
+    }
+
+    public void setFileId(String fileId) {
+        this.fileId = fileId;
     }
 }

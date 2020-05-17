@@ -19,14 +19,14 @@ public class TbUserAttention extends AbstractBaseDomain {
      */
     @JsonIgnore
     @Column(name = "user_id")
-    private Long userId;
+    private Integer userId;
 
     /**
      * 关注的id
      */
     @JsonIgnore
     @Column(name = "attention_id")
-    private Long attentionId;
+    private Integer attentionId;
 
     /**
      * 关注的备注
