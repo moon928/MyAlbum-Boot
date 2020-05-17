@@ -25,7 +25,7 @@ public abstract class AbstractBaseDomain implements Serializable {
     @Id
     @Column(name = "ID")
     @ApiModelProperty(value = "主键")
-    private Long id;
+    private Integer id;
 
 //    /** 创建人. */
 //    @Column(name = "CREATE_BY", updatable = false)

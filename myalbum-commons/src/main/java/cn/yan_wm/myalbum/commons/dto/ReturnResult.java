@@ -87,6 +87,7 @@ public class ReturnResult<T> implements Serializable {
         return this.object;
     }
 
+    @Override
     public String toString() {
         return "ReturnResult(message=" + this.getMessage() + ", statusCode=" + this.getStatusCode() + ", success=" + this.isSuccess() + ", object=" + this.getObject() + ")";
     }

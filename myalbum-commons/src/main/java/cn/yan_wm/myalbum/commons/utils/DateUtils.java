@@ -34,7 +34,6 @@ public class DateUtils {
     public String getMonth(int n){
         LocalDate today = LocalDate.now();
         today = today.minusMonths(n);
-//        today = today.minusDays(2);
         DateTimeFormatter formatters = DateTimeFormatter.ofPattern("yyyy-MM");
         String ny = formatters.format(today);
         return ny;
