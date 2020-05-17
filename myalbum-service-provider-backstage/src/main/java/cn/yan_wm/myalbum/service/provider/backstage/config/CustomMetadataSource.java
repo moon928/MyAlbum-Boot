@@ -37,16 +37,15 @@ public class CustomMetadataSource implements FilterInvocationSecurityMetadataSou
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         //获取登录人的权限
 //        Collection<? extends GrantedAuthority> authorities = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
-        System.out.println(requestUrl);
+//        System.out.println(requestUrl);
         List<SysPermission> permissionList = permissionService.getSysPermissionByZuulPrefix(zuulPrefix, (String) principal);
         String s = SecurityContextHolder.getContext().getAuthentication().toString();
         for (SysPermission menu : permissionList) {
             if (antPathMatcher.match("/"+menu.getServicePrefix()+"/"+menu.getUri(), requestUrl)) {
-
                 return SecurityConfig.createList(menu.getUri());
             }
         }
-        //没有匹配上的资源，都是登录访问
+        //没有匹配上的资源，都是权限不足访问
         return SecurityConfig.createList("ROLE_LOGIN");
     }
     @Override

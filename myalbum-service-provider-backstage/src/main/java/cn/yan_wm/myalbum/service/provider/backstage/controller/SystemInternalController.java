@@ -16,9 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 @RequestMapping(value = "/system",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-@Api(tags = "系统内部调用url")
+@Api(tags = "系统内部调用url",hidden = true)
 public class SystemInternalController {
-
 
     public ReturnResult getPermissionAndRole(String serviceName){
         return null;

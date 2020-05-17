@@ -19,7 +19,7 @@ public interface RolePermissionService{
      * @param roleId
      * @return
      */
-    Integer[] getPermissionIdsByRoleId(Long roleId);
+    Integer[] getPermissionIdsByRoleId(Integer roleId);
 
     /**
      * 通过角色id删除该角色的所有权限

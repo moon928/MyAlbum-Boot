@@ -25,7 +25,7 @@ import tk.mybatis.page.Page;
 @Slf4j
 @RestController
 @RequestMapping("/admin")
-@Api(tags = "管理员信息管理")
+@Api(tags = "管理员信息管理",hidden = true)
 public class SysAdminController {
     @Autowired
     private SysAdminService adminService;

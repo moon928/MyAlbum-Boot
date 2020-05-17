@@ -30,14 +30,14 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
         response.setContentType("application/json;charset=UTF-8");
         Map<String,Object> map = new HashMap<String,Object>(8);
         //401
-        map.put("code", HttpStatus.UNAUTHORIZED.value());
+        map.put("code", HttpStatus.FORBIDDEN.value());
         map.put("msg", "权限不足");
         map.put("data", accessDeniedException.getMessage());
         map.put("success", false);
         map.put("path", request.getServletPath());
         map.put("timestamp", String.valueOf(System.currentTimeMillis()));
 
-        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        response.setStatus(HttpServletResponse.SC_FORBIDDEN);
         response.getWriter().write(JSON.toJSONString(map));
     }
 }

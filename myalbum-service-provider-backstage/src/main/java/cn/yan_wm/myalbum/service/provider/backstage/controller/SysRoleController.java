@@ -39,9 +39,9 @@ public class SysRoleController {
     public ReturnResult<String> add(@RequestBody SysRole role){
         int i = roleService.add(role);
         if (i>0){
-            return ReturnResult.success();
+            return ReturnResult.success("添加成功");
         }else{
-            return ReturnResult.failure();
+            return ReturnResult.failure("添加失败");
         }
     }
 
@@ -53,9 +53,9 @@ public class SysRoleController {
     public ReturnResult deleteById(@PathVariable("id") Long id){
         int i = roleService.deleteById(id);
         if (i>0){
-            return ReturnResult.success();
+            return ReturnResult.success("删除成功");
         }else{
-            return ReturnResult.failure();
+            return ReturnResult.failure("删除失败");
         }
     }
 
@@ -124,11 +124,11 @@ public class SysRoleController {
             int delete = rolePermissionService.deletePermissionByRoleId(roleId);
             int update = rolePermissionService.addpermissionForRole(roleId, permissionIds);
             if (update>0){
-                return ReturnResult.success();
+                return ReturnResult.success("修改成功");
             }
         }catch (Exception e){
             log.error(e.getMessage(),e);
         }
-        return ReturnResult.failure();
+        return ReturnResult.failure("修改失败");
     }
 }

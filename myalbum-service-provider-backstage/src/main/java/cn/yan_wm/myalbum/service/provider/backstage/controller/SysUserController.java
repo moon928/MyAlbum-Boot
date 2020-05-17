@@ -168,9 +168,9 @@ public class SysUserController {
     ){
         int i = userRoleService.insert(userId,roleId);
         if (i>0){
-            return ReturnResult.success();
+            return ReturnResult.success("授权成功");
         }
-        return ReturnResult.failure();
+        return ReturnResult.failure("授权失败");
     }
 
     @ApiOperation(value = "删除用户授予的角色")

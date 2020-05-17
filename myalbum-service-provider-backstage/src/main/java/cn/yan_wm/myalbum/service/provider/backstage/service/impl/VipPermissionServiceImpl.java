@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.common.Mapper;
+
+import java.util.List;
+
 /**
  * @program: MyAlbum-Boot
  * @description: vip权限Service
@@ -54,6 +57,11 @@ public class VipPermissionServiceImpl extends BaseServiceImpl<TbVipPermission> i
         }else{
             return false;
         }
+    }
+
+    @Override
+    public List<TbVipPermission> listVipPermission() {
+        return null;
     }
 
 

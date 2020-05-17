@@ -33,12 +33,12 @@ public class SysPermissionController {
 
     @PostMapping("/save")
     @ApiOperation(value = "添加/修改SysPermission")
-    public ReturnResult<String> add(@ApiParam(name = "sysPermission",value = "SysPermission Model") SysPermission permission){
+    public ReturnResult<String> add(@RequestBody SysPermission permission){
         SysPermission save = (SysPermission) permissionService.save(permission);
         if (save != null){
-            return ReturnResult.success();
+            return ReturnResult.success("添加成功");
         }
-        return ReturnResult.failure();
+        return ReturnResult.failure("添加失败");
     }
 
     @PostMapping("/delete/{id}")
@@ -49,9 +49,9 @@ public class SysPermissionController {
     public ReturnResult<String> deleteById(@PathVariable("id") Integer id){
         int deleteNum = permissionService.deleteById(id);
         if (deleteNum>0){
-            return ReturnResult.success();
+            return ReturnResult.success("删除成功");
         }
-        return ReturnResult.failure();
+        return ReturnResult.failure("删除失败");
     }
 
     @GetMapping("/tree")
@@ -63,7 +63,7 @@ public class SysPermissionController {
         }catch (Exception e){
             log.error(e.getMessage(),e);
         }
-        return ReturnResult.failure();
+        return ReturnResult.failure("未获取到相应数据");
     }
 
     /**
@@ -80,14 +80,14 @@ public class SysPermissionController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "roleId", value = "权限id",required = true,paramType = "path", dataType = "Long")
     })
-    public ReturnResult<Integer[]> getRolePermissionByRoleId(@PathVariable("roleId") Long roleId){
+    public ReturnResult<Integer[]> getRolePermissionByRoleId(@PathVariable("roleId") Integer roleId){
         try{
             Integer[] permissionIds = rolePermissionService.getPermissionIdsByRoleId(roleId);
             return ReturnResult.success(permissionIds);
         }catch (Exception e){
             log.error(e.getMessage(),e);
         }
-        return ReturnResult.failure();
+        return ReturnResult.failure("未获取到相应数据");
     }
 
     @GetMapping("/getPermissionByZuulPrefix")
@@ -102,7 +102,7 @@ public class SysPermissionController {
         }catch (Exception e){
             log.error(e.getMessage(),e);
         }
-        return ReturnResult.failure();
+        return ReturnResult.failure("未获取到响应数据");
     }
 
 }

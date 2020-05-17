@@ -17,7 +17,7 @@ public interface RolePermissionMapper extends MyMapper<SysRolePermission> {
      * @param roleId
      * @return
      */
-    List<SysRolePermission> findPermissionIdsByRoleId(@Param("roleId") Long roleId);
+    List<SysRolePermission> findPermissionIdsByRoleId(@Param("roleId") Integer roleId);
 
     /**
      * 通过角色id删除所有的权限

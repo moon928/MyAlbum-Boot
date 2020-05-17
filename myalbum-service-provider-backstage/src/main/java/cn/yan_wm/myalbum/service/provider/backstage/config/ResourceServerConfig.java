@@ -62,9 +62,12 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         /*不知道问什么要加上这一句才不报错 ！！！！ */
 
         http
+                //// 禁用csrf
                 .csrf().disable()
                 .exceptionHandling()
+                //未登录处理，规定返回给前端未登陆的错误码数据格式
                 .authenticationEntryPoint(ajaxAuthenticationEntryPoint)
+                //权限不足处理，规定返回给前端权限不足错误码数据格式
                 .accessDeniedHandler(customAccessDeniedHandler)
                 .and()
                 .httpBasic();
@@ -73,7 +76,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
                     @Override
                     public <O extends FilterSecurityInterceptor> O postProcess(O o) {
+                        //动态规划各请求路径所需要的权限
                         o.setSecurityMetadataSource(mySecurityMetadataSource());
+                        //对各个权限角色的处理
                         o.setAccessDecisionManager(UrlAccessDecisionManager());
                         return o;
                     }

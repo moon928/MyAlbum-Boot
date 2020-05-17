@@ -5,9 +5,11 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -37,5 +39,24 @@ public class ProviderBackstageTest {
         DateTimeFormatter formatters = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String nyr = formatters.format(today);
         System.out.println(nyr);
+    }
+
+    @Test
+    public void testTime() throws ParseException {
+        SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
+        Date now = dateformat.parse("2020-05-12");
+
+        //创建Calendar实例
+        Calendar cal = Calendar.getInstance();
+
+        cal.setTime(now);   //设置当前时间
+        cal.add(Calendar.DATE, -365);  //在当前时间基础上加一年
+
+        System.out.println(cal.getTime());
+
+        cal.setTime(now);   //设置当前时间
+        cal.add(Calendar.YEAR, -1);  //在当前时间基础上加一年
+
+        System.out.println(cal.getTime());
     }
 }

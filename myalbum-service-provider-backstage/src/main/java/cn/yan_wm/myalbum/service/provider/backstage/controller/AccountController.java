@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/account")
-@Api(tags = "用户账号信息")
+@Api(tags = "用户账号信息", hidden = true)
 public class AccountController {
 
     @Autowired

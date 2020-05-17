@@ -30,7 +30,7 @@ public class RolePermissionServiceImpl extends BaseServiceImpl<SysRolePermission
         return rolePermissionMapper;
     }
     @Override
-    public Integer[] getPermissionIdsByRoleId(Long roleId) {
+    public Integer[] getPermissionIdsByRoleId(Integer roleId) {
         List<SysRolePermission> rolePermissions = rolePermissionMapper.findPermissionIdsByRoleId(roleId);
         Integer[] integers = new Integer[rolePermissions.size()];
         int i = 0;

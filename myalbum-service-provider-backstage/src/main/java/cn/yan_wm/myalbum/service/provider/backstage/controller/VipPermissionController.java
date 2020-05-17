@@ -40,6 +40,18 @@ public class VipPermissionController {
 //    public int delete(@PathVariable("id") Long id){
 //       return vipPermissionService.deleteById(id);
 //    }
+
+
+    public ReturnResult<TbVipPermission> listVip(){
+        try{
+
+        }catch (Exception e){
+            log.error(e.getMessage(),e);
+        }
+        return null;
+    }
+
+
     @ApiOperation(value = "更新VIP限制条件")
     @PutMapping(value = "/update")
     public ReturnResult<String> updatePwd(
@@ -47,9 +59,9 @@ public class VipPermissionController {
     ){
         int i = vipPermissionService.update(tbVipPermission);
         if (i>0){
-            return ReturnResult.success();
+            return ReturnResult.success("更新成功");
         }else {
-            return ReturnResult.failure();
+            return ReturnResult.failure("更新失败");
         }
     }
 

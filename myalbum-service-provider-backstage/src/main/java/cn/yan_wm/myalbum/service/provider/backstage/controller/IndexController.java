@@ -79,7 +79,7 @@ public class IndexController {
 
 
     @PostMapping("/addFrequency")
-    @ApiOperation("添加访问次数")
+    @ApiOperation("添加访问次数(无需权限)")
     public ReturnResult addFrequency(){
         try {
             DateUtils dateUtils = new DateUtils();
@@ -119,16 +119,17 @@ public class IndexController {
                     list = backstageService.getIndexPageViewsMonth(month);
                 }else {
                     log.error("type==2时，month不允许为空");
-                    return null;
+                    return ReturnResult.failure("type==2时，month不允许为空");
                 }
             }else{
                 log.error("type的类型不正确 周-1，月-2");
-                return null;
+                return ReturnResult.failure("ttype的类型不正确 周-1，月-2");
             }
             return ReturnResult.success(list);
         }catch (Exception e){
             log.error(e.getMessage(),e);
         }
-        return ReturnResult.failure();
+        return ReturnResult.failure("为获取到相应的数据");
     }
+
 }

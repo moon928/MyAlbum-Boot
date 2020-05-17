@@ -112,6 +112,7 @@
 
   <select id="getTotal" resultType="Integer" >
     select COUNT(*) from sys_user_role
+    where role_id != 10
   </select>
 
   <select id="getVipNumByRoleId" resultType="Integer">
