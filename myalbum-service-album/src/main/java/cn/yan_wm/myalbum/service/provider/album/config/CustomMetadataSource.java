@@ -32,11 +32,11 @@ public class CustomMetadataSource implements FilterInvocationSecurityMetadataSou
     public Collection<ConfigAttribute> getAttributes(Object o) {
         String requestUrl = ((FilterInvocation) o).getRequestUrl();
         //获取登陆的用户名
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String principal = SecurityContextHolder.getContext().getAuthentication().getName();
         //获取登录人的权限
 //        Collection<? extends GrantedAuthority> authorities = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
         System.out.println(requestUrl);
-        ReturnResult<List<SysPermission>> returnResult = backstageFeignService.getSysPermissionByZuulPrefix(zuulPrefix, (String) principal);
+        ReturnResult<List<SysPermission>> returnResult = backstageFeignService.getSysPermissionByZuulPrefix(zuulPrefix, principal);
         if (returnResult != null && returnResult.getObject().size()>0) {
             for (SysPermission menu : returnResult.getObject()) {
                 if (antPathMatcher.match("/" + menu.getServicePrefix() + "/" + menu.getUri(), requestUrl)) {

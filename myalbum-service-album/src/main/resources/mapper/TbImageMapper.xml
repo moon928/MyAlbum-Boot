@@ -23,7 +23,7 @@
     select * from tb_image
   </select>
 
-  <insert id="insertImages" useGeneratedKeys="true" keyProperty="id" parameterType="java.util.List">
+  <insert id="insertImages" useGeneratedKeys="true" keyProperty="id" parameterType="java.util.List" >
     insert into tb_image(user_id,url,file_id,group_name,file_name,visible_permission_id,group_id,create_time) values
     <foreach collection="imageList" item="item" index="index" separator=",">
       (#{item.userId},#{item.url},#{item.fileId},#{item.groupName},#{item.fileName},#{item.visiblePermissionId},#{item.groupId},#{item.createTime})
@@ -44,4 +44,13 @@
       #{id}
     </foreach>
   </delete>
+
+  <select id="listImageNyFileId" resultMap="BaseResultMap">
+    select * from tb_image
+    where file_id = #{fileId}
+  </select>
+
+  <update id="updateImageToAlbum">
+      update tb_image set group_id = #{albumId} where id= #{imageId}
+  </update>
 </mapper>

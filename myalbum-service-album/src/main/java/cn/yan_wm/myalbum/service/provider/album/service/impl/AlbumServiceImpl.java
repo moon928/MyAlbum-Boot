@@ -72,4 +72,9 @@ public class AlbumServiceImpl extends BaseServiceImpl<TbGroup> implements AlbumS
         return i;
     }
 
+    @Override
+    public int countImageByAlbumId(Integer albumId) {
+        return groupMapper.countImageByAlbumId(albumId);
+    }
+
 }

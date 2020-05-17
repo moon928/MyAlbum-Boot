@@ -41,4 +41,24 @@ public interface ImageService {
      * @return
      */
     DataSet<TbImage> pageImageByAlbumId(Integer albumId, Page page);
+
+    /**
+     * 通过 fileId 查询图片
+     * @param fileId
+     * @return
+     */
+    List<TbImage> listImageByFileId(String fileId);
+
+    /**
+     * 图片总量
+     * @return
+     */
+    int countImage();
+
+    /**
+     * 移动图片分组
+     * @param albumId
+     * @param imageId
+     */
+    int updateImageToAlbum(Integer albumId,Integer imageId);
 }

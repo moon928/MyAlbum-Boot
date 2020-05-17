@@ -43,4 +43,11 @@ public interface AlbumService {
      */
     int update(TbGroup tbGroup);
 
+    /**
+     * 通过相册id 查询该相册的图片总数
+     * @param albumId
+     * @return
+     */
+    int countImageByAlbumId(Integer albumId);
+
 }

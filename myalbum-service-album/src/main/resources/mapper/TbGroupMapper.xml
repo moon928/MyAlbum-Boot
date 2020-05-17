@@ -28,4 +28,9 @@
     </set>
     WHERE id = #{id}
   </update>
+
+  <select id="countImageByAlbumId" resultType="java.lang.Integer">
+    select count(*) from tb_image
+    where group_id = #{albumId}
+  </select>
 </mapper>

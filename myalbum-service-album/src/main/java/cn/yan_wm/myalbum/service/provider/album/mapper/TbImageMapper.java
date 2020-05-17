@@ -30,4 +30,18 @@ public interface TbImageMapper extends MyMapper<TbImage> {
      */
     int deleteImageByIds(@Param("imageIds") Integer[] imageIds);
 
+    /**
+     * 通过 fileId 查询图片
+     * @param fileId
+     * @return
+     */
+    List<TbImage> listImageNyFileId(String fileId);
+
+
+    /**
+     * 移动图片分组
+     * @param albumId
+     * @param imageId
+     */
+    int updateImageToAlbum(@Param("albumId") Integer albumId,@Param("imageId") Integer imageId);
 }

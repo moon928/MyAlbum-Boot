@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yan_wm.myalbum.service.provider.album.mapper.TbUserInfoExtendMapper">
+  <resultMap id="BaseResultMap" type="cn.yan_wm.myalbum.commons.domainExtend.user.UserInfoExtend">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+    <result column="gender_id" jdbcType="INTEGER" property="genderId" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <association property="userResource" fetchType="eager" column="id" select="cn.yan_wm.myalbum.service.provider.album.mapper.TbUserResourceExtendMapper.findByUserId"/>
+    <association property="vip" fetchType="eager" column="id" select="cn.yan_wm.myalbum.service.provider.album.mapper.TbVipExtendMapper.findByUserId"/>
+  </resultMap>
+
+  <select id="findById" resultMap="BaseResultMap">
+    SELECT * FROM tb_user_info WHERE id = #{id}
+  </select>
+
+
+ <select id="countUser">
+   select count(*) from tb_user_info
+ </select>
+
+  <update id="updateUserAvatar">
+    update tb_user_info set avatar = #{avatar}
+    where id = #{userId}
+  </update>
+</mapper>

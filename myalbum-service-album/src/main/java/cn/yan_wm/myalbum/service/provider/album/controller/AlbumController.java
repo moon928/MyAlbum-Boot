@@ -3,12 +3,12 @@ package cn.yan_wm.myalbum.service.provider.album.controller;
 import cn.yan_wm.myalbum.commons.domain.SysUser;
 import cn.yan_wm.myalbum.commons.domain.TbGroup;
 import cn.yan_wm.myalbum.commons.domain.TbImage;
+import cn.yan_wm.myalbum.commons.domainExtend.album.TbGroupDto;
 import cn.yan_wm.myalbum.commons.domainExtend.backstage.Account;
 import cn.yan_wm.myalbum.commons.domainExtend.backstage.SysUserExtend;
 import cn.yan_wm.myalbum.commons.dto.ReturnResult;
 import cn.yan_wm.myalbum.commons.model.DataSet;
 import cn.yan_wm.myalbum.service.provider.album.service.*;
-import cn.yan_wm.myalbum.service.provider.album.util.LoginUserUtile;
 import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -20,6 +20,7 @@ import tk.mybatis.page.Page;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
@@ -48,15 +49,32 @@ public class AlbumController {
 
     @GetMapping("/getMyAlbum")
     @ApiOperation(value = "获取我的相册（分页）")
-    public ReturnResult<DataSet<TbGroup>> findMyAlbum(@ApiParam(name = "分页模型") @ModelAttribute Page page){
+    public ReturnResult<DataSet<TbGroupDto>> findMyAlbum(@ApiParam(name = "分页模型") @ModelAttribute Page page){
         try{
             String principal = SecurityContextHolder.getContext().getAuthentication().getName();
             ReturnResult<SysUserExtend> result = backstageFeignService.findByUsername(principal);
+            DataSet<TbGroupDto> dataSet = new DataSet<TbGroupDto>();
+            List<TbGroupDto> groupDtoList = new ArrayList<TbGroupDto>();
             if (result != null && result.isSuccess() && result.getObject() != null){
                 //自己能查看所有的可见权限的相册
                 Integer[] visiblePermissionIds = {1,2,3};
                 DataSet<TbGroup> myAlbum = albumService.pageAlbumByUserId(result.getObject().getId(), page,visiblePermissionIds);
-                return ReturnResult.success(myAlbum);
+
+                for (TbGroup item: myAlbum.getRows()){
+                    //获取相册的所拥有的相片总数
+                    TbGroupDto tbGroupDto = new TbGroupDto();
+                    tbGroupDto.setId(item.getId());
+                    tbGroupDto.setName(item.getName());
+                    tbGroupDto.setUserId(item.getUserId());
+                    tbGroupDto.setVisiblePermissionId(item.getVisiblePermissionId());
+                    tbGroupDto.setBackground(item.getBackground());
+                    tbGroupDto.setCreateTime(item.getCreateTime());
+                    int imageNUm = albumService.countImageByAlbumId(item.getId());
+                    tbGroupDto.setImageNum(imageNUm);
+                    groupDtoList.add(tbGroupDto);
+                }
+                dataSet.setRows(groupDtoList);
+                return ReturnResult.success(dataSet);
             }else{
                 return ReturnResult.failure("BACKSTAGE 服务异常");
             }
@@ -107,6 +125,9 @@ public class AlbumController {
     @ApiOperation(value = "更新相册",notes = "json格式")
     public ReturnResult updateAlbum(@RequestBody TbGroup tbGroup){
         try{
+            if (StringUtils.isNotBlank(tbGroup.getBackground())){
+                tbGroup.setBackground(tbGroup.getBackground().substring(4,tbGroup.getBackground().length()-2));
+            }
             int i = albumService.update(tbGroup);
             if (i>0){
                 return ReturnResult.success("更新成功");
@@ -122,7 +143,7 @@ public class AlbumController {
     @GetMapping("/pageImageByAlbumId")
     @ApiOperation(value = "分页查询相册图片")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "albumId", value = "相册ID", required = true, paramType = "query", dataType = "Integer")
+            @ApiImplicitParam(name = "albumId", value = "相册ID", required = true, paramType = "query", dataType = "Long")
     })
     public ReturnResult<DataSet<TbImage>> PageImageByAlbumId(@RequestParam("albumId") Integer albumId,@ApiParam(name = "分页模型") @ModelAttribute Page page){
         try{

@@ -78,6 +78,25 @@
             <version>${project.parent.version}</version>
         </dependency>
         <!-- Projects End -->
+        <!-- FastDFS Begin -->
+        <dependency>
+            <groupId>org.csource</groupId>
+            <artifactId>fastdfs-client-java</artifactId>
+            <version>1.27-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <!--            org.apache.commons -->
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>1.3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.yan_wm</groupId>
+            <artifactId>myalbum-service-provider-user</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- FastDFS End -->
     </dependencies>
 
     <build>

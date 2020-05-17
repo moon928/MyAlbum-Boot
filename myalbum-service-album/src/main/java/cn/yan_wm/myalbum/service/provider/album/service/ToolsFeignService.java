@@ -17,7 +17,7 @@ import java.util.List;
  * @author: yan_zt
  * @create: 2020-03-03 15:00
  */
-@FeignClient(value = "MYALBUM-TOOLS",fallback = ToolsFeignServiceFallback.class,configuration={FeignConfig.class})
+@FeignClient(value = "MYALBUM-SERVICE-TOOLS",fallback = ToolsFeignServiceFallback.class,configuration={FeignConfig.class})
 public interface ToolsFeignService {
     @PostMapping(value = "/fastDFS/upload")
     public ReturnResult<List<FastDFSFile>> upload(@RequestBody List<FastDFSFile> fastDFSFileList);

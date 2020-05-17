@@ -24,6 +24,7 @@ import java.util.List;
  */
 @Slf4j
 @RestController
+@Api(tags = "查看他人相册管理")
 @RequestMapping(value = "/othersAlbum",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class OthersAlbumController {
 
@@ -42,7 +43,7 @@ public class OthersAlbumController {
     @GetMapping("/pageOthersAlbum")
     @ApiOperation(value = "查看他人相册")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "othersId", value = "他人的id", required = true, paramType = "query", dataType = "Integer")
+            @ApiImplicitParam(name = "othersId", value = "他人的id", required = true, paramType = "query", dataType = "Long")
     })
     public ReturnResult<DataSet<TbGroup>> listOthersAlbum(@RequestParam("othersId") Integer othersId, @ApiParam(name = "分页模型") @ModelAttribute Page page){
         try{
@@ -67,10 +68,10 @@ public class OthersAlbumController {
     }
 
     @GetMapping("/pageImageByAlbumId")
-    @ApiOperation(value = "查看他人相册")
+    @ApiOperation(value = "通过相册id查看他人相册图片")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "othersId", value = "他人的id", required = true, paramType = "query", dataType = "Integer"),
-            @ApiImplicitParam(name = "albumId", value = "他人相册id", required = true, paramType = "query", dataType = "Integer")
+            @ApiImplicitParam(name = "othersId", value = "他人的id", required = true, paramType = "query", dataType = "Long"),
+            @ApiImplicitParam(name = "albumId", value = "他人相册id", required = true, paramType = "query", dataType = "Long")
     })
     public ReturnResult<DataSet<TbImage>> listImageByAlbumId(@RequestParam("othersId") Integer othersId,@RequestParam("albumId") Integer albumId, @ApiParam(name = "分页模型") @ModelAttribute Page page){
         try{
