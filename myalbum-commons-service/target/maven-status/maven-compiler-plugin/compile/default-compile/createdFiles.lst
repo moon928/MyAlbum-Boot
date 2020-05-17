@@ -1,3 +1,14 @@
 cn\yan_wm\myalbum\commons\service\BaseCrudService.class
+cn\yan_wm\myalbum\commons\service\framework\translate\TranslateService.class
+cn\yan_wm\myalbum\commons\service\framework\base\SystemClock.class
+cn\yan_wm\myalbum\commons\service\util\PermissionUtils.class
+cn\yan_wm\myalbum\commons\service\framework\base\BaseServiceImpl.class
+tk\mybatis\mapper\MyMapper.class
+tk\mybatis\page\Page.class
 cn\yan_wm\myalbum\commons\service\impl\BaseCrudServiceImpl.class
+cn\yan_wm\myalbum\commons\service\framework\base\IdWorker.class
+cn\yan_wm\myalbum\commons\service\config\ControllerAopInterceptor.class
+cn\yan_wm\myalbum\commons\service\framework\base\OperContext.class
+cn\yan_wm\myalbum\commons\service\framework\base\SystemClock$InstanceHolder.class
+cn\yan_wm\myalbum\commons\service\framework\base\SystemClock$1.class
 cn\yan_wm\myalbum\commons\service\config\Swagger2Configuration.class

@@ -1,3 +1,12 @@
-C:\Users\Yan\Desktop\MyAlbum\myalbum-commons-service\src\main\java\cn\yan_wm\myalbum\commons\service\config\Swagger2Configuration.java
-C:\Users\Yan\Desktop\MyAlbum\myalbum-commons-service\src\main\java\cn\yan_wm\myalbum\commons\service\BaseCrudService.java
-C:\Users\Yan\Desktop\MyAlbum\myalbum-commons-service\src\main\java\cn\yan_wm\myalbum\commons\service\impl\BaseCrudServiceImpl.java
+C:\Users\Yan\Desktop\Graduation Project\MyAlbum-Boot\myalbum-commons-service\src\main\java\cn\yan_wm\myalbum\commons\service\framework\base\IdWorker.java
+C:\Users\Yan\Desktop\Graduation Project\MyAlbum-Boot\myalbum-commons-service\src\main\java\tk\mybatis\mapper\MyMapper.java
+C:\Users\Yan\Desktop\Graduation Project\MyAlbum-Boot\myalbum-commons-service\src\main\java\cn\yan_wm\myalbum\commons\service\framework\base\SystemClock.java
+C:\Users\Yan\Desktop\Graduation Project\MyAlbum-Boot\myalbum-commons-service\src\main\java\cn\yan_wm\myalbum\commons\service\framework\translate\TranslateService.java
+C:\Users\Yan\Desktop\Graduation Project\MyAlbum-Boot\myalbum-commons-service\src\main\java\tk\mybatis\page\Page.java
+C:\Users\Yan\Desktop\Graduation Project\MyAlbum-Boot\myalbum-commons-service\src\main\java\cn\yan_wm\myalbum\commons\service\config\Swagger2Configuration.java
+C:\Users\Yan\Desktop\Graduation Project\MyAlbum-Boot\myalbum-commons-service\src\main\java\cn\yan_wm\myalbum\commons\service\framework\base\BaseServiceImpl.java
+C:\Users\Yan\Desktop\Graduation Project\MyAlbum-Boot\myalbum-commons-service\src\main\java\cn\yan_wm\myalbum\commons\service\framework\base\OperContext.java
+C:\Users\Yan\Desktop\Graduation Project\MyAlbum-Boot\myalbum-commons-service\src\main\java\cn\yan_wm\myalbum\commons\service\BaseCrudService.java
+C:\Users\Yan\Desktop\Graduation Project\MyAlbum-Boot\myalbum-commons-service\src\main\java\cn\yan_wm\myalbum\commons\service\impl\BaseCrudServiceImpl.java
+C:\Users\Yan\Desktop\Graduation Project\MyAlbum-Boot\myalbum-commons-service\src\main\java\cn\yan_wm\myalbum\commons\service\util\PermissionUtils.java
+C:\Users\Yan\Desktop\Graduation Project\MyAlbum-Boot\myalbum-commons-service\src\main\java\cn\yan_wm\myalbum\commons\service\config\ControllerAopInterceptor.java

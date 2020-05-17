@@ -1,6 +1,6 @@
 spring:
   application:
-    name: myalbum-eureka
+    name: MYALBUM-EUREKA
   boot:
     admin:
       client:
@@ -11,6 +11,9 @@ server:
 
 eureka:
   instance:
+#    metadata-map:
+#      user.name: "admin"         #These two are needed so that the server
+#      user.password: "admin"
     hostname: 127.0.0.1
     # 优先使用IP地址方式进行注册服务
     prefer-ip-address: true
