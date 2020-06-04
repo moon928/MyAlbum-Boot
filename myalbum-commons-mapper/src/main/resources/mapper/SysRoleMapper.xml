@@ -11,6 +11,7 @@
     <result column="lower_limit" jdbcType="INTEGER" property="lowerLimit" />
     <result column="upper_limit" jdbcType="INTEGER" property="upperLimit" />
     <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="level" jdbcType="INTEGER" property="level" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="create_by" jdbcType="VARCHAR" property="createBy" />
     <result column="update_time" jdbcType="VARCHAR" property="updateTime" />

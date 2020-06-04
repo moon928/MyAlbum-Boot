@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: MYALBUM-SERVICE-SECURITY-OAUTH2
   zipkin:
     base-url: http://39.105.137.236:9411
   redis:
@@ -11,8 +13,6 @@ spring:
         max-active: 8
         max-idle: 8
         min-idle: 0
-  application:
-    name: myalbum-service-security-oauth2
   datasource:
     druid:
       url: jdbc:mysql://47.106.199.167:3306/myalbum_oauth2?useUnicode=true&characterEncoding=utf-8&useSSL=false
@@ -27,7 +27,6 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss #日期格式化
     time-zone: GMT+8 #时区加8
     default-property-inclusion: non_null  #屏蔽掉为null的字段
-
   boot:
     admin:
       client:
@@ -35,7 +34,6 @@ spring:
         instance:
           health-url: http://101.132.139.17:10010/actuator/info
           service-url: http://101.132.139.17:10010
-
 server:
   port: 10010
 
@@ -64,3 +62,21 @@ management:
 feign:
   hystrix:
     enabled: true
+
+#全局配置
+# 请求连接的超时时间 默认的时间为 1 秒
+ribbon:
+  ReadTimeout: 15000 #获取或设置读取操作未完成时发生超时之前的毫秒数
+  ConnectTimeout: 15000 #客户端等待与服务器建立连接的时间（以毫秒计）
+#  MaxAutoRetries: 1  #在同一台服务器上重试的最大次数
+#  MaxAutoRetriesNextServer: 2 #要重试的下一个服务器的最大数量
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          strategy: SEMAPHORE
+          thread:
+            timeoutInMilliseconds: 7200000 #断路器的超时时间需要大于ribbon的超时时间，不然不会触发重试。
