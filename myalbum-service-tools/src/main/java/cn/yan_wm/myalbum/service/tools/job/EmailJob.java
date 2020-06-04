@@ -21,17 +21,15 @@ import java.util.Map;
  */
 @Service
 public class EmailJob {
-    @Value("${spring.mail.username}")
-    private String SPRING_EMAIL_USERNAME;
 
     @Autowired
     private JavaMailSender javaMailSender;
 
+    @Value("${spring.mail.username}")
+    private String SPRING_EMAIL_USERNAME;
     @RabbitListener(queues = "registration-code")
     public void receive(String  json){
-        System.out.println("---------------");
         System.out.println(json);
-        System.out.println("------------------");
         Map<String,String> map;
         try {
             map = MapperUtils.json2pojo(json, Map.class);

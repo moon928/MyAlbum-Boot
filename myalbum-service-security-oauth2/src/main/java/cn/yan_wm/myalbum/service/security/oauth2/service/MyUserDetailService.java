@@ -61,11 +61,11 @@ public class MyUserDetailService implements UserDetailsService {
             //角色必须是ROLE_开头，可以在数据库中设置
             GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(role.getRoleName());
             grantedAuthorities.add(grantedAuthority);
-            //获取权限
-//            for (SysPermission permission : role.getPermissions()) {
-//                GrantedAuthority authority = new SimpleGrantedAuthority(permission.getUri());
-//                grantedAuthorities.add(authority);
-//            }
+//            获取权限
+            for (SysPermission permission : role.getPermissions()) {
+                GrantedAuthority authority = new SimpleGrantedAuthority(permission.getUri());
+                grantedAuthorities.add(authority);
+            }
         }
         User user = new User(account.getId(),account.getUsername(), account.getPassword(),account.getStatus(),
                 enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, grantedAuthorities);

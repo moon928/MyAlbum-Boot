@@ -11,7 +11,7 @@ import org.springframework.scheduling.annotation.Async;
 public interface SendVerificationCodeService {
 
     /**
-     * 发送验证码
+     * 异步发送验证码
      * @param email
      * @param code
      */

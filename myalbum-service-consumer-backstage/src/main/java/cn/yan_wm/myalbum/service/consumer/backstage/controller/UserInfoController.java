@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("user")
+@RequestMapping(value = "/sysUser",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class UserInfoController extends AbstractBaseController {
     @Autowired
     private UserService userService;
@@ -33,10 +33,11 @@ public class UserInfoController extends AbstractBaseController {
     @GetMapping(value = "getById/{id}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public AbstractBaseResult getUserInfoById(@PathVariable("id") Long id){
         SysUserExtend sysUserExtend = userService.findById(id);
-        if (sysUserExtend!=null)
+        if (sysUserExtend!=null){
             if (sysUserExtend.getId() == -1L){
                 return error(HttpStatus.SERVICE_UNAVAILABLE.value(),"网络不给力啊！","MYALBUM-SERVICE-PROVIDER-BACKSTAGE 服务熔断");
             }
+        }
         return  success(request.getRequestURI(),sysUserExtend);
     }
 
@@ -55,14 +56,14 @@ public class UserInfoController extends AbstractBaseController {
             @ApiImplicitParam(name = "num", value = "页码", required = true, paramType = "path", dataType = "int"),
             @ApiImplicitParam(name = "size", value = "条数", required = true, paramType = "path", dataType = "int")
     }) //多个请求参数
-    @GetMapping(value = "page/{num}/{size}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @GetMapping(value = "page/{num}/{size}")
     public AbstractBaseResult page(
             @PathVariable int num,
             @PathVariable int size
     ){
         PageInfo<SysUser> page = userService.page(num,size);
         if(page != null){
-            return success(request.getRequestURI(),page.getTotal(),page.getPages(),page.getPageNum(),page.getPageSize(),page.getList());
+            return success(request.getRequestURI(),page.getTotal(), page.getPages(),page.getPageNum(),page.getPageSize(),page.getList());
         }else{
             return error(HttpStatus.SERVICE_UNAVAILABLE.value(),"Provider-Backstage Dwon !",null);
         }

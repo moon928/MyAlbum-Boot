@@ -28,16 +28,12 @@ public class CustomMetadataSource implements FilterInvocationSecurityMetadataSou
 
     @Value("${myalbum.zuulPerfix}")
     private String zuulPrefix;
-
     AntPathMatcher antPathMatcher = new AntPathMatcher();
     @Override
     public Collection<ConfigAttribute> getAttributes(Object o) {
         String requestUrl = ((FilterInvocation) o).getRequestUrl();
         //获取登陆的用户名
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        //获取登录人的权限
-//        Collection<? extends GrantedAuthority> authorities = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
-//        System.out.println(requestUrl);
         List<SysPermission> permissionList = permissionService.getSysPermissionByZuulPrefix(zuulPrefix, (String) principal);
         String s = SecurityContextHolder.getContext().getAuthentication().toString();
         for (SysPermission menu : permissionList) {

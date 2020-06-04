@@ -74,7 +74,6 @@ public class ImageController {
             if (principal != null){
                 result1 = backstageFeignService.findByUsername((String) principal);
                 if (result1 != null && result1.getObject() != null){
-                    //---------------------------
                     for (FastDFSFile item: fastDFSFileList){
                         String imgbase = item.getBase64();
                         imgbase=imgbase.substring(imgbase.indexOf(",")+1, imgbase.length());

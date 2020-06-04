@@ -4,6 +4,6 @@
 #  cloud:
 #    config:
 #      uri: http://${config-server-host}:8888
-#      name: album
+#      name: backstage
 #      label: master
 #      profile: ${spring-protive-active}

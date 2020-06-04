@@ -21,7 +21,7 @@
   </select>
 
 
- <select id="countUser">
+ <select id="countUser" resultType="java.lang.Integer">
    select count(*) from tb_user_info
  </select>
 

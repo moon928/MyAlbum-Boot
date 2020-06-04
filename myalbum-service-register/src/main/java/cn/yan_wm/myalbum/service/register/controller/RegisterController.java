@@ -58,7 +58,7 @@ public class RegisterController {
             if (returnResult != null){ //验证 前端传来的验证码与redis存储的是否一至
                 String json = returnResult.getObject();
                 if (StringUtils.isEmpty(json)){
-                    return ReturnResult.failure("验证码不正确");
+                    return ReturnResult.failure("验证码过期");
                 }
                 String redisCode = MapperUtils.json2pojo(json,String.class);
                 if(!redisCode.equals(code)){

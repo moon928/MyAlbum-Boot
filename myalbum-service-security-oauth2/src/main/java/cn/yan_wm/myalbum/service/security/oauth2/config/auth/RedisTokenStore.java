@@ -87,7 +87,7 @@ public class RedisTokenStore implements TokenStore {
         return this.serializationStrategy.deserializeString(bytes);
     }
 
-    /*获取通过token*/
+    /*获取token*/
     @Override
     public OAuth2AccessToken getAccessToken(OAuth2Authentication authentication) {
         String key = this.authenticationKeyGenerator.extractKey(authentication);

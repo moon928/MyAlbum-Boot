@@ -10,7 +10,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication(scanBasePackages = "cn.yan_wm.myalbum",exclude = DataSourceAutoConfiguration.class)
 @EnableEurekaClient
 @EnableFeignClients
-@EnableSwagger2 //开启swagger2
+@EnableSwagger2
 public class MyAlbumServiceConsumerBackstageApplication {
     public static void main(String[] args) {
         SpringApplication.run(MyAlbumServiceConsumerBackstageApplication.class,args);

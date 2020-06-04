@@ -37,11 +37,6 @@ public class User implements UserDetails, CredentialsContainer {
     private final boolean credentialsNonExpired;
     private final boolean enabled;
 
-
-    public User(Integer id,String username, String password,int status, Collection<? extends GrantedAuthority> authorities) {
-        this(id,username, password, status,true, true, true, true, authorities);
-    }
-
     public User(Integer id,String username, String password,int status, boolean enabled, boolean accountNonExpired, boolean credentialsNonExpired, boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities) {
         if (id != null && username != null && !"".equals(username) && password != null) {
             this.id = id;
@@ -58,6 +53,9 @@ public class User implements UserDetails, CredentialsContainer {
         }
     }
 
+    public User(Integer id,String username, String password,int status, Collection<? extends GrantedAuthority> authorities) {
+        this(id,username, password, status,true, true, true, true, authorities);
+    }
     public Collection<GrantedAuthority> getAuthorities() {
         return this.authorities;
     }

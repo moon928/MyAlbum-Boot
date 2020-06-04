@@ -4,7 +4,10 @@ spring:
   boot:
     admin:
       client:
-        url: http://47.106.199.167:8084
+        url: http://47.113.101.229:8084
+        instance:
+          health-url: http://47.106.199.167:8761/actuator/info
+          service-url: http://47.106.199.167:8761
 
 server:
   port: 8761

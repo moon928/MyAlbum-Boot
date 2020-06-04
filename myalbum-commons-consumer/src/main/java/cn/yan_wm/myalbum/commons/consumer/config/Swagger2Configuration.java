@@ -22,7 +22,7 @@ import static org.hibernate.validator.internal.util.CollectionHelper.newArrayLis
 public class Swagger2Configuration {
     // @Value("${config.oauth2.accessTokenUri}")
     private String accessTokenUri ="http://39.105.137.236:10000/auth/oauth/token";
-//    private String accessTokenUri ="http://localhost:10000/auth/oauth/token";
+//    private String accessTokenUri ="http://localhost:10000/auth";
 //    private String accessTokenUri ="http://192.168.50.2:10000/auth/oauth/token";
 //    @Bean
 //    public Docket createRestApi() {
@@ -100,24 +100,24 @@ public class Swagger2Configuration {
         return Collections.singletonList(new SecurityReference("oauth2", authorizationScopes));
     }
 
-//    @Bean
-//    public SecurityConfiguration security() {
-//        return new SecurityConfiguration
-//                ("client", "secret", "", "", "Bearer access token", ApiKeyVehicle.HEADER, HttpHeaders.AUTHORIZATION,"");
-//    }
-
     @Bean
-    SecurityConfiguration security() {
-        return SecurityConfigurationBuilder.builder()
-                .clientId("client")
-                .clientSecret("secret")
-                .realm("test-app-realm")
-                .appName("test-app")
-                .scopeSeparator(",")
-                .additionalQueryStringParams(null)
-                .useBasicAuthenticationWithAccessCodeGrant(false)
-                .build();
+    public SecurityConfiguration security() {
+        return new SecurityConfiguration
+                ("client", "secret", "", "", "Bearer access token", ApiKeyVehicle.HEADER, HttpHeaders.AUTHORIZATION,"");
     }
+
+//    @Bean
+//    SecurityConfiguration security() {
+//        return SecurityConfigurationBuilder.builder()
+//                .clientId("client")
+//                .clientSecret("secret")
+//                .realm("test-app-realm")
+//                .appName("test-app")
+//                .scopeSeparator(",")
+//                .additionalQueryStringParams(null)
+//                .useBasicAuthenticationWithAccessCodeGrant(false)
+//                .build();
+//    }
 
     @Bean
     UiConfiguration uiConfig() {

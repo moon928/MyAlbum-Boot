@@ -147,25 +147,22 @@ public class ShareController {
                 ReturnResult<SysUserExtend> result = backstageFeignService.findByUsername(principal);
                 if (result != null && result.isSuccess() && result.getObject() != null) {
                     DataSet<ShareDto> resultDto = new DataSet<ShareDto>();
-//                    List<Integer> permissionIds = new ArrayList<Integer>(8);
+                    List<Integer> permissionIds = new ArrayList<Integer>(8);
                     DataSet<TbImageShow> shareList = new DataSet<TbImageShow>();
-//                    permissionIds.add(3);
+                    permissionIds.add(3);
                     if (mark == 0) {
                         shareList = shareService.pageShareByUserId(null, page);
                     }else if (mark == 1){
-//                        permissionIds.add(1);
-//                        permissionIds.add(2);
+                        permissionIds.add(1);
+                        permissionIds.add(2);
                         shareList = shareService.pageShareByUserId(result.getObject().getId(), page);
                     }else if (mark == 2){
-//                        permissionIds.add(2);
+                        permissionIds.add(2);
                         shareList = shareService.pageShareByUserId(otherId, page);
                     }else{
                         return ReturnResult.failure("mark 标志不正确");
                     }
                     List<ShareDto> data = new ArrayList<ShareDto>();
-//                    if (shareList.getRows().size() == 0){
-//                        return ReturnResult.failure("没找到任何分享");
-//                    }
                     for (TbImageShow item : shareList.getRows()){
                         //获取评论数
                         int commentNum = commentService.countCommentByshareId(item.getId());
