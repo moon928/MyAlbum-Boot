@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="ES6" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/myalbum-dependencies/pom.xml" />
+        <option value="$PROJECT_DIR$/myalbum-admin-server/pom.xml" />
+        <option value="$PROJECT_DIR$/myalbum-commons/pom.xml" />
+        <option value="$PROJECT_DIR$/myalbum-commons-consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/myalbum-commons-domain/pom.xml" />
+        <option value="$PROJECT_DIR$/myalbum-commons-service/pom.xml" />
+        <option value="$PROJECT_DIR$/myalbum-config/pom.xml" />
+        <option value="$PROJECT_DIR$/myalbum-database/pom.xml" />
+        <option value="$PROJECT_DIR$/myalbum-eureka/pom.xml" />
+        <option value="$PROJECT_DIR$/myalbum-service-consumer-backstage/pom.xml" />
+        <option value="$PROJECT_DIR$/myalbum-service-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/myalbum-service-provider-backstage/pom.xml" />
+        <option value="$PROJECT_DIR$/myalbum-service-register/pom.xml" />
+        <option value="$PROJECT_DIR$/myalbum-service-security-oauth2/pom.xml" />
+        <option value="$PROJECT_DIR$/myalbum-service-tools/pom.xml" />
+        <option value="$PROJECT_DIR$/myalbum-zipkin/pom.xml" />
+        <option value="$PROJECT_DIR$/myalbum-service-provider-user/pom.xml" />
+        <option value="$PROJECT_DIR$/myalbum-service-album/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_13" default="false" project-jdk-name="1.8 .0_45" project-jdk-type="JavaSDK" />
+</project>

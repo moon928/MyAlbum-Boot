@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="myalbum-zipkin" />
+        <module name="myalbum-service-gateway" />
+        <module name="myalbum-service-tools" />
+        <module name="myalbum-admin-server" />
+        <module name="myalbum-service-provider-backstage" />
+        <module name="myalbum-database" />
+        <module name="myalbum-service-provider-user" />
+        <module name="myalbum-eureka" />
+        <module name="myalbum-service-album" />
+        <module name="myalbum-service-security-oauth2" />
+        <module name="myalbum-config" />
+        <module name="myalbum-commons-consumer" />
+        <module name="myalbum-service-consumer-backstage" />
+        <module name="myalbum-commons" />
+        <module name="myalbum-service-register" />
+        <module name="myalbum-commons-domain" />
+        <module name="myalbum-commons-service" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="myalbum-admin-server" target="1.8" />
+      <module name="myalbum-commons" target="1.8" />
+      <module name="myalbum-commons-consumer" target="1.8" />
+      <module name="myalbum-commons-domain" target="1.8" />
+      <module name="myalbum-commons-mapper" target="1.8" />
+      <module name="myalbum-commons-service" target="1.8" />
+      <module name="myalbum-config" target="1.8" />
+      <module name="myalbum-database" target="1.8" />
+      <module name="myalbum-dependencies" target="1.8" />
+      <module name="myalbum-eureka" target="1.8" />
+      <module name="myalbum-service-album" target="1.8" />
+      <module name="myalbum-service-consumer-backstage" target="1.8" />
+      <module name="myalbum-service-gateway" target="1.8" />
+      <module name="myalbum-service-provider-backstage" target="1.8" />
+      <module name="myalbum-service-provider-user" target="1.8" />
+      <module name="myalbum-service-register" target="1.8" />
+      <module name="myalbum-service-security-oauth2" target="1.8" />
+      <module name="myalbum-service-tools" target="1.8" />
+      <module name="myalbum-zipkin" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="myalbum-admin-server" options="-parameters" />
+      <module name="myalbum-commons" options="-parameters" />
+      <module name="myalbum-commons-consumer" options="-parameters" />
+      <module name="myalbum-commons-domain" options="-parameters" />
+      <module name="myalbum-commons-mapper" options="-parameters" />
+      <module name="myalbum-commons-service" options="-parameters" />
+      <module name="myalbum-config" options="-parameters" />
+      <module name="myalbum-database" options="-parameters" />
+      <module name="myalbum-eureka" options="-parameters" />
+      <module name="myalbum-service-album" options="-parameters" />
+      <module name="myalbum-service-consumer-backstage" options="-parameters" />
+      <module name="myalbum-service-gateway" options="-parameters" />
+      <module name="myalbum-service-provider-backstage" options="-parameters" />
+      <module name="myalbum-service-provider-user" options="-parameters" />
+      <module name="myalbum-service-register" options="-parameters" />
+      <module name="myalbum-service-security-oauth2" options="-parameters" />
+      <module name="myalbum-service-tools" options="-parameters" />
+      <module name="myalbum-zipkin" options="-parameters" />
+    </option>
+  </component>
+</project>

@@ -1,5 +1,0 @@
-cn\yan_wm\myalbum\service\redis\config\RedisConfig.class
-cn\yan_wm\myalbum\service\redis\controller\RedisController.class
-cn\yan_wm\myalbum\service\redis\service\RedisService.class
-cn\yan_wm\myalbum\service\redis\service\impl\RedisServiceImpl.class
-cn\yan_wm\myalbum\service\redis\MyAlbumServiceRedisApplication.class

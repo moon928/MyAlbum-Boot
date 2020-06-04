@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="gateway">
+    <serverData>
+      <paths name="Album">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$/../MyAlbumConfig" web="/" />
+            <mapping deploy="/myalbum-album" local="$PROJECT_DIR$/myalbum-service-album/target" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="User">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/myalbum-user" local="$PROJECT_DIR$/myalbum-service-provider-user/target" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="admin">
+        <serverdata>
+          <mappings>
+            <mapping deploy="" local="$PROJECT_DIR$/../MyAlbumConfig" web="/" />
+            <mapping deploy="/myalbum-admin" local="$PROJECT_DIR$/myalbum-admin-server/target" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="album-2">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$/../MyAlbumConfig" web="/" />
+            <mapping deploy="/myalbum-album-2" local="$PROJECT_DIR$/myalbum-service-album/target" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="config">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$/../MyAlbumConfig" web="/" />
+            <mapping deploy="/myalbum-config" local="$PROJECT_DIR$/myalbum-config/target" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="eureka">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$/../MyAlbumConfig" web="/" />
+            <mapping deploy="/myalbum-eureka" local="$PROJECT_DIR$/myalbum-eureka/target" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="gateway">
+        <serverdata>
+          <mappings>
+            <mapping deploy="" local="$PROJECT_DIR$/../MyAlbumConfig" web="" />
+            <mapping deploy="/myalbum-gateway" local="$PROJECT_DIR$/myalbum-service-gateway/target" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="oauth2">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$/../MyAlbumConfig" web="/" />
+            <mapping deploy="/myalbum-oauth2" local="$PROJECT_DIR$/myalbum-service-security-oauth2/target" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="provider-backstage">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$/../MyAlbumConfig" web="/" />
+            <mapping deploy="/myalbum-provider-backstage" local="$PROJECT_DIR$/myalbum-service-provider-backstage/target" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="register">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/myalbum-register" local="$PROJECT_DIR$/myalbum-service-register/target" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="tools">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$/../MyAlbumConfig" web="/" />
+            <mapping deploy="/myalbum-tools" local="$PROJECT_DIR$/myalbum-service-tools/target" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

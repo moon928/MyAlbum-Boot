@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/MyAlbum-Boot.iml" filepath="$PROJECT_DIR$/.idea/MyAlbum-Boot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../MyAlbumConfig/MyAlbumConfig.iml" filepath="$PROJECT_DIR$/../MyAlbumConfig/MyAlbumConfig.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myalbum-admin-server/myalbum-admin-server.iml" filepath="$PROJECT_DIR$/myalbum-admin-server/myalbum-admin-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myalbum-commons/myalbum-commons.iml" filepath="$PROJECT_DIR$/myalbum-commons/myalbum-commons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myalbum-commons-consumer/myalbum-commons-consumer.iml" filepath="$PROJECT_DIR$/myalbum-commons-consumer/myalbum-commons-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myalbum-commons-domain/myalbum-commons-domain.iml" filepath="$PROJECT_DIR$/myalbum-commons-domain/myalbum-commons-domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myalbum-commons-service/myalbum-commons-service.iml" filepath="$PROJECT_DIR$/myalbum-commons-service/myalbum-commons-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myalbum-config/myalbum-config.iml" filepath="$PROJECT_DIR$/myalbum-config/myalbum-config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myalbum-database/myalbum-database.iml" filepath="$PROJECT_DIR$/myalbum-database/myalbum-database.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myalbum-dependencies/myalbum-dependencies.iml" filepath="$PROJECT_DIR$/myalbum-dependencies/myalbum-dependencies.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myalbum-eureka/myalbum-eureka.iml" filepath="$PROJECT_DIR$/myalbum-eureka/myalbum-eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myalbum-service-album/myalbum-service-album.iml" filepath="$PROJECT_DIR$/myalbum-service-album/myalbum-service-album.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myalbum-service-consumer-backstage/myalbum-service-consumer-backstage.iml" filepath="$PROJECT_DIR$/myalbum-service-consumer-backstage/myalbum-service-consumer-backstage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myalbum-service-gateway/myalbum-service-gateway.iml" filepath="$PROJECT_DIR$/myalbum-service-gateway/myalbum-service-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myalbum-service-provider-backstage/myalbum-service-provider-backstage.iml" filepath="$PROJECT_DIR$/myalbum-service-provider-backstage/myalbum-service-provider-backstage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myalbum-service-provider-user/myalbum-service-provider-user.iml" filepath="$PROJECT_DIR$/myalbum-service-provider-user/myalbum-service-provider-user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myalbum-service-register/myalbum-service-register.iml" filepath="$PROJECT_DIR$/myalbum-service-register/myalbum-service-register.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myalbum-service-security-oauth2/myalbum-service-security-oauth2.iml" filepath="$PROJECT_DIR$/myalbum-service-security-oauth2/myalbum-service-security-oauth2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myalbum-service-tools/myalbum-service-tools.iml" filepath="$PROJECT_DIR$/myalbum-service-tools/myalbum-service-tools.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myalbum-zipkin/myalbum-zipkin.iml" filepath="$PROJECT_DIR$/myalbum-zipkin/myalbum-zipkin.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="d160468b-b4b7-4c6d-9ea2-a7ee581eb489" name="gateway" url="http://39.105.137.236">
+        <fileTransfer host="39.105.137.236" port="22" rootFolder="/home/myalbum" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="89bd2f7f-00c9-405c-8b6e-e8029b3573fc" name="tools" url="http://47.113.101.229">
+        <fileTransfer host="47.113.101.229" port="22" rootFolder="/home/myalbum" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="11d15d95-a6f7-4221-9db7-45249f066c46" name="provider-backstage" url="http://101.132.139.17">
+        <fileTransfer host="101.132.139.17" port="22" rootFolder="/home/myalbum" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="9170c0b7-817b-410d-8797-12c172cd1f09" name="oauth2" url="http://101.132.139.17">
+        <fileTransfer host="101.132.139.17" port="22" rootFolder="/home/myalbum" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="194ca84d-7f1e-456d-8cdb-1183749f8d25" name="register" url="http://39.105.137.236">
+        <fileTransfer host="39.105.137.236" port="22" rootFolder="/home/myalbum" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="7b4dc75a-385d-40f3-a9a1-ad016b207061" name="Album" url="http://47.113.101.229">
+        <fileTransfer host="47.113.101.229" port="22" rootFolder="/home/myalbum" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="26af4af7-b168-4d99-88c8-6402503d5058" name="User" url="http://101.132.139.17">
+        <fileTransfer host="101.132.139.17" port="22" rootFolder="/home/myalbum" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="686a32b6-8b2b-4dd7-ac28-3a261e6d9507" name="admin" url="http://47.113.101.229">
+        <fileTransfer host="47.113.101.229" port="22" rootFolder="/home/myalbum" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="25aedc15-613d-4f2a-922f-0ca79968a4ec" name="eureka" url="http://47.106.199.167">
+        <fileTransfer host="47.106.199.167" port="22" rootFolder="/home/myalbum" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="650c9617-45c0-42ed-8c0f-b3f3b88122b4" name="config" url="http://47.106.199.167">
+        <fileTransfer host="47.106.199.167" port="22" rootFolder="/home/myalbum" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="14295688-24ac-460a-be6b-315b8cde014d" name="album-2" url="http://47.113.101.229">
+        <fileTransfer host="47.113.101.229" port="22" rootFolder="/home/myalbum" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

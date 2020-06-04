@@ -1,9 +1,0 @@
-cn\yan_wm\myalbum\service\provider\test\config\handler\CustomAccessDeniedHandler.class
-cn\yan_wm\myalbum\service\provider\test\config\handler\AuthExceptionEntryPoint.class
-cn\yan_wm\myalbum\service\provider\test\config\handler\AjaxAuthenticationEntryPoint.class
-cn\yan_wm\myalbum\service\provider\test\service\TbUserService.class
-cn\yan_wm\myalbum\service\provider\test\MyAlbumServiceProviderTestApplication.class
-cn\yan_wm\myalbum\service\provider\test\config\ResourceServerConfig.class
-cn\yan_wm\myalbum\service\provider\test\mapper\TbUserInfoExtendMapper.class
-cn\yan_wm\myalbum\service\provider\test\controller\TbUserInfoController.class
-cn\yan_wm\myalbum\service\provider\test\service\impl\TbUserServiceImpl.class
